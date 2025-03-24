@@ -31,8 +31,12 @@ const nextConfig = {
   distDir: '.next',
   
   // Configure environment variables for AWS Amplify
+  // env: {
+  //   NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL || 'https://indowagen-website-nextjs.d18s43ml1gjftw.amplifyapp.com',
+  // },
+
   env: {
-    NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL || 'https://indowagen-website-nextjs.d18s43ml1gjftw.amplifyapp.com',
+    NEXT_PUBLIC_SITE_URL: 'http://localhost:3000',
   },
   
   // Set a higher timeout value for SSR rendering
