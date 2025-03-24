@@ -3,8 +3,8 @@ env:
   variables:
     NODE_ENV: production
     NEXT_TELEMETRY_DISABLED: 1
-  parameter-store:
-    NEXT_PUBLIC_SITE_URL: /amplify/d18s43ml1gjftw/NEXT_PUBLIC_SITE_URL
+    parameter-store:
+    NEXT_PUBLIC_SITE_URL:http://localhost:3000
 phases:
   install:
     runtime-versions:
