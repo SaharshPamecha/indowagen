@@ -1,0 +1,44 @@
+'use client';
+
+import React from 'react';
+import { Box } from '@mui/material';
+import dynamic from 'next/dynamic';
+import Navbar from '../components/Common/Navbar';
+import Footer from '../components/Common/Footer';
+
+// Dynamic imports to reduce initial load time
+const HeroSection = dynamic(() => import('../components/Home/HeroSection'));
+const ProductsSection = dynamic(() => import('../components/Home/ProductsSection'));
+const FeaturesSection = dynamic(() => import('../components/Home/FeaturesSection'));
+const TestimonialsSection = dynamic(() => import('../components/Home/TestimonialsSection'));
+const CTASection = dynamic(() => import('../components/Home/CTASection'));
+
+export default function Home() {
+  return (
+    <Box sx={{ 
+      display: 'flex', 
+      flexDirection: 'column',
+      minHeight: '100vh',
+    }}>
+      <Navbar />
+      <Box 
+        component="main" 
+        sx={{ 
+          display: 'flex', 
+          flexDirection: 'column', 
+          flexGrow: 1,
+          width: '100%',
+          py: { xs: 2, md: 4 },
+          gap: { xs: 6, md: 8 }
+        }}
+      >
+        <HeroSection />
+        <ProductsSection />
+        <FeaturesSection />
+        <TestimonialsSection />
+        <CTASection />
+      </Box>
+      <Footer />
+    </Box>
+  );
+}

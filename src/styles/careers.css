@@ -1,0 +1,33 @@
+.careers-hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+              url('/images/careers-banner.jpg') no-repeat center center;
+  background-size: cover;
+  color: white;
+  padding: 120px 0;
+}
+
+.job-card {
+  transition: transform 0.2s ease-in-out;
+}
+
+.job-card:hover {
+  transform: translateY(-5px);
+}
+
+.requirements-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.requirements-list li {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.requirements-list li::before {
+  content: "•";
+  color: #1976d2;
+  font-weight: bold;
+  margin-right: 8px;
+}

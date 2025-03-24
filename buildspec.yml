@@ -1,0 +1,45 @@
+version: 0.2
+env:
+  variables:
+    NODE_ENV: production
+    NEXT_TELEMETRY_DISABLED: 1
+  parameter-store:
+    NEXT_PUBLIC_SITE_URL: /amplify/d18s43ml1gjftw/NEXT_PUBLIC_SITE_URL
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - echo Installing dependencies...
+      - npm ci --legacy-peer-deps
+  build:
+    commands:
+      - echo Verifying assets...
+      - bash scripts/copy-missing-assets.sh
+      - ls -la public/images/about/
+      - echo Building the Next.js application in SSR mode...
+      - export NODE_OPTIONS="--max-old-space-size=4096"
+      - npm run build
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Preparing deployment artifacts...
+      - echo Listing Next.js build directory...
+      - ls -la .next
+      - echo Checking custom configuration files...
+      - ls -la amplify*.json customHttp.yml || echo "Some config files may be missing"
+artifacts:
+  base-directory: .
+  files:
+    - '.next/**/*'
+    - 'public/**/*'
+    - 'node_modules/**/*'
+    - 'package.json'
+    - 'next.config.js'
+    - 'amplify.json'
+    - 'amplify-next-config.json'
+    - 'customHttp.yml'
+cache:
+  paths:
+    - node_modules/**/*
+    - .next/cache/**/*

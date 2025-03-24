@@ -1,0 +1,14 @@
+{
+  "renderMode": "ssr",
+  "enableLambdaFunctionCacheHeaders": true,
+  "imageOptimization": {
+    "cacheControl": "public, max-age=31536000, immutable"
+  },
+  "staticRoutes": {
+    "excludePattern": "/_next/**/*"
+  },
+  "revalidate": {
+    "enable": true,
+    "maxAge": 300
+  }
+}
