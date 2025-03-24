@@ -17,9 +17,11 @@ import {
   Divider,
 } from '@mui/material';
 import { motion } from 'framer-motion';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import EmailIcon from '@mui/icons-material/Email';
-import TwitterIcon from '@mui/icons-material/Twitter';
+// import LinkedInIcon from '@mui/icons-material/LinkedIn';
+// import EmailIcon from '@mui/icons-material/Email';
+// import TwitterIcon from '@mui/icons-material/Twitter';
+
+import { LinkedIn, Email, Twitter } from '@mui/icons-material';
 
 interface TeamMember {
   id: number;
@@ -230,7 +232,7 @@ const LeadershipTeam = () => {
                               component="a"
                               href={`mailto:${member.social.email}`}
                             >
-                              <EmailIcon />
+                              <Email />
                             </IconButton>
                           </Tooltip>
                         )}
@@ -245,7 +247,7 @@ const LeadershipTeam = () => {
                               target="_blank"
                               rel="noopener noreferrer"
                             >
-                              <LinkedInIcon />
+                              <LinkedIn />
                             </IconButton>
                           </Tooltip>
                         )}
@@ -260,7 +262,7 @@ const LeadershipTeam = () => {
                               target="_blank"
                               rel="noopener noreferrer"
                             >
-                              <TwitterIcon />
+                              <Twitter/>
                             </IconButton>
                           </Tooltip>
                         )}
