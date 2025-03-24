@@ -1,8 +1,7 @@
 import pool from "@/app/libs/mysql.js";
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
-
+import { RowDataPacket } from 'mysql2/promise';
 import {
   Box,
   Container,
@@ -10,7 +9,6 @@ import {
   Grid,
   Paper,
   Button,
-  List,
   ListItem,
   ListItemText,
   Divider,
@@ -19,7 +17,10 @@ import {
 import { ArrowBack } from '@mui/icons-material';
 import ProductSlider from "@/components/Products/ProductSlider";
 
-interface Vehicle {
+// Define the Vehicle interface based on your database schema
+interface Vehicle extends RowDataPacket {
+  id: number;
+  url: string;
   model_name: string | null;
   category: string | null;
   motor_type: string | null;
@@ -65,37 +66,54 @@ interface Vehicle {
   hydraulic_jack: string | null;
 }
 
+// Define the ProductImage interface based on your product_images table schema
+interface ProductImage extends RowDataPacket {
+  id?: number;
+  prod_id: number;
+  image_url: string; // Adjust based on your actual column name
+}
+
+// Define the response type for getData
 interface GetDataResponse {
   row: Vehicle | null;
+  images: ProductImage[];
   error?: Error;
 }
 
 const getData = async (proId: string): Promise<GetDataResponse> => {
   try {
     const db = await pool;
+
+    // First query: Fetch the vehicle by URL
     const q = "SELECT * FROM vehicles WHERE url = ?";
-    const [rows] = await db.query(q, [proId]) as [Vehicle[], any];
+    const [rows]: [Vehicle[], any] = await db.query(q, [proId]);
+
+    if (!rows || rows.length === 0) {
+      return { row: null, images: [] };
+    }
+
     const id = rows[0].id;
-    const q1 = "SELECT * from product_images WHERE prod_id = ?";
-    const [images] = await db.query(q1, id);
-    
+
+    // Second query: Fetch the product images by prod_id
+    const q1 = "SELECT * FROM product_images WHERE prod_id = ?";
+    const [images]: [ProductImage[], any] = await db.query(q1, [id]);
 
     return {
       row: rows[0] || null,
-      images: [images],
+      images: images || [],
     };
   } catch (err) {
     console.error("Database error: ", err);
-    return { row: null, error: err as Error };
+    return { row: null, images: [], error: err as Error };
   }
 };
 
 interface ProductDetailProps {
-  params: { id: string };
+  params: Promise<{ id: string }>; // Fix: params is a Promise in Next.js App Router
 }
 
 const ProductDetail: React.FC<ProductDetailProps> = async ({ params }) => {
-  const { id } = params;
+  const { id } = await params; // Await the params to get the resolved value
   if (!id) {
     return (
       <Container sx={{ py: 8 }}>
@@ -106,10 +124,9 @@ const ProductDetail: React.FC<ProductDetailProps> = async ({ params }) => {
     );
   }
 
-
   const arrproId = id;
   const { row: products, images } = await getData(arrproId);
-  //console.log(images);
+
   if (!products) {
     return (
       <Container sx={{ py: 8 }}>
@@ -178,254 +195,206 @@ const ProductDetail: React.FC<ProductDetailProps> = async ({ params }) => {
   };
 
   const keyInfo = [
-    
     { label: "Max Speed", value: productDetails.max_speed },
     { label: "Load Capacity", value: productDetails.load_capacity },
     { label: "Mileage", value: productDetails.mileage },
     { label: "Battery Quantity", value: productDetails.battery_quantity },
   ];
 
-
-
   return (
     <Box component="main" sx={{ py: 8, bgcolor: '#f9fafb', minHeight: '100vh' }}>
       <Container maxWidth="lg">
-        
-
         <Grid container spacing={6}>
           {/* Image and Key Info Section */}
           <Grid item xs={12} md={12} lg={12}>
-  <Paper
-    sx={{
-      borderRadius: 4,
-      boxShadow: '0 8px 30px rgba(0,0,0,0.08)',
-      overflow: 'hidden',
-      bgcolor: 'white',
-      display: 'flex',
-      flexDirection: { xs: 'column', md: 'row' },
-      transition: 'box-shadow 0.3s ease',
-      '&:hover': {
-        boxShadow: '0 12px 40px rgba(0,0,0,0.12)',
-      },
-    }}
-  >
-    {/* Image Section */}
-    <Box
-      sx={{
-        position: 'relative',
-        width: { xs: '100%', md: '50%' },
-        height: { xs: 300, sm: 400, md: 500 },
-        bgcolor: 'white', // Clean white background
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexShrink: 0,
-        p: 2,
-      }}
-    >
-      <ProductSlider images={images} modelName={products.model_name || "Product"} />
-    </Box>
-
-    {/* Info Section */}
-    <Box
-      sx={{
-        p: { xs: 3, md: 5 },
-        width: { xs: '100%', md: '50%' },
-        bgcolor: 'white',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'flex-start',
-        gap: 2,
-      }}
-    >
-      <Typography
-        variant="h3"
-        component="h1"
-        sx={{
-          fontWeight: 700,
-          color: '#1f2937', // Dark gray for contrast
-          fontSize: { xs: '1.8rem', sm: '2rem', md: '2.5rem' },
-          //lineHeight: 1.2,
-          textTransform: 'uppercase',
-        }}
-      >
-        {productDetails.model_name}
-      </Typography>
-
-      {/* Quick Specs Section */}
-      <Box sx={{  width: '100%' }}>
-      <Chip
-        label={productDetails.category.replace('-', ' ').toUpperCase()}
-        size="medium"
-        sx={{
-mb: 2,
-          bgcolor: '#dbeafe', // Softer blue background
-          color: '#1e40af',
-          fontWeight: 600,
-          px: 2,
-          py: 0.5,
-          borderRadius: '20px',
-          letterSpacing: '0.8px',
-          fontSize: '0.9rem',
-        }}
-      />
-        <Box
-          sx={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: 2,
-            justifyContent: 'flex-start',
-          }}
-        >
-          {/* First Row: 3 Specs */}
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: { xs: 'column', sm: 'row' },
-              gap: 2,
-              flex: '1 1 100%',
-            }}
-          >
-            {keyInfo.slice(0, 2).map((spec) => (
+            <Paper
+              sx={{
+                borderRadius: 4,
+                boxShadow: '0 8px 30px rgba(0,0,0,0.08)',
+                overflow: 'hidden',
+                bgcolor: 'white',
+                display: 'flex',
+                flexDirection: { xs: 'column', md: 'row' },
+                transition: 'box-shadow 0.3s ease',
+                '&:hover': {
+                  boxShadow: '0 12px 40px rgba(0,0,0,0.12)',
+                },
+              }}
+            >
+              {/* Image Section */}
               <Box
-                key={spec.label}
                 sx={{
-                  flex: { xs: '1 1 100%', sm: '1 1 45%' }, // 2 items in a row on larger screens
-                  minWidth: 120,
+                  position: 'relative',
+                  width: { xs: '100%', md: '50%' },
+                  height: { xs: 300, sm: 400, md: 500 },
+                  bgcolor: 'white',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0,
+                  p: 2,
+                }}
+              >
+                <ProductSlider images={images} modelName={products.model_name || "Product"} />
+              </Box>
+
+              {/* Info Section */}
+              <Box
+                sx={{
+                  p: { xs: 3, md: 5 },
+                  width: { xs: '100%', md: '50%' },
+                  bgcolor: 'white',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'flex-start',
+                  gap: 2,
                 }}
               >
                 <Typography
-                  variant="subtitle2"
+                  variant="h3"
+                  component="h1"
                   sx={{
-                    fontWeight: 600,
+                    fontWeight: 700,
                     color: '#1f2937',
-                    fontSize: '0.95rem',
+                    fontSize: { xs: '1.8rem', sm: '2rem', md: '2.5rem' },
+                    textTransform: 'uppercase',
                   }}
                 >
-                  {spec.label}
+                  {productDetails.model_name}
                 </Typography>
-                <Typography
-                  variant="body2"
-                  sx={{
-                    color: spec.value !== '-' ? '#6b7280' : '#9ca3af',
-                    fontSize: '0.9rem',
-                  }}
-                >
-                  {spec.value !== '-' ? spec.value : 'N/A'}
-                </Typography>
-              </Box>
-            ))}
-          </Box>
 
-          {/* Second Row: 2 Specs */}
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: { xs: 'column', sm: 'row' },
-              gap: 2,
-              flex: '1 1 100%',
-            }}
-          >
-            {keyInfo.slice(2, 4).map((spec) => (
-              <Box
-                key={spec.label}
-                sx={{
-                  flex: { xs: '1 1 100%', sm: '1 1 45%' }, // 2 items in a row on larger screens
-                  minWidth: 120,
-                }}
-              >
-                <Typography
-                  variant="subtitle2"
+                {/* Quick Specs Section */}
+                <Box sx={{ width: '100%' }}>
+                  <Chip
+                    label={productDetails.category.replace('-', ' ').toUpperCase()}
+                    size="medium"
+                    sx={{
+                      mb: 2,
+                      bgcolor: '#dbeafe',
+                      color: '#1e40af',
+                      fontWeight: 600,
+                      px: 2,
+                      py: 0.5,
+                      borderRadius: '20px',
+                      letterSpacing: '0.8px',
+                      fontSize: '0.9rem',
+                    }}
+                  />
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flexWrap: 'wrap',
+                      gap: 2,
+                      justifyContent: 'flex-start',
+                    }}
+                  >
+                    {/* First Row: 2 Specs */}
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        flexDirection: { xs: 'column', sm: 'row' },
+                        gap: 2,
+                        flex: '1 1 100%',
+                      }}
+                    >
+                      {keyInfo.slice(0, 2).map((spec) => (
+                        <Box
+                          key={spec.label}
+                          sx={{
+                            flex: { xs: '1 1 100%', sm: '1 1 45%' },
+                            minWidth: 120,
+                          }}
+                        >
+                          <Typography
+                            variant="subtitle2"
+                            sx={{
+                              fontWeight: 600,
+                              color: '#1f2937',
+                              fontSize: '0.95rem',
+                            }}
+                          >
+                            {spec.label}
+                          </Typography>
+                          <Typography
+                            variant="body2"
+                            sx={{
+                              color: spec.value !== '-' ? '#6b7280' : '#9ca3af',
+                              fontSize: '0.9rem',
+                            }}
+                          >
+                            {spec.value !== '-' ? spec.value : 'N/A'}
+                          </Typography>
+                        </Box>
+                      ))}
+                    </Box>
+
+                    {/* Second Row: 2 Specs */}
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        flexDirection: { xs: 'column', sm: 'row' },
+                        gap: 2,
+                        flex: '1 1 100%',
+                      }}
+                    >
+                      {keyInfo.slice(2, 4).map((spec) => (
+                        <Box
+                          key={spec.label}
+                          sx={{
+                            flex: { xs: '1 1 100%', sm: '1 1 45%' },
+                            minWidth: 120,
+                          }}
+                        >
+                          <Typography
+                            variant="subtitle2"
+                            sx={{
+                              fontWeight: 600,
+                              color: '#1f2937',
+                              fontSize: '0.95rem',
+                            }}
+                          >
+                            {spec.label}
+                          </Typography>
+                          <Typography
+                            variant="body2"
+                            sx={{
+                              color: spec.value !== '-' ? '#6b7280' : '#9ca3af',
+                              fontSize: '0.9rem',
+                            }}
+                          >
+                            {spec.value !== '-' ? spec.value : 'N/A'}
+                          </Typography>
+                        </Box>
+                      ))}
+                    </Box>
+                  </Box>
+                </Box>
+
+                {/* Enquire Now Button */}
+                <Button
+                  variant="contained"
                   sx={{
+                    mt: 3,
+                    bgcolor: '#1f2937',
+                    color: 'white',
                     fontWeight: 600,
-                    color: '#1f2937',
-                    fontSize: '0.95rem',
+                    textTransform: 'uppercase',
+                    borderRadius: '8px',
+                    px: 4,
+                    py: 1.5,
+                    fontSize: '1rem',
+                    '&:hover': {
+                      bgcolor: '#374151',
+                    },
                   }}
                 >
-                  {spec.label}
-                </Typography>
-                <Typography
-                  variant="body2"
-                  sx={{
-                    color: spec.value !== '-' ? '#6b7280' : '#9ca3af',
-                    fontSize: '0.9rem',
-                  }}
-                >
-                  {spec.value !== '-' ? spec.value : 'N/A'}
-                </Typography>
+                  Enquire Now
+                </Button>
               </Box>
-            ))}
-          </Box>
-
-           {/* Third Row: 2 Specs */}
-           <Box
-            sx={{
-              display: 'flex',
-              flexDirection: { xs: 'column', sm: 'row' },
-              gap: 2,
-              flex: '1 1 100%',
-            }}
-          >
-            {keyInfo.slice(2, 4).map((spec) => (
-              <Box
-                key={spec.label}
-                sx={{
-                  flex: { xs: '1 1 100%', sm: '1 1 45%' }, // 2 items in a row on larger screens
-                  minWidth: 120,
-                }}
-              >
-                <Typography
-                  variant="subtitle2"
-                  sx={{
-                    fontWeight: 600,
-                    color: '#1f2937',
-                    fontSize: '0.95rem',
-                  }}
-                >
-                  {spec.label}
-                </Typography>
-                <Typography
-                  variant="body2"
-                  sx={{
-                    color: spec.value !== '-' ? '#6b7280' : '#9ca3af',
-                    fontSize: '0.9rem',
-                  }}
-                >
-                  {spec.value !== '-' ? spec.value : 'N/A'}
-                </Typography>
-              </Box>
-            ))}
-          </Box>
-
-        </Box>
-      </Box>
-
-      {/* Enquire Now Button */}
-      <Button
-        variant="contained"
-        sx={{
-          mt: 3,
-          bgcolor: '#1f2937', // Dark background
-          color: 'white',
-          fontWeight: 600,
-          textTransform: 'uppercase',
-          borderRadius: '8px',
-          px: 4,
-          py: 1.5,
-          fontSize: '1rem',
-          '&:hover': {
-            bgcolor: '#374151', // Slightly lighter on hover
-          },
-        }}
-      >
-        Enquire Now
-      </Button>
-    </Box>
-  </Paper>
-</Grid>
-
+            </Paper>
+          </Grid>
 
           {/* Full Specifications Section */}
           <Grid item xs={12}>

@@ -26,9 +26,10 @@ import PaymentIcon from '@mui/icons-material/Payment';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
 import ChatIcon from '@mui/icons-material/Chat';
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+//import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { motion } from 'framer-motion';
+import { WhatsApp } from '@mui/icons-material';
 
 // Support categories
 const supportCategories = [
@@ -86,7 +87,7 @@ const contactChannels = [
   },
   {
     method: 'WhatsApp',
-    icon: <WhatsAppIcon />,
+    icon: <WhatsApp />,
     detail: '+91 800-123-4567',
     description: 'Quick responses on WhatsApp',
     action: 'WhatsApp Us',

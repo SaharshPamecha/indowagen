@@ -29,7 +29,7 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ images, modelName }) => {
           loop // Enable infinite loop
           style={{ width: '100%', height: '80%' }} // Set dimensions for the slider
         >
-          {images[0].map((image, index) => (
+          {images.map((image, index) => (
             <SwiperSlide key={index}>
              
               <Box sx={{ textAlign: 'center' }}>
