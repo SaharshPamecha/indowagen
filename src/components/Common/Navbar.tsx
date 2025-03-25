@@ -16,6 +16,7 @@ import {
   Slide,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -26,7 +27,14 @@ const pages = [
   { name: 'About Us', path: '/about' },
   { name: 'Products', path: '/products' },
   // { name: 'Pricing', path: '/pricing' },
-  { name: 'Distributors', path: '/distributors' },
+  { 
+    name: 'Dealers', 
+    path: '#',
+    subMenu: [
+      { name: "Dealer's Lounge", path: '/dealers/lounge' },
+      { name: 'Dealer Locator', path: '/dealers/locator' },
+    ] 
+  },
   { name: 'Support', path: '/support' },
   { name: 'Blog', path: '/blog' },
   { name: 'News', path: '/news' },
@@ -38,6 +46,7 @@ const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [anchorElDealers, setAnchorElDealers] = useState<null | HTMLElement>(null);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const pathname = usePathname();
@@ -73,6 +82,14 @@ const Navbar = () => {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
+  };
+  
+  const handleOpenDealersMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElDealers(event.currentTarget);
+  };
+
+  const handleCloseDealersMenu = () => {
+    setAnchorElDealers(null);
   };
 
   return (
@@ -138,17 +155,41 @@ const Navbar = () => {
                   display: { xs: 'block', md: 'none' },
                 }}
               >
-                {pages.map((page) => (
-                  <Link
-                    key={page.path}
-                    href={page.path}
-                    style={{ textDecoration: 'none', color: 'inherit' }}
-                  >
-                    <MenuItem onClick={handleCloseNavMenu}>
-                      <Typography textAlign="center">{page.name}</Typography>
-                    </MenuItem>
-                  </Link>
-                ))}
+                {pages.map((page) => {
+                  // Handle submenu items for mobile
+                  if (page.subMenu) {
+                    return (
+                      <div key={page.name}>
+                        <MenuItem>
+                          <Typography textAlign="center" fontWeight="bold">{page.name}</Typography>
+                        </MenuItem>
+                        {page.subMenu.map((subItem) => (
+                          <Link
+                            key={subItem.path}
+                            href={subItem.path}
+                            style={{ textDecoration: 'none', color: 'inherit' }}
+                          >
+                            <MenuItem onClick={handleCloseNavMenu} sx={{ pl: 4 }}>
+                              <Typography textAlign="center">{subItem.name}</Typography>
+                            </MenuItem>
+                          </Link>
+                        ))}
+                      </div>
+                    );
+                  }
+                  // Regular menu items
+                  return (
+                    <Link
+                      key={page.path}
+                      href={page.path}
+                      style={{ textDecoration: 'none', color: 'inherit' }}
+                    >
+                      <MenuItem onClick={handleCloseNavMenu}>
+                        <Typography textAlign="center">{page.name}</Typography>
+                      </MenuItem>
+                    </Link>
+                  );
+                })}
               </Menu>
             </Box>
 
@@ -169,28 +210,78 @@ const Navbar = () => {
 
             {/* Desktop menu */}
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
-              {pages.map((page) => (
-                <Link
-                  key={page.path}
-                  href={page.path}
-                  style={{ textDecoration: 'none' }}
-                >
-                  <Button
-                    onClick={handleCloseNavMenu}
-                    sx={{
-                      mx: 1,
-                      color: pathname === page.path ? 'primary.main' : 'text.primary',
-                      display: 'block',
-                      fontWeight: pathname === page.path ? 600 : 400,
-                      '&:hover': {
-                        color: 'primary.main',
-                      },
-                    }}
+              {pages.map((page) => {
+                // Handle dropdown for dealers
+                if (page.subMenu) {
+                  return (
+                    <Box key={page.name} sx={{ position: 'relative' }}>
+                      <Button
+                        onClick={handleOpenDealersMenu}
+                        sx={{
+                          mx: 1,
+                          color: pathname.startsWith('/dealers') ? 'primary.main' : 'text.primary',
+                          display: 'flex',
+                          alignItems: 'center',
+                          fontWeight: pathname.startsWith('/dealers') ? 600 : 400,
+                          '&:hover': {
+                            color: 'primary.main',
+                          },
+                        }}
+                        endIcon={<KeyboardArrowDownIcon />}
+                      >
+                        {page.name}
+                      </Button>
+                      <Menu
+                        anchorEl={anchorElDealers}
+                        open={Boolean(anchorElDealers)}
+                        onClose={handleCloseDealersMenu}
+                        sx={{ mt: 1 }}
+                      >
+                        {page.subMenu.map((subItem) => (
+                          <Link
+                            key={subItem.path}
+                            href={subItem.path}
+                            style={{ textDecoration: 'none', color: 'inherit' }}
+                          >
+                            <MenuItem 
+                              onClick={handleCloseDealersMenu}
+                              sx={{
+                                color: pathname === subItem.path ? 'primary.main' : 'inherit',
+                                fontWeight: pathname === subItem.path ? 600 : 400,
+                              }}
+                            >
+                              {subItem.name}
+                            </MenuItem>
+                          </Link>
+                        ))}
+                      </Menu>
+                    </Box>
+                  );
+                }
+                // Regular menu items
+                return (
+                  <Link
+                    key={page.path}
+                    href={page.path}
+                    style={{ textDecoration: 'none' }}
                   >
-                    {page.name}
-                  </Button>
-                </Link>
-              ))}
+                    <Button
+                      onClick={handleCloseNavMenu}
+                      sx={{
+                        mx: 1,
+                        color: pathname === page.path ? 'primary.main' : 'text.primary',
+                        display: 'block',
+                        fontWeight: pathname === page.path ? 600 : 400,
+                        '&:hover': {
+                          color: 'primary.main',
+                        },
+                      }}
+                    >
+                      {page.name}
+                    </Button>
+                  </Link>
+                );
+              })}
             </Box>
           </Toolbar>
         </Container>
