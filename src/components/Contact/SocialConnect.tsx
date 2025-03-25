@@ -65,7 +65,7 @@ const SocialConnect = () => {
     {
       name: 'WhatsApp',
       icon: <WhatsAppIcon sx={{ fontSize: 40 }} />,
-      url: 'https://wa.me/919876543210',
+      url: `https://wa.me/${companyInfo.contact.phone.replace(/[^0-9]/g, '')}`,
       color: '#25D366',
       description: 'Chat with our customer support team for quick assistance',
     },

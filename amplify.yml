@@ -12,10 +12,16 @@ frontend:
         - echo "Building Next.js application in SSR mode"
         - export NODE_OPTIONS="--max-old-space-size=4096"
         - npm run build
+        - echo "Running post-build script for SSR deployment"
+        - bash scripts/amplify-postbuild.sh
   artifacts:
     baseDirectory: .
     files:
-      - '.next/**/*'
+      - '.next/standalone/**/*'
+      - '.next/static/**/*'
+      - '.next/server/**/*'
+      - '.next/required-server-files.json'
+      - 'required-server-files.json'
       - 'public/**/*'
       - 'node_modules/**/*'
       - 'package.json'

@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Configure output for AWS Amplify SSR
+  output: 'standalone',
   // Configure image optimization for AWS Amplify
   images: {
     domains: ['localhost', 'indowagen-website-nextjs.d18s43ml1gjftw.amplifyapp.com'],
@@ -10,9 +12,15 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '3000',
+        pathname: '/**',
+      },
     ],
-    // Don't set unoptimized to true when deploying to AWS Amplify
-    // unoptimized: true,
+    // Set unoptimized based on environment
+    unoptimized: process.env.NODE_ENV !== 'production',
   },
   
   // React strict mode is beneficial for development but can cause double-mounting
@@ -36,7 +44,9 @@ const nextConfig = {
   // },
 
   env: {
-    NEXT_PUBLIC_SITE_URL: 'http://localhost:3000',
+    NEXT_PUBLIC_SITE_URL: process.env.NODE_ENV === 'production' 
+      ? 'https://indowagen-website-nextjs.d18s43ml1gjftw.amplifyapp.com' 
+      : 'http://localhost:3000',
   },
   
   // Set a higher timeout value for SSR rendering

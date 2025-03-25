@@ -11,6 +11,7 @@ import {
   useTheme,
   useMediaQuery,
 } from '@mui/material';
+import { companyInfo } from '@/data/company';
 import Link from 'next/link';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
@@ -53,10 +54,10 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: <FacebookIcon />, href: 'https://facebook.com' },
-    { icon: <TwitterIcon />, href: 'https://twitter.com' },
-    { icon: <InstagramIcon />, href: 'https://instagram.com' },
-    { icon: <LinkedInIcon />, href: 'https://linkedin.com' },
+    { icon: <FacebookIcon />, href: companyInfo.social.facebook },
+    { icon: <TwitterIcon />, href: companyInfo.social.twitter },
+    { icon: <InstagramIcon />, href: companyInfo.social.instagram },
+    { icon: <LinkedInIcon />, href: companyInfo.social.linkedin },
   ];
 
   return (
