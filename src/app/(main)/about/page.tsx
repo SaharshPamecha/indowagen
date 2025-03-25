@@ -6,6 +6,7 @@ import LeadershipTeam from '@/components/About/LeadershipTeam';
 import Facilities from '@/components/About/Facilities';
 import Testimonials from '@/components/About/Testimonials';
 import EnvironmentalImpact from '@/components/About/EnvironmentalImpact';
+import Certifications from '@/components/About/Certifications';
 import StateApprovals from '@/components/About/StateApprovals';
 import OurProducts from '@/components/About/OurProducts';
 import OurGrowingNetwork from '@/components/About/OurGrowingNetwork';
@@ -25,6 +26,7 @@ export default function AboutPage() {
       <Facilities />
       <Testimonials />
       <EnvironmentalImpact />
+      <Certifications />
       <StateApprovals />
     </>
   );
