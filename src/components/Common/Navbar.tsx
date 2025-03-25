@@ -28,6 +28,8 @@ const pages = [
   // { name: 'Pricing', path: '/pricing' },
   { name: 'Distributors', path: '/distributors' },
   { name: 'Support', path: '/support' },
+  { name: 'Blog', path: '/blog' },
+  { name: 'News', path: '/news' },
   { name: 'Careers', path: '/careers', icon: WorkIcon },
   { name: 'Contact', path: '/contact' },
 ];
