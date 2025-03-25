@@ -165,12 +165,13 @@ const Footer = () => {
     <Box
       component="footer"
       sx={{
-        bgcolor: theme.palette.mode === 'light' ? 'grey.100' : 'background.paper',
+        bgcolor:
+          theme.palette.mode === "light" ? "grey.100" : "background.paper",
         pt: 8,
         pb: 3,
         borderTop: `1px solid ${theme.palette.divider}`,
-        width: '100%',
-        marginTop: 'auto',
+        width: "100%",
+        marginTop: "auto",
       }}
     >
       <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
@@ -178,87 +179,129 @@ const Footer = () => {
         <Grid container spacing={4}>
           {/* Company Info and Newsletter */}
           <Grid item xs={12} md={4}>
-            <Paper elevation={0} sx={{ p: 3, bgcolor: 'transparent' }}>
+            <Paper elevation={0} sx={{ p: 3, bgcolor: "transparent" }}>
               {/* Logo */}
-              <Box sx={{ position: 'relative', width: 180, height: 60, mb: 3 }}>
+              <Box sx={{ position: "relative", width: 180, height: 60, mb: 3 }}>
                 <Image
                   src="/images/brand/logo.png"
                   alt={companyInfo.name}
                   fill
-                  style={{ objectFit: 'contain' }}
+                  style={{ objectFit: "contain" }}
                   priority
                 />
               </Box>
-              
+
               {/* Company Description */}
-              <Typography variant="body2" color="text.secondary" paragraph sx={{ mb: 3 }}>
-                {companyInfo.description || 'Leading manufacturer of electric vehicles in India'}
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                paragraph
+                sx={{ mb: 3 }}
+              >
+                {companyInfo.description ||
+                  "Leading manufacturer of electric vehicles in India"}
               </Typography>
-              
+
               {/* Contact Information */}
               <Box sx={{ mb: 3 }}>
-                <Typography variant="subtitle2" sx={{ fontWeight: 'bold', mb: 1.5 }}>
+                <Typography
+                  variant="subtitle2"
+                  sx={{ fontWeight: "bold", mb: 1.5 }}
+                >
                   Contact Information
                 </Typography>
-                
+
                 {/* Address */}
-                <Box sx={{ display: 'flex', alignItems: 'flex-start', mb: 2 }}>
-                  <LocationOnIcon sx={{ mr: 1, color: 'primary.main', mt: 0.5 }} />
+                <Box sx={{ display: "flex", alignItems: "flex-start", mb: 2 }}>
+                  <LocationOnIcon
+                    sx={{ mr: 1, color: "primary.main", mt: 0.5 }}
+                  />
                   <Typography variant="body2">
-                    {companyInfo.address?.street || 'Industrial Area'}
+                    {companyInfo.address?.street || "Industrial Area"}
                     <br />
-                    {companyInfo.address?.city || 'Noida'}, {companyInfo.address?.state || 'Uttar Pradesh'}, {companyInfo.address?.zip || '201301'}
+                    {companyInfo.address?.city || "Noida"},{" "}
+                    {companyInfo.address?.state || "Uttar Pradesh"},{" "}
+                    {companyInfo.address?.zip || "201301"}
                     <br />
-                    {companyInfo.address?.country || 'India'}
+                    {companyInfo.address?.country || "India"}
                   </Typography>
                 </Box>
-                
+
                 {/* Phone */}
-                <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                  <PhoneIcon sx={{ mr: 1, color: 'primary.main' }} />
+                <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                  <PhoneIcon sx={{ mr: 1, color: "primary.main" }} />
                   <MuiLink
-                    href={companyInfo.contact?.phone ? `tel:${companyInfo.contact.phone.replace(/[^0-9]/g, '')}` : '#'}
+                    href={
+                      companyInfo.contact?.phone
+                        ? `tel:${companyInfo.contact.phone.replace(
+                            /[^0-9]/g,
+                            ""
+                          )}`
+                        : "#"
+                    }
                     variant="body2"
-                    sx={{ textDecoration: 'none', '&:hover': { color: 'primary.main' } }}
+                    sx={{
+                      textDecoration: "none",
+                      "&:hover": { color: "primary.main" },
+                    }}
                   >
-                    {companyInfo.contact?.phone || '+91-120-4567890'}
+                    {companyInfo.contact?.phone || "+91-120-4567890"}
                   </MuiLink>
                 </Box>
-                
+
                 {/* Email */}
-                <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                  <EmailIcon sx={{ mr: 1, color: 'primary.main' }} />
+                <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                  <EmailIcon sx={{ mr: 1, color: "primary.main" }} />
                   <MuiLink
-                    href={`mailto:${companyInfo.contact?.email || 'info@indowagen.com'}`}
+                    href={`mailto:${
+                      companyInfo.contact?.email || "info@indowagen.com"
+                    }`}
                     variant="body2"
-                    sx={{ textDecoration: 'none', '&:hover': { color: 'primary.main' } }}
+                    sx={{
+                      textDecoration: "none",
+                      "&:hover": { color: "primary.main" },
+                    }}
                   >
-                    {companyInfo.contact?.email || 'info@indowagen.com'}
+                    {companyInfo.contact?.email || "info@indowagen.com"}
                   </MuiLink>
                 </Box>
-                
+
                 {/* Business Hours */}
-                <Box sx={{ display: 'flex', alignItems: 'flex-start', mb: 2 }}>
-                  <AccessTimeIcon sx={{ mr: 1, color: 'primary.main', mt: 0.5 }} />
+                <Box sx={{ display: "flex", alignItems: "flex-start", mb: 2 }}>
+                  <AccessTimeIcon
+                    sx={{ mr: 1, color: "primary.main", mt: 0.5 }}
+                  />
                   <Typography variant="body2">
-                    Mon-Fri: 9:00 AM - 6:00 PM<br />
-                    Sat: 10:00 AM - 4:00 PM<br />
+                    Mon - Sat: 9:00 AM - 6:00 PM
+                    <br />
                     Sun: Closed
                   </Typography>
                 </Box>
               </Box>
-              
+
               {/* Newsletter Subscription */}
               <Box sx={{ mt: 4 }}>
-                <Typography variant="subtitle2" sx={{ fontWeight: 'bold', mb: 1.5 }}>
+                <Typography
+                  variant="subtitle2"
+                  sx={{ fontWeight: "bold", mb: 1.5 }}
+                >
                   Subscribe to Our Newsletter
                 </Typography>
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{ mb: 2 }}
+                >
                   Stay updated with our latest news and offers
                 </Typography>
-                
+
                 <form onSubmit={handleSubscribe}>
-                  <Box sx={{ display: 'flex', flexDirection: isTablet ? 'column' : 'row' }}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: isTablet ? "column" : "row",
+                    }}
+                  >
                     <TextField
                       fullWidth
                       size="small"
@@ -268,12 +311,12 @@ const Footer = () => {
                       onChange={(e) => setEmail(e.target.value)}
                       sx={{ mr: isTablet ? 0 : 1, mb: isTablet ? 1 : 0 }}
                     />
-                    <Button 
-                      variant="contained" 
-                      color="primary" 
+                    <Button
+                      variant="contained"
+                      color="primary"
                       type="submit"
                       startIcon={<SendIcon />}
-                      sx={{ whiteSpace: 'nowrap' }}
+                      sx={{ whiteSpace: "nowrap" }}
                     >
                       Subscribe
                     </Button>
@@ -286,41 +329,41 @@ const Footer = () => {
           {/* Navigation Links */}
           {footerSections.map((section, index) => (
             <Grid item xs={12} sm={6} md={2} key={section.title}>
-              <Typography 
-                variant="h6" 
-                gutterBottom 
-                sx={{ 
-                  fontWeight: 'bold',
-                  position: 'relative',
+              <Typography
+                variant="h6"
+                gutterBottom
+                sx={{
+                  fontWeight: "bold",
+                  position: "relative",
                   pb: 1,
-                  '&:after': {
+                  "&:after": {
                     content: '""',
-                    position: 'absolute',
+                    position: "absolute",
                     bottom: 0,
                     left: 0,
-                    width: '40px',
-                    height: '2px',
-                    bgcolor: 'primary.main',
-                  }
+                    width: "40px",
+                    height: "2px",
+                    bgcolor: "primary.main",
+                  },
                 }}
               >
                 {section.title}
               </Typography>
               <Box component="nav">
-                <Box component="ul" sx={{ listStyle: 'none', p: 0, m: 0 }}>
+                <Box component="ul" sx={{ listStyle: "none", p: 0, m: 0 }}>
                   {section.links.map((link) => (
                     <Box component="li" key={link.name} sx={{ mb: 1 }}>
-                      <Link href={link.href} style={{ textDecoration: 'none' }}>
+                      <Link href={link.href} style={{ textDecoration: "none" }}>
                         <MuiLink
                           component="span"
                           variant="body2"
                           color="text.secondary"
                           sx={{
-                            display: 'inline-block', 
-                            transition: 'transform 0.2s, color 0.2s',
-                            '&:hover': {
-                              color: 'primary.main',
-                              transform: 'translateX(5px)',
+                            display: "inline-block",
+                            transition: "transform 0.2s, color 0.2s",
+                            "&:hover": {
+                              color: "primary.main",
+                              transform: "translateX(5px)",
                             },
                           }}
                         >
@@ -338,18 +381,20 @@ const Footer = () => {
         {/* Social Media Section */}
         <Box sx={{ mt: 6, mb: 4 }}>
           <Divider>
-            <Typography variant="subtitle2" sx={{ px: 2, fontWeight: 'bold' }}>
+            <Typography variant="subtitle2" sx={{ px: 2, fontWeight: "bold" }}>
               Connect With Us
             </Typography>
           </Divider>
-          
-          <Box sx={{ 
-            display: 'flex', 
-            justifyContent: 'center', 
-            flexWrap: 'wrap',
-            gap: 1, 
-            mt: 3 
-          }}>
+
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              flexWrap: "wrap",
+              gap: 1,
+              mt: 3,
+            }}
+          >
             {socialLinks.map((social) => (
               <Tooltip key={social.name} title={social.name} arrow>
                 <IconButton
@@ -358,14 +403,14 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.name}
-                  sx={{ 
-                    color: 'grey.700',
-                    '&:hover': { 
-                      bgcolor: social.color + '1A',
-                      color: social.color, 
-                      transform: 'translateY(-3px)',
+                  sx={{
+                    color: "grey.700",
+                    "&:hover": {
+                      bgcolor: social.color + "1A",
+                      color: social.color,
+                      transform: "translateY(-3px)",
                     },
-                    transition: 'all 0.2s'
+                    transition: "all 0.2s",
                   }}
                 >
                   {social.icon}
@@ -374,22 +419,22 @@ const Footer = () => {
             ))}
           </Box>
         </Box>
-        
+
         {/* Certifications and Achievements */}
-        <Box sx={{ mt: 3, mb: 4, textAlign: 'center' }}>
-          <Stack 
-            direction="row" 
-            spacing={1} 
-            useFlexGap 
-            flexWrap="wrap" 
+        <Box sx={{ mt: 3, mb: 4, textAlign: "center" }}>
+          <Stack
+            direction="row"
+            spacing={1}
+            useFlexGap
+            flexWrap="wrap"
             justifyContent="center"
             sx={{ mb: 2 }}
           >
-            <Chip 
-              icon={<VerifiedUserIcon />} 
-              label="ISO 9001 Certified" 
-              size="small" 
-              color="primary" 
+            <Chip
+              icon={<VerifiedUserIcon />}
+              label="ISO 9001 Certified"
+              size="small"
+              color="primary"
               variant="outlined"
             />
             <Chip label="ARAI Approved" size="small" variant="outlined" />
@@ -400,22 +445,26 @@ const Footer = () => {
         </Box>
 
         {/* Legal Links */}
-        <Box sx={{ textAlign: 'center', mt: 4, mb: 3 }}>
-          <Stack 
-            direction="row" 
-            spacing={2} 
+        <Box sx={{ textAlign: "center", mt: 4, mb: 3 }}>
+          <Stack
+            direction="row"
+            spacing={2}
             divider={<Divider orientation="vertical" flexItem />}
-            useFlexGap 
-            flexWrap="wrap" 
+            useFlexGap
+            flexWrap="wrap"
             justifyContent="center"
           >
             {legalLinks.map((link) => (
-              <Link key={link.name} href={link.href} style={{ textDecoration: 'none' }}>
+              <Link
+                key={link.name}
+                href={link.href}
+                style={{ textDecoration: "none" }}
+              >
                 <MuiLink
                   component="span"
                   variant="caption"
                   color="text.secondary"
-                  sx={{ '&:hover': { color: 'primary.main' } }}
+                  sx={{ "&:hover": { color: "primary.main" } }}
                 >
                   {link.name}
                 </MuiLink>
@@ -423,43 +472,50 @@ const Footer = () => {
             ))}
           </Stack>
         </Box>
-        
+
         {/* Footer Bottom */}
-        <Box sx={{ 
-          display: 'flex', 
-          flexDirection: { xs: 'column', sm: 'row' },
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          mt: 3,
-          pt: 3,
-          borderTop: `1px solid ${theme.palette.divider}`,
-          textAlign: 'center'
-        }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", sm: "row" },
+            alignItems: "center",
+            justifyContent: "space-between",
+            mt: 3,
+            pt: 3,
+            borderTop: `1px solid ${theme.palette.divider}`,
+            textAlign: "center",
+          }}
+        >
           {/* Copyright */}
-          <Box sx={{ display: 'flex', alignItems: 'center', mb: { xs: 2, sm: 0 } }}>
+          <Box
+            sx={{ display: "flex", alignItems: "center", mb: { xs: 2, sm: 0 } }}
+          >
             <CopyrightIcon sx={{ fontSize: 16, mr: 0.5 }} />
             <Typography variant="body2" color="text.secondary">
-              {currentYear} {companyInfo.fullName || 'Indo Wagen Electronics Pvt. Ltd.'}. All rights reserved.
+              {currentYear}{" "}
+              {companyInfo.fullName || "Indo Wagen Electronics Pvt. Ltd."}. All
+              rights reserved.
             </Typography>
           </Box>
-          
+
           <Typography variant="caption" color="text.secondary">
-            {companyInfo.name || 'Indo Wagen'} is a trademark of {companyInfo.fullName || 'Indo Wagen Electronics Pvt. Ltd.'}
+            {companyInfo.name || "Indo Wagen"} is a trademark of{" "}
+            {companyInfo.fullName || "Indo Wagen Electronics Pvt. Ltd."}
           </Typography>
         </Box>
-        
+
         {/* Newsletter Subscription Status */}
-        <Snackbar 
+        <Snackbar
           open={subscribeStatus.open}
           autoHideDuration={6000}
           onClose={handleCloseSnackbar}
-          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+          anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
         >
-          <Alert 
-            onClose={handleCloseSnackbar} 
+          <Alert
+            onClose={handleCloseSnackbar}
             severity={subscribeStatus.severity}
             variant="filled"
-            sx={{ width: '100%' }}
+            sx={{ width: "100%" }}
           >
             {subscribeStatus.message}
           </Alert>

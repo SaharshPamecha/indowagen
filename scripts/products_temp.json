@@ -22,7 +22,7 @@
       "Water Guard (Front)",
       "Water Guard (Back)"
     ],
-    "price": "Contact for Price",
+    "price": "Contact",
     "image": "/images/products/fixed/q8-easy/q8-easy-new_red-3.png",
     "images": [
       "/images/products/fixed/q8-easy/q8-easy-new_red-3.png",
@@ -55,7 +55,7 @@
       "Water Guard (Front)",
       "Water Guard (Back)"
     ],
-    "price": "Contact for Price",
+    "price": "Contact",
     "image": "/images/products/fixed/q8-easy-lite/easy---lite---1.png",
     "images": [
       "/images/products/fixed/q8-easy-lite/easy---lite---1.png",
@@ -89,7 +89,7 @@
       "Water Guard (Back)",
       "Jack & Handle"
     ],
-    "price": "Contact for Price",
+    "price": "Contact",
     "image": "/images/products/fixed/q8-base/q8-base-(2).png",
     "images": [
       "/images/products/fixed/q8-base/q8-base-(2).png",
@@ -121,7 +121,7 @@
       "Water Guard (Back)",
       "Jack & Handle"
     ],
-    "price": "Contact for Price",
+    "price": "Contact",
     "image": "/images/products/fixed/q8-base-steel-new/q8-base-steel_new-(1).png",
     "images": [
       "/images/products/fixed/q8-base-steel-new/q8-base-steel_new-(1).png",
@@ -158,7 +158,7 @@
       "Jack & Handle",
       "Wheel Wrench"
     ],
-    "price": "Contact for Price",
+    "price": "Contact",
     "image": "/images/products/fixed/q8-flexi-steel/flexi_steel-4.png",
     "images": [
       "/images/products/fixed/q8-flexi-steel/flexi_steel-4.png",
@@ -190,7 +190,7 @@
       "Fog Light",
       "Water Guard (Back)"
     ],
-    "price": "Contact for Price",
+    "price": "Contact",
     "image": "/images/products/fixed/q8-flexi-steel/flexi_steel-4.png",
     "images": [
       "/images/products/fixed/q8-flexi-steel/flexi_steel-4.png",
@@ -222,7 +222,7 @@
       "Fog Light",
       "Water Guard (Back)"
     ],
-    "price": "Contact for Price",
+    "price": "Contact",
     "image": "/images/products/fixed/q8-flexi-pro/q8-flexi-pro_2.png",
     "images": [
       "/images/products/fixed/q8-flexi-pro/q8-flexi-pro_2.png",
@@ -249,11 +249,8 @@
         "value": "6-8 Hours"
       }
     ],
-    "features": [
-      "Decorative Pipe Light",
-      "Water Guard (Back)"
-    ],
-    "price": "Contact for Price",
+    "features": ["Decorative Pipe Light", "Water Guard (Back)"],
+    "price": "Contact",
     "image": "/images/products/fixed/q8-black-gray/q8-black-gray-(1).png",
     "images": [
       "/images/products/fixed/q8-black-gray/q8-black-gray-(1).png",
@@ -283,7 +280,7 @@
       "Decorative Pipe Light",
       "Water Guard (Back)"
     ],
-    "price": "Contact for Price",
+    "price": "Contact",
     "image": "/images/products/fixed/q8-black-pro/q8-black-pro-(1).png",
     "images": [
       "/images/products/fixed/q8-black-pro/q8-black-pro-(1).png",
@@ -310,11 +307,8 @@
         "value": "6-8 Hours"
       }
     ],
-    "features": [
-      "Rear Rest Frame Slide Down",
-      "Water Guard (Back)"
-    ],
-    "price": "Contact for Price",
+    "features": ["Rear Rest Frame Slide Down", "Water Guard (Back)"],
+    "price": "Contact",
     "image": "/images/products/fixed/q8-bold/q8-bold-(1).png",
     "images": [
       "/images/products/fixed/q8-bold/q8-bold-(1).png",
@@ -352,7 +346,7 @@
       "TOOLS",
       "Hydraulic Jack"
     ],
-    "price": "Contact for Price",
+    "price": "Contact",
     "image": "/images/products/fixed/q8-zap/q8-zap_1.png",
     "images": [
       "/images/products/fixed/q8-zap/q8-zap_1.png",
@@ -385,7 +379,7 @@
       "Water Guard (Back)",
       "Jack & Handle"
     ],
-    "price": "Contact for Price",
+    "price": "Contact",
     "image": "/images/products/fixed/q8-max/q8-max-(1).png",
     "images": [
       "/images/products/fixed/q8-max/q8-max-(1).png",
@@ -420,11 +414,9 @@
       "Jack & Handle",
       "Wheel Wrench"
     ],
-    "price": "Contact for Price",
+    "price": "Contact",
     "image": "/images/products/fixed/q8-super/q8-super-(1).png",
-    "images": [
-      "/images/products/fixed/q8-super/q8-super-(1).png"
-    ],
+    "images": ["/images/products/fixed/q8-super/q8-super-(1).png"],
     "category": "electric-vehicle"
   },
   {
@@ -449,7 +441,7 @@
       "Water Guard (Back)",
       "Jack & Handle"
     ],
-    "price": "Contact for Price",
+    "price": "Contact",
     "image": "/images/products/fixed/q8-plus/q8-plus---1.png",
     "images": [
       "/images/products/fixed/q8-plus/q8-plus---1.png",
@@ -475,11 +467,8 @@
         "value": "6-8 Hours"
       }
     ],
-    "features": [
-      "STEPNEY",
-      "TOOLS"
-    ],
-    "price": "Contact for Price",
+    "features": ["STEPNEY", "TOOLS"],
+    "price": "Contact",
     "image": "/images/products/fixed/c1-loader/c1-loader_4.png",
     "images": [
       "/images/products/fixed/c1-loader/c1-loader_4.png",
@@ -506,12 +495,8 @@
         "value": "6-8 Hours"
       }
     ],
-    "features": [
-      "Water Guard (Back)",
-      "STEPNEY",
-      "TOOLS"
-    ],
-    "price": "Contact for Price",
+    "features": ["Water Guard (Back)", "STEPNEY", "TOOLS"],
+    "price": "Contact",
     "image": "/images/products/fixed/c8-loader/c8-loader-(2).png",
     "images": [
       "/images/products/fixed/c8-loader/c8-loader-(2).png",
@@ -543,11 +528,9 @@
       "Low Maintenance",
       "Durable Construction"
     ],
-    "price": "Contact for Price",
+    "price": "Contact",
     "image": "/images/products/fixed/garbage-van/garbage-van.png",
-    "images": [
-      "/images/products/fixed/garbage-van/garbage-van.png"
-    ],
+    "images": ["/images/products/fixed/garbage-van/garbage-van.png"],
     "category": "electric-vehicle"
   }
 ]

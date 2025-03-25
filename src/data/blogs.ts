@@ -18,11 +18,12 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
-    id: '1',
-    title: 'The Future of Electric Mobility in India',
-    slug: 'future-of-electric-mobility-in-india',
-    category: 'Industry Insights',
-    excerpt: 'Exploring the rapidly growing electric vehicle market in India and what it means for transportation and the environment.',
+    id: "1",
+    title: "The Future of Electric Mobility in India",
+    slug: "future-of-electric-mobility-in-india",
+    category: "Industry Insights",
+    excerpt:
+      "Exploring the rapidly growing electric vehicle market in India and what it means for transportation and the environment.",
     content: `
       <p>The electric mobility revolution is well underway in India, transforming how people move across urban and rural landscapes. With government initiatives like FAME II (Faster Adoption and Manufacturing of Electric Vehicles) and ambitious targets to reduce carbon emissions, India is positioned to become a global leader in electric transportation.</p>
       
@@ -55,21 +56,22 @@ export const blogPosts: BlogPost[] = [
       
       <p>Through continued investment in research and development, expansion of our service network, and collaboration with government initiatives, we aim to accelerate the transition to sustainable transportation and contribute to a cleaner, greener India.</p>
     `,
-    author: 'Rajesh Kumar',
-    authorTitle: 'Head of Research & Development',
-    authorAvatar: '/images/blog/authors/rajesh-kumar.jpg',
-    coverImage: '/images/blog/future-mobility.jpg',
-    publishDate: 'March 15, 2025',
+    author: "Rajesh Kumar",
+    authorTitle: "Head of Research & Development",
+    authorAvatar: "/images/blog/authors/rajesh-kumar.jpg",
+    coverImage: "/images/blog/future-mobility.jpg",
+    publishDate: "March 15, 2025",
     readTime: 7,
-    tags: ['Electric Vehicles', 'Sustainability', 'India', 'Transportation'],
-    featured: true
+    tags: ["Electric Vehicles", "Sustainability", "India", "Transportation"],
+    featured: true,
   },
   {
-    id: '2',
-    title: 'How E-Rickshaws Are Transforming Rural Transportation',
-    slug: 'e-rickshaws-transforming-rural-transportation',
-    category: 'Case Studies',
-    excerpt: 'A look at how electric rickshaws are bringing affordable and sustainable transportation to rural India.',
+    id: "2",
+    title: "How E-Rickshaws Are Transforming Rural Transportation",
+    slug: "e-rickshaws-transforming-rural-transportation",
+    category: "Case Studies",
+    excerpt:
+      "A look at how electric rickshaws are bringing affordable and sustainable transportation to rural India.",
     content: `
       <p>While much attention is given to electric vehicles in urban centers, a quiet revolution is happening in rural India. Electric rickshaws are transforming mobility in villages and small towns, providing a sustainable and affordable transportation alternative where options were previously limited.</p>
       
@@ -109,20 +111,21 @@ export const blogPosts: BlogPost[] = [
       
       <p>Through continued innovation and focused rural outreach, Indo Wagen is committed to ensuring that the benefits of electric mobility reach every corner of India, leaving no community behind.</p>
     `,
-    author: 'Priya Sharma',
-    authorTitle: 'Community Outreach Director',
-    authorAvatar: '/images/blog/authors/priya-sharma.jpg',
-    coverImage: '/images/blog/rural-transportation.jpg',
-    publishDate: 'March 10, 2025',
+    author: "Priya Sharma",
+    authorTitle: "Community Outreach Director",
+    authorAvatar: "/images/blog/authors/priya-sharma.jpg",
+    coverImage: "/images/rural-transportation.jpg",
+    publishDate: "March 10, 2025",
     readTime: 6,
-    tags: ['Rural Development', 'Electric Rickshaws', 'Community Impact']
+    tags: ["Rural Development", "Electric Rickshaws", "Community Impact"],
   },
   {
-    id: '3',
-    title: 'Maintenance Tips for Your Electric Rickshaw',
-    slug: 'maintenance-tips-for-your-electric-rickshaw',
-    category: 'Tips & Guides',
-    excerpt: 'Essential maintenance practices to extend the life of your electric rickshaw and ensure optimal performance.',
+    id: "3",
+    title: "Maintenance Tips for Your Electric Rickshaw",
+    slug: "maintenance-tips-for-your-electric-rickshaw",
+    category: "Tips & Guides",
+    excerpt:
+      "Essential maintenance practices to extend the life of your electric rickshaw and ensure optimal performance.",
     content: `
       <p>Proper maintenance is key to ensuring your electric rickshaw performs reliably and lasts for years. While E-rickshaws require significantly less maintenance than conventional vehicles, regular care will optimize performance, extend battery life, and prevent common issues.</p>
       
@@ -195,20 +198,21 @@ export const blogPosts: BlogPost[] = [
       
       <p>For more detailed maintenance guidance or to schedule a service appointment, contact your nearest Indo Wagen service center.</p>
     `,
-    author: 'Sunil Verma',
-    authorTitle: 'Head of Service Operations',
-    authorAvatar: '/images/blog/authors/sunil-verma.jpg',
-    coverImage: '/images/blog/maintenance-tips.jpg',
-    publishDate: 'March 5, 2025',
+    author: "Sunil Verma",
+    authorTitle: "Head of Service Operations",
+    authorAvatar: "/images/blog/authors/sunil-verma.jpg",
+    coverImage: "/images/maintenance-tips.jpg",
+    publishDate: "March 5, 2025",
     readTime: 8,
-    tags: ['Maintenance', 'Electric Rickshaws', 'Tips', 'Battery Care']
+    tags: ["Maintenance", "Electric Rickshaws", "Tips", "Battery Care"],
   },
   {
-    id: '4',
-    title: 'Government Schemes and Subsidies for E-Rickshaw Operators',
-    slug: 'government-schemes-subsidies-e-rickshaw-operators',
-    category: 'Policy Updates',
-    excerpt: 'A comprehensive guide to government incentives and financial support available for electric rickshaw owners and operators.',
+    id: "4",
+    title: "Government Schemes and Subsidies for E-Rickshaw Operators",
+    slug: "government-schemes-subsidies-e-rickshaw-operators",
+    category: "Policy Updates",
+    excerpt:
+      "A comprehensive guide to government incentives and financial support available for electric rickshaw owners and operators.",
     content: `
       <p>The Indian government has introduced several schemes and subsidies to promote the adoption of electric vehicles, including E-rickshaws. Understanding these incentives can significantly reduce your initial investment and operating costs.</p>
       
@@ -292,20 +296,21 @@ export const blogPosts: BlogPost[] = [
       
       <p>For personalized assistance with subsidy applications or financing options, contact your nearest Indo Wagen dealership or call our customer support line.</p>
     `,
-    author: 'Amit Patel',
-    authorTitle: 'Government Relations Manager',
-    authorAvatar: '/images/blog/authors/amit-patel.jpg',
-    coverImage: '/images/blog/government-schemes.jpg',
-    publishDate: 'February 28, 2025',
+    author: "Amit Patel",
+    authorTitle: "Government Relations Manager",
+    authorAvatar: "/images/blog/authors/amit-patel.jpg",
+    coverImage: "/images/government-schemes.jpg",
+    publishDate: "February 28, 2025",
     readTime: 9,
-    tags: ['Government Subsidies', 'Finance', 'Policy', 'Electric Vehicles']
+    tags: ["Government Subsidies", "Finance", "Policy", "Electric Vehicles"],
   },
   {
-    id: '5',
-    title: 'Comparing E-Rickshaw Models: Which One Is Right for You?',
-    slug: 'comparing-e-rickshaw-models',
-    category: 'Products',
-    excerpt: 'A detailed comparison of different electric rickshaw models to help you choose the one that best suits your operational needs.',
+    id: "5",
+    title: "Comparing E-Rickshaw Models: Which One Is Right for You?",
+    slug: "comparing-e-rickshaw-models",
+    category: "Products",
+    excerpt:
+      "A detailed comparison of different electric rickshaw models to help you choose the one that best suits your operational needs.",
     content: `
       <p>Selecting the right E-rickshaw model can significantly impact your daily operations and long-term profitability. In this comprehensive guide, we compare different models across key parameters to help you make an informed decision.</p>
       
@@ -412,12 +417,12 @@ export const blogPosts: BlogPost[] = [
       
       <p>At Indo Wagen, we offer personalized consultations to help you select the perfect E-rickshaw for your specific needs. Visit your nearest showroom for a test drive and detailed discussion about your requirements.</p>
     `,
-    author: 'Vikram Singh',
-    authorTitle: 'Product Specialist',
-    authorAvatar: '/images/blog/authors/vikram-singh.jpg',
-    coverImage: '/images/blog/model-comparison.jpg',
-    publishDate: 'February 20, 2025',
+    author: "Vikram Singh",
+    authorTitle: "Product Specialist",
+    authorAvatar: "/images/blog/authors/vikram-singh.jpg",
+    coverImage: "/images/model-comparison.jpg",
+    publishDate: "February 20, 2025",
     readTime: 10,
-    tags: ['Product Comparison', 'Electric Rickshaws', 'Buying Guide']
-  }
+    tags: ["Product Comparison", "Electric Rickshaws", "Buying Guide"],
+  },
 ];

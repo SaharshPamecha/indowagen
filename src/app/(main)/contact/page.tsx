@@ -16,8 +16,6 @@ export default function ContactPage() {
     <>
       <ContactHero />
       <ContactMap />
-      <ContactForm />
-      <DealerLocator />
       <ContactFAQ />
       <SocialConnect />
     </>

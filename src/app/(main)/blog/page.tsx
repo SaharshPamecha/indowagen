@@ -15,7 +15,6 @@ export default function BlogPage() {
   return (
     <>
       <BlogHero />
-      <FeaturedPosts />
       <BlogCategories />
       <BlogList />
       <BlogSubscribe />

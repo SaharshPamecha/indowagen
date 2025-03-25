@@ -19,11 +19,11 @@ const NewsHero = () => {
   return (
     <Box
       sx={{
-        bgcolor: 'background.paper',
+        bgcolor: "background.paper",
         pt: { xs: 6, md: 12 },
         pb: { xs: 6, md: 10 },
-        position: 'relative',
-        overflow: 'hidden',
+        position: "relative",
+        overflow: "hidden",
       }}
     >
       <Container maxWidth="lg">
@@ -40,7 +40,7 @@ const NewsHero = () => {
                 gutterBottom
                 sx={{
                   fontWeight: 700,
-                  fontSize: { xs: '2.5rem', md: '3.5rem' },
+                  fontSize: { xs: "2.5rem", md: "3.5rem" },
                   lineHeight: 1.2,
                 }}
               >
@@ -48,17 +48,17 @@ const NewsHero = () => {
                 <Box
                   component="span"
                   sx={{
-                    color: 'primary.main',
-                    display: 'block',
-                    position: 'relative',
-                    '&::after': {
+                    color: "primary.main",
+                    display: "block",
+                    position: "relative",
+                    "&::after": {
                       content: '""',
-                      position: 'absolute',
+                      position: "absolute",
                       bottom: -4,
                       left: 0,
-                      width: '100%',
+                      width: "100%",
                       height: 4,
-                      bgcolor: 'primary.main',
+                      bgcolor: "primary.main",
                       opacity: 0.3,
                     },
                   }}
@@ -70,9 +70,11 @@ const NewsHero = () => {
               <Typography
                 variant="h6"
                 color="text.secondary"
-                sx={{ mb: 4, maxWidth: '600px' }}
+                sx={{ mb: 4, maxWidth: "600px" }}
               >
-                Stay updated with the latest news from Indo Wagen, including product launches, corporate announcements, and industry updates. Follow our journey as we transform electric mobility in India.
+                Stay updated with the latest news from Indo Wagen, including
+                product launches, corporate announcements, and industry updates.
+                Follow our journey as we transform electric mobility in India.
               </Typography>
             </motion.div>
           </Grid>
@@ -85,16 +87,16 @@ const NewsHero = () => {
             >
               <Box
                 sx={{
-                  position: 'relative',
-                  height: { xs: '300px', md: '500px' },
-                  width: '100%',
+                  position: "relative",
+                  height: { xs: "300px", md: "500px" },
+                  width: "100%",
                 }}
               >
                 <Image
-                  src="/images/news/news-hero.jpg"
+                  src="/images/news3.jpg"
                   alt="Indo Wagen News and Announcements"
                   fill
-                  style={{ objectFit: 'cover', borderRadius: '16px' }}
+                  style={{ objectFit: "cover", borderRadius: "16px" }}
                   sizes="(max-width: 768px) 100vw, 50vw"
                   priority
                 />

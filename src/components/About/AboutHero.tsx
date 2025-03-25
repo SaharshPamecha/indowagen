@@ -20,11 +20,11 @@ const AboutHero = () => {
   return (
     <Box
       sx={{
-        bgcolor: 'background.paper',
+        bgcolor: "background.paper",
         pt: { xs: 6, md: 12 },
         pb: { xs: 8, md: 16 },
-        position: 'relative',
-        overflow: 'hidden',
+        position: "relative",
+        overflow: "hidden",
       }}
     >
       <Container maxWidth="lg">
@@ -41,7 +41,7 @@ const AboutHero = () => {
                 gutterBottom
                 sx={{
                   fontWeight: 700,
-                  fontSize: { xs: '2.5rem', md: '3.5rem' },
+                  fontSize: { xs: "2.5rem", md: "3.5rem" },
                   lineHeight: 1.2,
                 }}
               >
@@ -49,17 +49,17 @@ const AboutHero = () => {
                 <Box
                   component="span"
                   sx={{
-                    color: 'primary.main',
-                    display: 'block',
-                    position: 'relative',
-                    '&::after': {
+                    color: "primary.main",
+                    display: "block",
+                    position: "relative",
+                    "&::after": {
                       content: '""',
-                      position: 'absolute',
+                      position: "absolute",
                       bottom: -4,
                       left: 0,
-                      width: '100%',
+                      width: "100%",
                       height: 4,
-                      bgcolor: 'primary.main',
+                      bgcolor: "primary.main",
                       opacity: 0.3,
                     },
                   }}
@@ -71,12 +71,18 @@ const AboutHero = () => {
               <Typography
                 variant="h6"
                 color="text.secondary"
-                sx={{ mb: 4, maxWidth: '600px' }}
+                sx={{ mb: 4, maxWidth: "600px" }}
               >
-                Since {companyInfo.foundedYear}, Indo Wagen has been at the forefront of India’s electric mobility revolution. As a premier brand under Zeniak Innovation India Limited, we have established ourselves as a trusted name in electric rickshaw manufacturing. Our commitment to innovation and sustainability fuels our mission to provide eco-friendly, affordable, and efficient transportation solutions across India.
+                Since {companyInfo.foundedYear}, Indo Wagen has been at the
+                forefront of India’s electric mobility revolution. As a premier
+                brand under Zeniak Innovation India Limited, we have established
+                ourselves as a trusted name in electric rickshaw manufacturing.
+                Our commitment to innovation and sustainability fuels our
+                mission to provide eco-friendly, affordable, and efficient
+                transportation solutions across India.
               </Typography>
 
-              <Box sx={{ display: 'flex', gap: 3, flexWrap: 'wrap' }}>
+              <Box sx={{ display: "flex", gap: 3, flexWrap: "wrap" }}>
                 <Box>
                   <Typography
                     variant="h3"
@@ -125,16 +131,16 @@ const AboutHero = () => {
             >
               <Box
                 sx={{
-                  position: 'relative',
-                  height: { xs: '300px', md: '500px' },
-                  width: '100%',
+                  position: "relative",
+                  height: { xs: "300px", md: "500px" },
+                  width: "100%",
                 }}
               >
                 <Image
-                  src="/images/about/about-hero.jpg"
+                  src="/images/products/fixed/q8-flexi-steel/flexi-steel_3.png"
                   alt="Indo Wagen Factory"
                   fill
-                  style={{ objectFit: 'cover', borderRadius: '16px' }}
+                  style={{ objectFit: "cover", borderRadius: "16px" }}
                   sizes="(max-width: 768px) 100vw, 50vw"
                   priority
                 />

@@ -90,207 +90,249 @@ export default function DealersLoungePage() {
   return (
     <Box component="main">
       {/* Hero Section */}
-      <Box 
-        sx={{ 
-          position: 'relative',
-          height: '80vh',
-          minHeight: '550px',
-          width: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          overflow: 'hidden',
-          backgroundColor: 'rgba(0,0,0,0.7)',
+      <Box
+        sx={{
+          position: "relative",
+          height: "80vh",
+          minHeight: "550px",
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          overflow: "hidden",
+          backgroundColor: "rgba(0,0,0,0.7)",
         }}
       >
         <Box
           sx={{
-            position: 'absolute',
+            position: "absolute",
             top: 0,
             left: 0,
             right: 0,
             bottom: 0,
             zIndex: 0,
-            '&::after': {
+            "&::after": {
               content: '""',
-              position: 'absolute',
+              position: "absolute",
               top: 0,
               left: 0,
               right: 0,
               bottom: 0,
-              background: 'linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.2) 100%)',
-              zIndex: 1
-            }
+              background:
+                "linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.2) 100%)",
+              zIndex: 1,
+            },
           }}
         >
           <Image
             src="/images/dealers/dealer-network-bg.jpg"
             alt="Indowagen Dealer Network"
             fill
-            style={{ 
-              objectFit: 'cover',
+            style={{
+              objectFit: "cover",
               opacity: 0.8,
             }}
             priority
           />
         </Box>
-        
-        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2 }}>
+
+        <Container maxWidth="lg" sx={{ position: "relative", zIndex: 2 }}>
           <Grid container spacing={4} alignItems="center">
             <Grid item xs={12} md={7}>
-              <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={fadeIn}
-              >
-                <Typography 
-                  variant="h1" 
-                  component="h1" 
-                  sx={{ 
-                    color: 'white', 
+              <motion.div initial="hidden" animate="visible" variants={fadeIn}>
+                <Typography
+                  variant="h1"
+                  component="h1"
+                  sx={{
+                    color: "white",
                     fontWeight: 800,
-                    fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4rem' },
-                    textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
+                    fontSize: { xs: "2.5rem", sm: "3.5rem", md: "4rem" },
+                    textShadow: "2px 2px 4px rgba(0,0,0,0.5)",
                     mb: 2,
-                    position: 'relative',
-                    '&::after': {
+                    position: "relative",
+                    "&::after": {
                       content: '""',
-                      position: 'absolute',
+                      position: "absolute",
                       bottom: -10,
                       left: 0,
-                      width: '80px',
-                      height: '4px',
+                      width: "80px",
+                      height: "4px",
                       backgroundColor: theme.palette.primary.main,
-                      borderRadius: '2px'
-                    }
+                      borderRadius: "2px",
+                    },
                   }}
                 >
                   Join the Indowagen Dealer Network
                 </Typography>
-                <Typography 
-                  variant="h5" 
-                  sx={{ 
-                    color: 'white',
-                    maxWidth: '600px',
-                    textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
+                <Typography
+                  variant="h5"
+                  sx={{
+                    color: "white",
+                    maxWidth: "600px",
+                    textShadow: "1px 1px 2px rgba(0,0,0,0.3)",
                     mb: 4,
                     fontWeight: 400,
-                    lineHeight: 1.4
+                    lineHeight: 1.4,
                   }}
                 >
-                  Drive the Future of E-Mobility and be part of India's fastest-growing EV revolution.
+                  Drive the Future of E-Mobility and be part of India's
+                  fastest-growing EV revolution.
                 </Typography>
-                
-                <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', mb: 4 }}>
-                  <Button 
-                    variant="contained" 
-                    size="large" 
+
+                <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap", mb: 4 }}>
+                  <Button
+                    variant="contained"
+                    size="large"
                     color="primary"
                     component={Link}
                     href="/contact?dealer=apply"
                     sx={{
                       px: 4,
                       py: 1.5,
-                      fontWeight: 'bold',
+                      fontWeight: "bold",
                       borderRadius: 2,
-                      boxShadow: '0 4px 14px rgba(0, 0, 0, 0.25)',
-                      transition: 'all 0.3s ease',
-                      '&:hover': {
-                        transform: 'translateY(-3px)',
-                        boxShadow: '0 6px 20px rgba(0, 0, 0, 0.3)'
-                      }
+                      boxShadow: "0 4px 14px rgba(0, 0, 0, 0.25)",
+                      transition: "all 0.3s ease",
+                      "&:hover": {
+                        transform: "translateY(-3px)",
+                        boxShadow: "0 6px 20px rgba(0, 0, 0, 0.3)",
+                      },
                     }}
                   >
                     Apply Now
                   </Button>
-                  
-                  <Button 
-                    variant="outlined" 
-                    size="large" 
+
+                  <Button
+                    variant="outlined"
+                    size="large"
                     component={Link}
                     href="/dealers/locator"
                     sx={{
                       px: 4,
                       py: 1.5,
-                      fontWeight: 'bold',
+                      fontWeight: "bold",
                       borderRadius: 2,
-                      borderColor: 'white',
-                      color: 'white',
-                      backgroundColor: 'rgba(255,255,255,0.1)',
-                      backdropFilter: 'blur(10px)',
-                      transition: 'all 0.3s ease',
-                      '&:hover': {
-                        borderColor: 'white',
-                        backgroundColor: 'rgba(255,255,255,0.2)',
-                      }
+                      borderColor: "white",
+                      color: "white",
+                      backgroundColor: "rgba(255,255,255,0.1)",
+                      backdropFilter: "blur(10px)",
+                      transition: "all 0.3s ease",
+                      "&:hover": {
+                        borderColor: "white",
+                        backgroundColor: "rgba(255,255,255,0.2)",
+                      },
                     }}
                   >
                     Find Dealers
                   </Button>
                 </Box>
-                
+
                 {/* Stats */}
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: { xs: 2, md: 4 }, mt: 2 }}>
-                  <Box sx={{ 
-                    backdropFilter: 'blur(10px)', 
-                    backgroundColor: 'rgba(255,255,255,0.1)', 
-                    p: 2, 
-                    borderRadius: 2,
-                    width: { xs: 'calc(50% - 8px)', sm: 'auto' }
-                  }}>
-                    <Typography variant="h4" fontWeight="bold" color="primary.main">200+</Typography>
-                    <Typography variant="body2" color="white">Active Dealers</Typography>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: { xs: 2, md: 4 },
+                    mt: 2,
+                  }}
+                >
+                  <Box
+                    sx={{
+                      backdropFilter: "blur(10px)",
+                      backgroundColor: "rgba(255,255,255,0.1)",
+                      p: 2,
+                      borderRadius: 2,
+                      width: { xs: "calc(50% - 8px)", sm: "auto" },
+                    }}
+                  >
+                    <Typography
+                      variant="h4"
+                      fontWeight="bold"
+                      color="primary.main"
+                    >
+                      200+
+                    </Typography>
+                    <Typography variant="body2" color="white">
+                      Active Dealers
+                    </Typography>
                   </Box>
-                  <Box sx={{ 
-                    backdropFilter: 'blur(10px)', 
-                    backgroundColor: 'rgba(255,255,255,0.1)', 
-                    p: 2, 
-                    borderRadius: 2,
-                    width: { xs: 'calc(50% - 8px)', sm: 'auto' }
-                  }}>
-                    <Typography variant="h4" fontWeight="bold" color="primary.main">40%</Typography>
-                    <Typography variant="body2" color="white">Annual Growth</Typography>
+                  <Box
+                    sx={{
+                      backdropFilter: "blur(10px)",
+                      backgroundColor: "rgba(255,255,255,0.1)",
+                      p: 2,
+                      borderRadius: 2,
+                      width: { xs: "calc(50% - 8px)", sm: "auto" },
+                    }}
+                  >
+                    <Typography
+                      variant="h4"
+                      fontWeight="bold"
+                      color="primary.main"
+                    >
+                      40%
+                    </Typography>
+                    <Typography variant="body2" color="white">
+                      Annual Growth
+                    </Typography>
                   </Box>
-                  <Box sx={{ 
-                    backdropFilter: 'blur(10px)', 
-                    backgroundColor: 'rgba(255,255,255,0.1)', 
-                    p: 2, 
-                    borderRadius: 2,
-                    width: { xs: 'calc(50% - 8px)', sm: 'auto' }
-                  }}>
-                    <Typography variant="h4" fontWeight="bold" color="primary.main">₹10L+</Typography>
-                    <Typography variant="body2" color="white">Monthly Income</Typography>
+                  <Box
+                    sx={{
+                      backdropFilter: "blur(10px)",
+                      backgroundColor: "rgba(255,255,255,0.1)",
+                      p: 2,
+                      borderRadius: 2,
+                      width: { xs: "calc(50% - 8px)", sm: "auto" },
+                    }}
+                  >
+                    <Typography
+                      variant="h4"
+                      fontWeight="bold"
+                      color="primary.main"
+                    >
+                      ₹10L+
+                    </Typography>
+                    <Typography variant="body2" color="white">
+                      Monthly Income
+                    </Typography>
                   </Box>
                 </Box>
               </motion.div>
             </Grid>
-            
-            <Grid item xs={12} md={5} sx={{ display: { xs: 'none', md: 'block' } }}>
+
+            <Grid
+              item
+              xs={12}
+              md={5}
+              sx={{ display: { xs: "none", md: "block" } }}
+            >
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
-                <Box sx={{ 
-                  position: 'relative',
-                  height: '440px',
-                  width: '100%',
-                  overflow: 'hidden',
-                  borderRadius: 4,
-                  boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
-                  transform: 'perspective(1000px) rotateY(-10deg)',
-                }}>
+                <Box
+                  sx={{
+                    position: "relative",
+                    height: "440px",
+                    width: "100%",
+                    overflow: "hidden",
+                    borderRadius: 4,
+                    boxShadow: "0 20px 40px rgba(0,0,0,0.4)",
+                    transform: "perspective(1000px) rotateY(-10deg)",
+                  }}
+                >
                   <Image
-                    src="/images/dealers/dealership-showroom.jpg"
+                    src="/images/model-comparison.jpg"
                     alt="Indowagen Dealership"
                     fill
-                    style={{ objectFit: 'cover' }}
+                    style={{ objectFit: "cover" }}
                   />
                 </Box>
               </motion.div>
             </Grid>
           </Grid>
         </Container>
-        
+
         {/* Removed scroll indicator as requested */}
       </Box>
 
@@ -307,10 +349,17 @@ export default function DealersLoungePage() {
                 Join Indowagen's dealer network
               </Typography>
               <Typography paragraph>
-                and be part of India's fast-growing electric vehicle industry. With proven credentionals, we offer a profitable and high-demand business opportunity in the EV sector.
+                and be part of India's fast-growing electric vehicle industry.
+                With proven credentionals, we offer a profitable and high-demand
+                business opportunity in the EV sector.
               </Typography>
 
-              <Typography variant="h5" gutterBottom fontWeight={600} sx={{ mt: 4 }}>
+              <Typography
+                variant="h5"
+                gutterBottom
+                fontWeight={600}
+                sx={{ mt: 4 }}
+              >
                 Why Become an Indowagen Dealer?
               </Typography>
 
@@ -319,8 +368,12 @@ export default function DealersLoungePage() {
                   <ListItemIcon>
                     <CheckCircleIcon color="primary" />
                   </ListItemIcon>
-                  <ListItemText 
-                    primary={<Typography component="span" fontWeight={600}>Trusted Brand</Typography>}
+                  <ListItemText
+                    primary={
+                      <Typography component="span" fontWeight={600}>
+                        Trusted Brand
+                      </Typography>
+                    }
                     secondary="Leading electric rickshaw manufacturer since 2013, backed by Zeniak Innovation"
                   />
                 </ListItem>
@@ -328,8 +381,12 @@ export default function DealersLoungePage() {
                   <ListItemIcon>
                     <CheckCircleIcon color="primary" />
                   </ListItemIcon>
-                  <ListItemText 
-                    primary={<Typography component="span" fontWeight={600}>Expanding Market</Typography>}
+                  <ListItemText
+                    primary={
+                      <Typography component="span" fontWeight={600}>
+                        Expanding Market
+                      </Typography>
+                    }
                     secondary="India's EV industry is growing rapidly, expected to reach 40% market share by 2030"
                   />
                 </ListItem>
@@ -337,8 +394,12 @@ export default function DealersLoungePage() {
                   <ListItemIcon>
                     <CheckCircleIcon color="primary" />
                   </ListItemIcon>
-                  <ListItemText 
-                    primary={<Typography component="span" fontWeight={600}>High Profit Potential</Typography>}
+                  <ListItemText
+                    primary={
+                      <Typography component="span" fontWeight={600}>
+                        High Profit Potential
+                      </Typography>
+                    }
                     secondary="Strong demand, attractive margins, and dealership benefits"
                   />
                 </ListItem>
@@ -346,8 +407,12 @@ export default function DealersLoungePage() {
                   <ListItemIcon>
                     <CheckCircleIcon color="primary" />
                   </ListItemIcon>
-                  <ListItemText 
-                    primary={<Typography component="span" fontWeight={600}>Advanced & Reliable Vehicles</Typography>}
+                  <ListItemText
+                    primary={
+                      <Typography component="span" fontWeight={600}>
+                        Advanced & Reliable Vehicles
+                      </Typography>
+                    }
                     secondary="ICAT-certified e-rickshaws built for performance, durability, and efficiency"
                   />
                 </ListItem>
@@ -355,14 +420,23 @@ export default function DealersLoungePage() {
                   <ListItemIcon>
                     <CheckCircleIcon color="primary" />
                   </ListItemIcon>
-                  <ListItemText 
-                    primary={<Typography component="span" fontWeight={600}>Dealer Support</Typography>}
+                  <ListItemText
+                    primary={
+                      <Typography component="span" fontWeight={600}>
+                        Dealer Support
+                      </Typography>
+                    }
                     secondary="Training, showroom branding, spare parts supply, and after-sales assistance"
                   />
                 </ListItem>
               </List>
 
-              <Typography variant="h5" gutterBottom fontWeight={600} sx={{ mt: 4 }}>
+              <Typography
+                variant="h5"
+                gutterBottom
+                fontWeight={600}
+                sx={{ mt: 4 }}
+              >
                 Who Can Apply?
               </Typography>
               <List>
@@ -393,39 +467,44 @@ export default function DealersLoungePage() {
               </List>
             </motion.div>
           </Grid>
-          
+
           <Grid item xs={12} md={5}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              <Paper 
-                elevation={3} 
-                sx={{ 
-                  p: 4, 
+              <Paper
+                elevation={3}
+                sx={{
+                  p: 4,
                   borderRadius: 2,
                   backgroundColor: theme.palette.background.paper,
                 }}
               >
-                <Typography variant="h5" gutterBottom fontWeight={600} textAlign="center">
+                <Typography
+                  variant="h5"
+                  gutterBottom
+                  fontWeight={600}
+                  textAlign="center"
+                >
                   How to Get Started?
                 </Typography>
-                
+
                 <List>
                   <ListItem>
                     <ListItemIcon>
-                      <Box 
-                        sx={{ 
-                          width: 30, 
-                          height: 30, 
-                          borderRadius: '50%', 
-                          backgroundColor: 'primary.main',
-                          color: 'white',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          fontWeight: 'bold'
+                      <Box
+                        sx={{
+                          width: 30,
+                          height: 30,
+                          borderRadius: "50%",
+                          backgroundColor: "primary.main",
+                          color: "white",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          fontWeight: "bold",
                         }}
                       >
                         1
@@ -435,17 +514,17 @@ export default function DealersLoungePage() {
                   </ListItem>
                   <ListItem>
                     <ListItemIcon>
-                      <Box 
-                        sx={{ 
-                          width: 30, 
-                          height: 30, 
-                          borderRadius: '50%', 
-                          backgroundColor: 'primary.main',
-                          color: 'white',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          fontWeight: 'bold'
+                      <Box
+                        sx={{
+                          width: 30,
+                          height: 30,
+                          borderRadius: "50%",
+                          backgroundColor: "primary.main",
+                          color: "white",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          fontWeight: "bold",
                         }}
                       >
                         2
@@ -455,17 +534,17 @@ export default function DealersLoungePage() {
                   </ListItem>
                   <ListItem>
                     <ListItemIcon>
-                      <Box 
-                        sx={{ 
-                          width: 30, 
-                          height: 30, 
-                          borderRadius: '50%', 
-                          backgroundColor: 'primary.main',
-                          color: 'white',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          fontWeight: 'bold'
+                      <Box
+                        sx={{
+                          width: 30,
+                          height: 30,
+                          borderRadius: "50%",
+                          backgroundColor: "primary.main",
+                          color: "white",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          fontWeight: "bold",
                         }}
                       >
                         3
@@ -475,17 +554,17 @@ export default function DealersLoungePage() {
                   </ListItem>
                   <ListItem>
                     <ListItemIcon>
-                      <Box 
-                        sx={{ 
-                          width: 30, 
-                          height: 30, 
-                          borderRadius: '50%', 
-                          backgroundColor: 'primary.main',
-                          color: 'white',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          fontWeight: 'bold'
+                      <Box
+                        sx={{
+                          width: 30,
+                          height: 30,
+                          borderRadius: "50%",
+                          backgroundColor: "primary.main",
+                          color: "white",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          fontWeight: "bold",
                         }}
                       >
                         4
@@ -495,17 +574,17 @@ export default function DealersLoungePage() {
                   </ListItem>
                   <ListItem>
                     <ListItemIcon>
-                      <Box 
-                        sx={{ 
-                          width: 30, 
-                          height: 30, 
-                          borderRadius: '50%', 
-                          backgroundColor: 'primary.main',
-                          color: 'white',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          fontWeight: 'bold'
+                      <Box
+                        sx={{
+                          width: 30,
+                          height: 30,
+                          borderRadius: "50%",
+                          backgroundColor: "primary.main",
+                          color: "white",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          fontWeight: "bold",
                         }}
                       >
                         5
@@ -514,30 +593,30 @@ export default function DealersLoungePage() {
                     <ListItemText primary="Start selling and Build a Profitable EV Business!" />
                   </ListItem>
                 </List>
-                
-                <Box sx={{ textAlign: 'center', mt: 4 }}>
-                  <Button 
-                    variant="contained" 
-                    size="large" 
+
+                <Box sx={{ textAlign: "center", mt: 4 }}>
+                  <Button
+                    variant="contained"
+                    size="large"
                     color="primary"
                     component={Link}
                     href="/contact"
                     sx={{
                       px: 4,
                       py: 1.5,
-                      fontWeight: 'bold',
-                      borderRadius: 2
+                      fontWeight: "bold",
+                      borderRadius: 2,
                     }}
                   >
                     Apply Now
                   </Button>
                 </Box>
               </Paper>
-              
-              <Paper 
-                elevation={3} 
-                sx={{ 
-                  p: 4, 
+
+              <Paper
+                elevation={3}
+                sx={{
+                  p: 4,
                   borderRadius: 2,
                   mt: 4,
                   backgroundColor: theme.palette.background.paper,
@@ -549,19 +628,34 @@ export default function DealersLoungePage() {
                 <Typography paragraph>
                   Have questions or ready to become a dealer?
                 </Typography>
-                
-                <Typography variant="body1" sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+
+                <Typography
+                  variant="body1"
+                  sx={{ display: "flex", alignItems: "center", mb: 1 }}
+                >
                   <strong>Call us:</strong>&nbsp;1800 123 345 345
                 </Typography>
-                <Typography variant="body1" sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+                <Typography
+                  variant="body1"
+                  sx={{ display: "flex", alignItems: "center", mb: 1 }}
+                >
                   <strong>Email:</strong>&nbsp;
-                  <Link href="mailto:info@zeniak.com" style={{ color: theme.palette.primary.main }}>
+                  <Link
+                    href="mailto:info@zeniak.com"
+                    style={{ color: theme.palette.primary.main }}
+                  >
                     info@zeniak.com
                   </Link>
                 </Typography>
-                <Typography variant="body1" sx={{ display: 'flex', alignItems: 'center' }}>
+                <Typography
+                  variant="body1"
+                  sx={{ display: "flex", alignItems: "center" }}
+                >
                   <strong>Visit:</strong>&nbsp;
-                  <Link href="https://www.indowagen.com/dealers" style={{ color: theme.palette.primary.main }}>
+                  <Link
+                    href="https://www.indowagen.com/dealers"
+                    style={{ color: theme.palette.primary.main }}
+                  >
                     www.indowagen.com/dealers
                   </Link>
                 </Typography>
@@ -573,7 +667,7 @@ export default function DealersLoungePage() {
 
       {/* Testimonials Section */}
       <TestimonialsSection testimonials={testimonials} />
-      
+
       {/* Dealer Benefits Section */}
       <Box sx={{ backgroundColor: theme.palette.grey[100], py: 8 }}>
         <Container maxWidth="lg">
@@ -582,119 +676,141 @@ export default function DealersLoungePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Typography variant="h4" gutterBottom fontWeight={600} align="center" sx={{ mb: 5 }}>
+            <Typography
+              variant="h4"
+              gutterBottom
+              fontWeight={600}
+              align="center"
+              sx={{ mb: 5 }}
+            >
               Benefits of Being an Indowagen Dealer
             </Typography>
-            
+
             <Grid container spacing={4}>
               <Grid item xs={12} sm={6} md={3}>
-                <Paper 
-                  elevation={1} 
-                  sx={{ 
-                    p: 3, 
-                    height: '100%', 
-                    display: 'flex', 
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    textAlign: 'center',
+                <Paper
+                  elevation={1}
+                  sx={{
+                    p: 3,
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    textAlign: "center",
                     borderRadius: 3,
-                    transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
-                    '&:hover': {
-                      transform: 'translateY(-8px)',
-                      boxShadow: 6
-                    }
+                    transition:
+                      "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
+                    "&:hover": {
+                      transform: "translateY(-8px)",
+                      boxShadow: 6,
+                    },
                   }}
                 >
-                  <BusinessIcon sx={{ fontSize: 56, color: 'primary.main', mb: 2 }} />
+                  <BusinessIcon
+                    sx={{ fontSize: 56, color: "primary.main", mb: 2 }}
+                  />
                   <Typography variant="h6" fontWeight={600} gutterBottom>
                     Brand Association
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Partner with a trusted name in the EV industry with established reputation and market presence.
+                    Partner with a trusted name in the EV industry with
+                    established reputation and market presence.
                   </Typography>
                 </Paper>
               </Grid>
-              
+
               <Grid item xs={12} sm={6} md={3}>
-                <Paper 
-                  elevation={1} 
-                  sx={{ 
-                    p: 3, 
-                    height: '100%', 
-                    display: 'flex', 
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    textAlign: 'center',
+                <Paper
+                  elevation={1}
+                  sx={{
+                    p: 3,
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    textAlign: "center",
                     borderRadius: 3,
-                    transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
-                    '&:hover': {
-                      transform: 'translateY(-8px)',
-                      boxShadow: 6
-                    }
+                    transition:
+                      "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
+                    "&:hover": {
+                      transform: "translateY(-8px)",
+                      boxShadow: 6,
+                    },
                   }}
                 >
-                  <MonetizationOnIcon sx={{ fontSize: 56, color: 'primary.main', mb: 2 }} />
+                  <MonetizationOnIcon
+                    sx={{ fontSize: 56, color: "primary.main", mb: 2 }}
+                  />
                   <Typography variant="h6" fontWeight={600} gutterBottom>
                     Financial Returns
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Attractive margins, incentive programs, and high demand lead to excellent ROI and business growth.
+                    Attractive margins, incentive programs, and high demand lead
+                    to excellent ROI and business growth.
                   </Typography>
                 </Paper>
               </Grid>
-              
+
               <Grid item xs={12} sm={6} md={3}>
-                <Paper 
-                  elevation={1} 
-                  sx={{ 
-                    p: 3, 
-                    height: '100%', 
-                    display: 'flex', 
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    textAlign: 'center',
+                <Paper
+                  elevation={1}
+                  sx={{
+                    p: 3,
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    textAlign: "center",
                     borderRadius: 3,
-                    transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
-                    '&:hover': {
-                      transform: 'translateY(-8px)',
-                      boxShadow: 6
-                    }
+                    transition:
+                      "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
+                    "&:hover": {
+                      transform: "translateY(-8px)",
+                      boxShadow: 6,
+                    },
                   }}
                 >
-                  <EngineeringIcon sx={{ fontSize: 56, color: 'primary.main', mb: 2 }} />
+                  <EngineeringIcon
+                    sx={{ fontSize: 56, color: "primary.main", mb: 2 }}
+                  />
                   <Typography variant="h6" fontWeight={600} gutterBottom>
                     Technical Support
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Comprehensive technical training, service manuals, and dedicated engineering support.
+                    Comprehensive technical training, service manuals, and
+                    dedicated engineering support.
                   </Typography>
                 </Paper>
               </Grid>
-              
+
               <Grid item xs={12} sm={6} md={3}>
-                <Paper 
-                  elevation={1} 
-                  sx={{ 
-                    p: 3, 
-                    height: '100%', 
-                    display: 'flex', 
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    textAlign: 'center',
+                <Paper
+                  elevation={1}
+                  sx={{
+                    p: 3,
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    textAlign: "center",
                     borderRadius: 3,
-                    transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
-                    '&:hover': {
-                      transform: 'translateY(-8px)',
-                      boxShadow: 6
-                    }
+                    transition:
+                      "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
+                    "&:hover": {
+                      transform: "translateY(-8px)",
+                      boxShadow: 6,
+                    },
                   }}
                 >
-                  <SupportAgentIcon sx={{ fontSize: 56, color: 'primary.main', mb: 2 }} />
+                  <SupportAgentIcon
+                    sx={{ fontSize: 56, color: "primary.main", mb: 2 }}
+                  />
                   <Typography variant="h6" fontWeight={600} gutterBottom>
                     Marketing Support
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Branding materials, promotional campaigns, digital assets, and showroom design assistance.
+                    Branding materials, promotional campaigns, digital assets,
+                    and showroom design assistance.
                   </Typography>
                 </Paper>
               </Grid>

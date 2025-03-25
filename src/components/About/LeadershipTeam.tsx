@@ -44,48 +44,32 @@ const LeadershipTeam = () => {
   const teamMembers: TeamMember[] = [
     {
       id: 1,
-      name: 'Rajesh Kumar',
-      position: 'Chief Executive Officer',
-      bio: 'With over 20 years of experience in the automotive industry, Rajesh leads our company with a focus on innovation and sustainability.',
-      image: '/team/ceo.jpg',
+      name: "Mr. Moinuddin Golam",
+      position: "Founder Promoter",
+      bio: "having more than 25 years of experience in retail trade, manufacturing, shipping",
+      image: "/team/Moinuddin.jpeg",
       social: {
-        email: 'rajesh@indowagen.com',
-        linkedin: 'https://linkedin.com/in/rajesh-kumar',
-        twitter: 'https://twitter.com/rajeshkumar',
+        linkedin: "https://www.linkedin.com/company/indowagen/",
       },
     },
     {
       id: 2,
-      name: 'Priya Sharma',
-      position: 'Chief Technology Officer',
-      bio: 'Priya brings extensive expertise in electric vehicle technology and leads our R&D initiatives to develop cutting-edge mobility solutions.',
-      image: '/team/cto.jpg',
+      name: "Mr. Dilwar Hussain",
+      position: "Founder Promoter",
+      bio: "having more than 25 years of experience in retail trade, manufacturing, shipping.",
+      image: "/team/Dilwar.jpeg",
       social: {
-        email: 'priya@indowagen.com',
-        linkedin: 'https://linkedin.com/in/priya-sharma',
+        linkedin: "https://www.linkedin.com/company/indowagen/",
       },
     },
     {
       id: 3,
-      name: 'Vikram Singh',
-      position: 'Chief Operating Officer',
-      bio: 'Vikram oversees our day-to-day operations, ensuring efficiency and excellence across all facilities and production processes.',
-      image: '/team/coo.jpg',
+      name: "Mr. Rajeev Kumar Srivastava",
+      position: "Director and business head",
+      bio: "having more than 25 years of experience in leadership role across sales and marketing in reputed organizations.",
+      image: "/team/Rajeev.jpeg",
       social: {
-        email: 'vikram@indowagen.com',
-        linkedin: 'https://linkedin.com/in/vikram-singh',
-        twitter: 'https://twitter.com/vikramsingh',
-      },
-    },
-    {
-      id: 4,
-      name: 'Anita Patel',
-      position: 'Chief Marketing Officer',
-      bio: 'Anita leads our marketing strategies with a focus on building brand awareness and expanding our market presence across India.',
-      image: '/team/cmo.jpg',
-      social: {
-        email: 'anita@indowagen.com',
-        linkedin: 'https://linkedin.com/in/anita-patel',
+        linkedin: "https://www.linkedin.com/company/indowagen/",
       },
     },
   ];
@@ -96,7 +80,7 @@ const LeadershipTeam = () => {
     for (let i = 0; i < input.length; i++) {
       hash = input.charCodeAt(i) + ((hash << 5) - hash);
     }
-    let color = '#';
+    let color = "#";
     for (let i = 0; i < 3; i++) {
       const value = (hash >> (i * 8)) & 0xff;
       color += `00${value.toString(16)}`.slice(-2);
@@ -135,15 +119,21 @@ const LeadershipTeam = () => {
             component="p"
             align="center"
             color="text.secondary"
-            sx={{ mb: 6, maxWidth: 800, mx: 'auto' }}
+            sx={{ mb: 6, maxWidth: 800, mx: "auto" }}
           >
-            Meet the experienced professionals who are leading Indo Wagen's vision of
-            revolutionizing electric mobility across India.
+            Meet the experienced professionals who are leading Indo Wagen's
+            vision of revolutionizing electric mobility across India.
           </Typography>
 
           <Grid container spacing={4}>
             {teamMembers.map((member) => (
-              <Grid item xs={12} sm={6} md={3} key={member.id}>
+              <Grid
+                item
+                sx={{ display: "flex", alignItems: "stretch" }}
+                sm={6}
+                md={4}
+                key={member.id}
+              >
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -152,20 +142,21 @@ const LeadershipTeam = () => {
                   <Card
                     elevation={2}
                     sx={{
-                      height: '100%',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      transition: 'transform 0.3s ease-in-out',
-                      '&:hover': {
-                        transform: 'translateY(-8px)',
+                      height: "100%",
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "space-between",
+                      transition: "transform 0.3s ease-in-out",
+                      "&:hover": {
+                        transform: "translateY(-8px)",
                       },
                     }}
                   >
                     <Box
                       sx={{
                         pt: 3,
-                        display: 'flex',
-                        justifyContent: 'center',
+                        display: "flex",
+                        justifyContent: "center",
                       }}
                     >
                       {member.image ? (
@@ -185,7 +176,7 @@ const LeadershipTeam = () => {
                             height: 120,
                             bgcolor: stringToColor(member.name),
                             border: `4px solid ${theme.palette.primary.main}`,
-                            fontSize: '2.5rem',
+                            fontSize: "2.5rem",
                           }}
                         >
                           {member.name.charAt(0)}
@@ -193,7 +184,9 @@ const LeadershipTeam = () => {
                       )}
                     </Box>
 
-                    <CardContent sx={{ flexGrow: 1, textAlign: 'center', pt: 3 }}>
+                    <CardContent
+                      sx={{ flexGrow: 1, textAlign: "center", pt: 3 }}
+                    >
                       <Typography
                         gutterBottom
                         variant="h6"
@@ -211,14 +204,18 @@ const LeadershipTeam = () => {
                         {member.position}
                       </Typography>
                       <Divider sx={{ my: 2 }} />
-                      <Typography variant="body2" color="text.secondary" paragraph>
+                      <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        paragraph
+                      >
                         {member.bio}
                       </Typography>
 
                       <Box
                         sx={{
-                          display: 'flex',
-                          justifyContent: 'center',
+                          display: "flex",
+                          justifyContent: "center",
                           gap: 1,
                           mt: 2,
                         }}
@@ -262,7 +259,7 @@ const LeadershipTeam = () => {
                               target="_blank"
                               rel="noopener noreferrer"
                             >
-                              <Twitter/>
+                              <Twitter />
                             </IconButton>
                           </Tooltip>
                         )}
