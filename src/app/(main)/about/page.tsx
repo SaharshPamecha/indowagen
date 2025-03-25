@@ -17,14 +17,13 @@ export default function AboutPage() {
   return (
     <>
       <AboutHero />
-     <WhyChooseUs />
+      <WhyChooseUs />
       <Vision />
       <OurProducts />
       <CompanyHistory />
-    <OurGrowingNetwork />
+      <OurGrowingNetwork />
       <LeadershipTeam />
       <Facilities />
-      <Testimonials />
       <EnvironmentalImpact />
       <Certifications />
       <StateApprovals />

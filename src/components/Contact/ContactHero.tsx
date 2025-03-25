@@ -21,33 +21,33 @@ const ContactHero = () => {
   const contactInfo = [
     {
       icon: <LocationOnIcon sx={{ fontSize: 40 }} />,
-      title: 'Visit Us',
+      title: "Visit Us",
       details: [
-        'Indo Wagen Electric Vehicles Pvt. Ltd.',
-        'Industrial Area, Phase 1',
-        'New Delhi, India',
+        "Merlin Infinite, 10th floor",
+        "Room No- 1010, Plot No- 5",
+        "DN51, Sector V, Saltlake, Kolkata-700 091",
       ],
     },
     {
       icon: <PhoneIcon sx={{ fontSize: 40 }} />,
-      title: 'Call Us',
-      details: ['+91 11 2222 3333', '+91 98765 43210'],
+      title: "Call Us",
+      details: ["1800 120 345345"],
     },
     {
       icon: <EmailIcon sx={{ fontSize: 40 }} />,
-      title: 'Email Us',
-      details: ['sales@indowagen.com', 'support@indowagen.com'],
+      title: "Email Us",
+      details: ["Info@zeniak.com"],
     },
   ];
 
   return (
     <Box
       sx={{
-        bgcolor: 'background.paper',
+        bgcolor: "background.paper",
         pt: { xs: 6, md: 12 },
         pb: { xs: 8, md: 16 },
-        position: 'relative',
-        overflow: 'hidden',
+        position: "relative",
+        overflow: "hidden",
       }}
     >
       <Container maxWidth="lg">
@@ -56,14 +56,14 @@ const ContactHero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Box sx={{ textAlign: 'center', mb: 8 }}>
+          <Box sx={{ textAlign: "center", mb: 8 }}>
             <Typography
               component="h1"
               variant="h2"
               gutterBottom
               sx={{
                 fontWeight: 700,
-                fontSize: { xs: '2.5rem', md: '3.5rem' },
+                fontSize: { xs: "2.5rem", md: "3.5rem" },
                 lineHeight: 1.2,
               }}
             >
@@ -72,10 +72,10 @@ const ContactHero = () => {
             <Typography
               variant="h5"
               color="text.secondary"
-              sx={{ maxWidth: '800px', mx: 'auto' }}
+              sx={{ maxWidth: "800px", mx: "auto" }}
             >
-              We're here to help you with any questions about our electric vehicles
-              and services
+              We're here to help you with any questions about our electric
+              vehicles and services
             </Typography>
           </Box>
         </motion.div>
@@ -86,30 +86,44 @@ const ContactHero = () => {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
+                style={{ height: "100%" }}
               >
                 <Box
                   sx={{
-                    textAlign: 'center',
+                    textAlign: "center",
                     p: 3,
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    boxShadow: 3,
+                    borderRadius: 2,
+                    transition: "box-shadow 0.3s ease-in-out",
+                    "&:hover": {
+                      boxShadow: 6,
+                    },
+                    backgroundColor: "background.paper",
                   }}
                 >
                   <Box
                     sx={{
-                      color: 'primary.main',
+                      color: "primary.main",
                       mb: 2,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: "2rem",
                     }}
                   >
                     {info.icon}
                   </Box>
-                  <Typography variant="h5" gutterBottom sx={{ fontWeight: 600 }}>
+                  <Typography
+                    variant="h5"
+                    gutterBottom
+                    sx={{ fontWeight: 700, color: "text.primary" }}
+                  >
                     {info.title}
                   </Typography>
                   {info.details.map((detail, i) => (
@@ -117,7 +131,7 @@ const ContactHero = () => {
                       key={i}
                       variant="body1"
                       color="text.secondary"
-                      sx={{ mb: 1 }}
+                      sx={{ mb: 1, lineHeight: 1.6 }}
                     >
                       {detail}
                     </Typography>

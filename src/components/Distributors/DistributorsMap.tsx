@@ -108,65 +108,94 @@ const DistributorsMap: React.FC<DistributorsMapProps> = ({ selectedState, select
         <Grid container spacing={3}>
           <Grid item xs={12} md={6}>
             <Grid container spacing={2}>
-              {filteredDistributors.map(distributor => (
-                <Grid item xs={12} key={distributor.id}>
-                  <Paper sx={{ p: 3 }}>
-                    <Typography variant="h6" gutterBottom>
-                      {distributor.name}
-                    </Typography>
-                    
-                    <Box sx={{ display: 'flex', alignItems: 'flex-start', mb: 1 }}>
-                      <LocationOnIcon sx={{ mr: 1, mt: 0.5 }} color="primary" />
+              {selectedCity || selectedState
+                ? filteredDistributors.map((distributor) => (
+                    <Grid item xs={12} key={distributor.id}>
+                      <Paper sx={{ p: 3 }}>
+                        <Typography variant="h6" gutterBottom>
+                          {distributor.name}
+                        </Typography>
+
+                        <Box
+                          sx={{
+                            display: "flex",
+                            alignItems: "flex-start",
+                            mb: 1,
+                          }}
+                        >
+                          <LocationOnIcon
+                            sx={{ mr: 1, mt: 0.5 }}
+                            color="primary"
+                          />
+                          <Typography>
+                            {distributor.address}
+                            <br />
+                            {distributor.city}, {distributor.state}
+                          </Typography>
+                        </Box>
+
+                        <Box
+                          sx={{ display: "flex", alignItems: "center", mb: 1 }}
+                        >
+                          <PhoneIcon sx={{ mr: 1 }} color="primary" />
+                          <Typography>{distributor.phone}</Typography>
+                        </Box>
+
+                        <Box sx={{ display: "flex", alignItems: "center" }}>
+                          <EmailIcon sx={{ mr: 1 }} color="primary" />
+                          <Typography>{distributor.email}</Typography>
+                        </Box>
+                      </Paper>
+                    </Grid>
+                  ))
+                : null}
+              {filteredDistributors.length === 0 &&
+                (selectedState || selectedCity) && (
+                  <Grid item xs={12}>
+                    <Paper sx={{ p: 3, textAlign: "center" }}>
                       <Typography>
-                        {distributor.address}
-                        <br />
-                        {distributor.city}, {distributor.state}
+                        No distributors found in the selected location. Please
+                        try a different search or{" "}
+                        <a
+                          href="#become-distributor"
+                          style={{
+                            color: "inherit",
+                            textDecoration: "underline",
+                          }}
+                        >
+                          become a distributor
+                        </a>
+                        .
                       </Typography>
-                    </Box>
-                    
-                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
-                      <PhoneIcon sx={{ mr: 1 }} color="primary" />
-                      <Typography>
-                        {distributor.phone}
-                      </Typography>
-                    </Box>
-                    
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                      <EmailIcon sx={{ mr: 1 }} color="primary" />
-                      <Typography>
-                        {distributor.email}
-                      </Typography>
-                    </Box>
-                  </Paper>
-                </Grid>
-              ))}
-              {filteredDistributors.length === 0 && (
-                <Grid item xs={12}>
-                  <Paper sx={{ p: 3, textAlign: 'center' }}>
-                    <Typography>
-                      No distributors found in the selected location. Please try a different search or{' '}
-                      <a href="#become-distributor" style={{ color: 'inherit', textDecoration: 'underline' }}>
-                        become a distributor
-                      </a>
-                      .
-                    </Typography>
-                  </Paper>
-                </Grid>
-              )}
+                    </Paper>
+                  </Grid>
+                )}
             </Grid>
           </Grid>
 
-          <Grid item xs={12} md={6}>
-            <Paper sx={{ p: 3, height: '100%' }}>
+          <Grid
+            item
+            xs={12} // Always take full width on extra-small screens
+            md={
+              selectedState || selectedCity
+                ? 6 // Full width on medium and larger screens if no content
+                : 12 // Half width on medium and larger screens if content exists
+            }
+          >
+            <Paper sx={{ p: 3, height: "100%" }}>
               <LeafletMap
-                locations={filteredDistributors.map(d => ({
+                locations={filteredDistributors.map((d) => ({
                   id: d.id,
                   name: d.name,
                   coordinates: d.coordinates,
                   address: `${d.address}, ${d.city}, ${d.state}`,
-                  phone: d.phone
+                  phone: d.phone,
                 }))}
-                center={filteredDistributors.length > 0 ? filteredDistributors[0].coordinates : [23.5937, 87.2972]}
+                center={
+                  filteredDistributors.length > 0
+                    ? filteredDistributors[0].coordinates
+                    : [23.5937, 87.2972]
+                }
                 zoom={filteredDistributors.length === 1 ? 12 : 6}
               />
             </Paper>

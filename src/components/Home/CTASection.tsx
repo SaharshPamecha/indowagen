@@ -21,35 +21,38 @@ const CTASection = () => {
     <Box
       component="section"
       sx={{
-        position: 'relative',
+        position: "relative",
         py: { xs: 8, md: 12 },
-        bgcolor: 'primary.main',
-        color: 'white',
-        overflow: 'hidden',
+        bgcolor: "primary.main",
+        color: "white",
+        overflow: "hidden",
       }}
     >
       {/* Background Pattern */}
       <Box
         sx={{
-          position: 'absolute',
+          position: "absolute",
           top: 0,
           left: 0,
           right: 0,
           bottom: 0,
           opacity: 0.1,
           backgroundImage: `url('/images/banners/cta-bg.jpg')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       />
 
-      <Container maxWidth="lg" sx={{ position: 'relative', px: { xs: 2, sm: 3, md: 4 } }}>
+      <Container
+        maxWidth="lg"
+        sx={{ position: "relative", px: { xs: 2, sm: 3, md: 4 } }}
+      >
         <Box
           sx={{
-            display: 'flex',
-            flexDirection: { xs: 'column', md: 'row' },
-            alignItems: 'center',
-            justifyContent: 'space-between',
+            display: "flex",
+            flexDirection: { xs: "column", md: "row" },
+            alignItems: "center",
+            justifyContent: "space-between",
             gap: 4,
           }}
         >
@@ -65,8 +68,8 @@ const CTASection = () => {
               gutterBottom
               sx={{
                 fontWeight: 700,
-                fontSize: { xs: '2rem', md: '2.5rem' },
-                color: 'inherit',
+                fontSize: { xs: "2rem", md: "2.5rem" },
+                color: "inherit",
               }}
             >
               Ready to Make the Switch to Electric?
@@ -76,13 +79,14 @@ const CTASection = () => {
               paragraph
               sx={{
                 mb: 4,
-                color: 'inherit',
+                color: "inherit",
                 opacity: 0.9,
               }}
             >
-              Join the electric revolution with Indo Wagen. Contact us today to learn more about our products and dealer opportunities.
+              Join the electric revolution with Indo Wagen. Contact us today to
+              learn more about our products and dealer opportunities.
             </Typography>
-            <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+            <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
               <Button
                 component={Link}
                 href="/contact"
@@ -92,11 +96,11 @@ const CTASection = () => {
                 sx={{
                   px: 4,
                   py: 1.5,
-                  fontSize: '1.1rem',
-                  color: 'primary.main',
-                  bgcolor: 'white',
-                  '&:hover': {
-                    bgcolor: 'grey.100',
+                  fontSize: "1.1rem",
+                  color: "primary.main",
+                  bgcolor: "white",
+                  "&:hover": {
+                    bgcolor: "grey.100",
                   },
                 }}
               >
@@ -110,12 +114,12 @@ const CTASection = () => {
                 sx={{
                   px: 4,
                   py: 1.5,
-                  fontSize: '1.1rem',
-                  color: 'white',
-                  borderColor: 'white',
-                  '&:hover': {
-                    borderColor: 'white',
-                    bgcolor: 'rgba(255, 255, 255, 0.1)',
+                  fontSize: "1.1rem",
+                  color: "white",
+                  borderColor: "white",
+                  "&:hover": {
+                    borderColor: "white",
+                    bgcolor: "rgba(255, 255, 255, 0.1)",
                   },
                 }}
               >
@@ -130,23 +134,23 @@ const CTASection = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             style={{
               flex: 1,
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
             <Box
               sx={{
-                position: 'relative',
-                width: '100%',
-                height: { xs: '200px', md: '300px' },
+                position: "relative",
+                width: "100%",
+                height: { xs: "200px", md: "300px" },
               }}
             >
               <Image
-                src="/images/products/q8-black-side.jpg"
+                src="/images/products/fixed/q8-black/q8-black-(black)-(1).png"
                 alt="Indo Wagen Electric Vehicle"
                 fill
-                style={{ objectFit: 'contain' }}
+                style={{ objectFit: "contain" }}
               />
             </Box>
           </motion.div>

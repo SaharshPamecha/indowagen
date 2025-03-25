@@ -25,21 +25,21 @@ export default function DealerLocatorPage() {
   return (
     <Box component="main">
       {/* Hero Section */}
-      <Box 
-        sx={{ 
-          position: 'relative',
-          height: '30vh',
-          minHeight: '300px',
-          width: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          overflow: 'hidden',
-          backgroundColor: 'rgba(0,0,0,0.7)',
+      <Box
+        sx={{
+          position: "relative",
+          height: "30vh",
+          minHeight: "300px",
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          overflow: "hidden",
+          backgroundColor: "rgba(0,0,0,0.7)",
         }}
       >
         <Box
           sx={{
-            position: 'absolute',
+            position: "absolute",
             top: 0,
             left: 0,
             right: 0,
@@ -48,42 +48,38 @@ export default function DealerLocatorPage() {
           }}
         >
           <img
-            src="/images/dealers/dealer-map-bg.jpg"
+            src="/images/dealer.jpg"
             alt="Indowagen Dealer Network Map"
-            style={{ 
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
               opacity: 0.6,
             }}
           />
         </Box>
-        
-        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeIn}
-          >
-            <Typography 
-              variant="h2" 
-              component="h1" 
-              sx={{ 
-                color: 'white', 
+
+        <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
+          <motion.div initial="hidden" animate="visible" variants={fadeIn}>
+            <Typography
+              variant="h2"
+              component="h1"
+              sx={{
+                color: "white",
                 fontWeight: 700,
-                textShadow: '1px 1px 3px rgba(0,0,0,0.3)',
-                mb: 2
+                textShadow: "1px 1px 3px rgba(0,0,0,0.3)",
+                mb: 2,
               }}
             >
               Find an Indowagen Dealer
             </Typography>
-            <Typography 
-              variant="h5" 
-              sx={{ 
-                color: 'white',
-                maxWidth: '800px',
-                textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
-                mb: 4
+            <Typography
+              variant="h5"
+              sx={{
+                color: "white",
+                maxWidth: "800px",
+                textShadow: "1px 1px 2px rgba(0,0,0,0.3)",
+                mb: 4,
               }}
             >
               Locate your nearest authorized dealer for sales and support

@@ -24,16 +24,17 @@ const HeroSection = () => {
 
   const sliderContent = [
     {
-      image: '/images/hero-vehicle.png',
-      text: 'Discover our flagship electric vehicle.',
+      image:
+        "/images/products/fixed/q8-base-steel-new/q8-base-steel_new-(1).png",
+      text: "Discover our flagship electric vehicle.",
     },
     {
-      image: '/images/hero-bg.jpg',
-      text: 'Sustainable transport for a greener tomorrow.',
+      image: "/images/products/fixed/q8-base/q8-base-(2).png",
+      text: "Sustainable transport for a greener tomorrow.",
     },
     {
-      image: '/images/products/q8-black.jpg',
-      text: 'Versatile solutions for all your needs.',
+      image: "/images/products/fixed/q8-black-gray/q8-black-gray-(1).png",
+      text: "Versatile solutions for all your needs.",
     },
   ];
 

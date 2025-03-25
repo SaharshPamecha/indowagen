@@ -19,11 +19,11 @@ const BlogHero = () => {
   return (
     <Box
       sx={{
-        bgcolor: 'background.paper',
+        bgcolor: "background.paper",
         pt: { xs: 6, md: 12 },
         pb: { xs: 6, md: 10 },
-        position: 'relative',
-        overflow: 'hidden',
+        position: "relative",
+        overflow: "hidden",
       }}
     >
       <Container maxWidth="lg">
@@ -40,7 +40,7 @@ const BlogHero = () => {
                 gutterBottom
                 sx={{
                   fontWeight: 700,
-                  fontSize: { xs: '2.5rem', md: '3.5rem' },
+                  fontSize: { xs: "2.5rem", md: "3.5rem" },
                   lineHeight: 1.2,
                 }}
               >
@@ -48,17 +48,17 @@ const BlogHero = () => {
                 <Box
                   component="span"
                   sx={{
-                    color: 'primary.main',
-                    display: 'block',
-                    position: 'relative',
-                    '&::after': {
+                    color: "primary.main",
+                    display: "block",
+                    position: "relative",
+                    "&::after": {
                       content: '""',
-                      position: 'absolute',
+                      position: "absolute",
                       bottom: -4,
                       left: 0,
-                      width: '100%',
+                      width: "100%",
                       height: 4,
-                      bgcolor: 'primary.main',
+                      bgcolor: "primary.main",
                       opacity: 0.3,
                     },
                   }}
@@ -70,9 +70,12 @@ const BlogHero = () => {
               <Typography
                 variant="h6"
                 color="text.secondary"
-                sx={{ mb: 4, maxWidth: '600px' }}
+                sx={{ mb: 4, maxWidth: "600px" }}
               >
-                Explore our collection of articles, guides, and insights on electric mobility, sustainable transportation, and the future of movement in India. Stay informed about the latest industry trends, product innovations, and best practices.
+                Explore our collection of articles, guides, and insights on
+                electric mobility, sustainable transportation, and the future of
+                movement in India. Stay informed about the latest industry
+                trends, product innovations, and best practices.
               </Typography>
             </motion.div>
           </Grid>
@@ -85,16 +88,16 @@ const BlogHero = () => {
             >
               <Box
                 sx={{
-                  position: 'relative',
-                  height: { xs: '300px', md: '500px' },
-                  width: '100%',
+                  position: "relative",
+                  height: { xs: "300px", md: "500px" },
+                  width: "100%",
                 }}
               >
                 <Image
-                  src="/images/blog/blog-hero.jpg"
+                  src="/images/blog.jpg"
                   alt="Electric Mobility Insights"
                   fill
-                  style={{ objectFit: 'cover', borderRadius: '16px' }}
+                  style={{ objectFit: "cover", borderRadius: "16px" }}
                   sizes="(max-width: 768px) 100vw, 50vw"
                   priority
                 />

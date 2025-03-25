@@ -118,7 +118,7 @@ const EnvironmentalImpact = () => {
     <Box
       sx={{
         py: { xs: 8, md: 12 },
-        bgcolor: 'background.paper',
+        bgcolor: "background.paper",
         background: `linear-gradient(to bottom, ${theme.palette.primary.dark}15, ${theme.palette.background.paper})`,
       }}
     >
@@ -128,7 +128,7 @@ const EnvironmentalImpact = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Box sx={{ textAlign: 'center', mb: 8 }}>
+          <Box sx={{ textAlign: "center", mb: 8 }}>
             <Typography
               variant="h3"
               component="h2"
@@ -140,7 +140,7 @@ const EnvironmentalImpact = () => {
             <Typography
               variant="h5"
               color="text.secondary"
-              sx={{ maxWidth: '800px', mx: 'auto' }}
+              sx={{ maxWidth: "800px", mx: "auto" }}
             >
               Our commitment to sustainability and positive environmental change
             </Typography>
@@ -155,25 +155,42 @@ const EnvironmentalImpact = () => {
         >
           <Grid container spacing={4}>
             {impactData.map((item, index) => (
-              <Grid item xs={12} sm={6} md={3} key={index}>
+              <Grid
+                item
+                sx={{ display: "flex", alignItems: "stretch" }}
+                sm={6}
+                md={3}
+                key={index}
+              >
                 <motion.div variants={itemVariants}>
                   <Card
                     sx={{
+                      display: "flex",
+                      flexDirection: "column",
                       borderRadius: 3,
                       boxShadow: 3,
-                      height: '100%',
-                      transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
-                      '&:hover': {
-                        transform: 'translateY(-5px)',
+                      height: "100%",
+                      transition:
+                        "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
+                      "&:hover": {
+                        transform: "translateY(-5px)",
                         boxShadow: 6,
                       },
                     }}
                   >
-                    <CardContent sx={{ p: 3 }}>
+                    <CardContent
+                      sx={{
+                        flexGrow: 1,
+                        p: 3,
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "space-between",
+                      }}
+                    >
                       <Box
                         sx={{
-                          display: 'flex',
-                          justifyContent: 'center',
+                          display: "flex",
+                          justifyContent: "center",
                           mb: 2,
                         }}
                       >
@@ -181,10 +198,10 @@ const EnvironmentalImpact = () => {
                           sx={{
                             width: 70,
                             height: 70,
-                            borderRadius: '50%',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
+                            borderRadius: "50%",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
                             bgcolor: `${item.color}15`,
                             color: item.color,
                             mb: 2,
@@ -201,11 +218,11 @@ const EnvironmentalImpact = () => {
                         gutterBottom
                         sx={{ color: item.color }}
                       >
-                        <CountUp 
-                          end={item.value} 
-                          duration={2.5} 
-                          separator="," 
-                          suffix={item.suffix ? ` ${item.suffix}` : ''}
+                        <CountUp
+                          end={item.value}
+                          duration={2.5}
+                          separator=","
+                          suffix={item.suffix ? ` ${item.suffix}` : ""}
                         />
                       </Typography>
 
@@ -213,17 +230,26 @@ const EnvironmentalImpact = () => {
                         variant="body1"
                         color="text.secondary"
                         align="center"
-                        sx={{ mb: 3, fontWeight: 'medium' }}
+                        sx={{ mb: 3, fontWeight: "medium" }}
                       >
                         {item.title}
                       </Typography>
 
                       <Stack spacing={1}>
-                        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                        <Box
+                          sx={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                          }}
+                        >
                           <Typography variant="caption" color="text.secondary">
                             Goal Progress
                           </Typography>
-                          <Typography variant="caption" color="text.secondary" fontWeight="bold">
+                          <Typography
+                            variant="caption"
+                            color="text.secondary"
+                            fontWeight="bold"
+                          >
                             {item.progress}%
                           </Typography>
                         </Box>
@@ -234,7 +260,7 @@ const EnvironmentalImpact = () => {
                             height: 8,
                             borderRadius: 4,
                             bgcolor: `${item.color}20`,
-                            '& .MuiLinearProgress-bar': {
+                            "& .MuiLinearProgress-bar": {
                               bgcolor: item.color,
                             },
                           }}
@@ -244,7 +270,7 @@ const EnvironmentalImpact = () => {
                       <Typography
                         variant="body2"
                         align="center"
-                        sx={{ mt: 3, fontSize: '0.875rem' }}
+                        sx={{ mt: 3, fontSize: "0.875rem" }}
                       >
                         {item.description}
                       </Typography>
@@ -267,28 +293,33 @@ const EnvironmentalImpact = () => {
               mt: 10,
               p: 4,
               borderRadius: 3,
-              bgcolor: 'background.paper',
+              bgcolor: "background.paper",
               boxShadow: theme.shadows[3],
-              border: '1px solid',
-              borderColor: 'divider',
+              border: "1px solid",
+              borderColor: "divider",
             }}
           >
             <Typography variant="h5" gutterBottom fontWeight="bold">
               Our Environmental Commitment
             </Typography>
             <Typography variant="body1" paragraph>
-              At Indo Wagen, sustainability isn't just a buzzword—it's at the core of our business. 
-              Our electric vehicles are designed not only to provide efficient transportation but also to minimize 
-              environmental impact through reduced emissions, noise pollution, and dependency on fossil fuels.
+              At Indo Wagen, sustainability isn't just a buzzword—it's at the
+              core of our business. Our electric vehicles are designed not only
+              to provide efficient transportation but also to minimize
+              environmental impact through reduced emissions, noise pollution,
+              and dependency on fossil fuels.
             </Typography>
             <Typography variant="body1" paragraph>
-              Through our comprehensive approach to sustainability, we're working to create a cleaner, 
-              greener future for urban transportation in India. Every electric vehicle we put on the road 
-              is a step toward improving air quality and reducing the carbon footprint of transportation.
+              Through our comprehensive approach to sustainability, we're
+              working to create a cleaner, greener future for urban
+              transportation in India. Every electric vehicle we put on the road
+              is a step toward improving air quality and reducing the carbon
+              footprint of transportation.
             </Typography>
             <Typography variant="body1">
-              We're constantly investing in research and development to further enhance the environmental 
-              benefits of our products, including improved battery recycling programs, solar-powered charging 
+              We're constantly investing in research and development to further
+              enhance the environmental benefits of our products, including
+              improved battery recycling programs, solar-powered charging
               infrastructure, and more energy-efficient manufacturing processes.
             </Typography>
           </Box>
