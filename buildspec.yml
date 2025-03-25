@@ -31,7 +31,11 @@ phases:
 artifacts:
   base-directory: .
   files:
-    - '.next/**/*'
+    - '.next/standalone/**/*'
+    - '.next/static/**/*'
+    - '.next/server/**/*'
+    - '.next/required-server-files.json'
+    - 'required-server-files.json'
     - 'public/**/*'
     - 'node_modules/**/*'
     - 'package.json'

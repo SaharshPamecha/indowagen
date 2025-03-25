@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Configure output for AWS Amplify SSR
+  output: 'standalone',
   // Configure image optimization for AWS Amplify
   images: {
     domains: ['localhost', 'indowagen-website-nextjs.d18s43ml1gjftw.amplifyapp.com'],
