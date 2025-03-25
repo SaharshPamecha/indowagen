@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import React from 'react';
+import React from "react";
 import {
   Box,
   Container,
@@ -10,19 +10,20 @@ import {
   useTheme,
   useMediaQuery,
   Button,
-} from '@mui/material';
-import { motion } from 'framer-motion';
-import DirectionsIcon from '@mui/icons-material/Directions';
-import { companyInfo } from '@/data/company';
+} from "@mui/material";
+import { motion } from "framer-motion";
+import DirectionsIcon from "@mui/icons-material/Directions";
+import { companyInfo } from "@/data/company";
 
 const ContactMap = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-  const manufacturingAddress = companyInfo?.manufacturingAddress || companyInfo?.address || {};
+  const manufacturingAddress =
+    companyInfo?.manufacturingAddress || companyInfo?.address || {};
   const corporateAddress = companyInfo?.corporateAddress || {};
   const registeredAddress = companyInfo?.registeredAddress || {};
-  
+
   interface AddressType {
     street: string;
     city: string;
@@ -34,17 +35,17 @@ const ContactMap = () => {
   const getFullAddress = (address: AddressType) => {
     return `${address.street}, ${address.city}, ${address.state}, ${address.zip}, ${address.country}`;
   };
-  
+
   const getGoogleMapsUrl = (address: AddressType) => {
     const fullAddress = getFullAddress(address);
     const encodedAddress = encodeURIComponent(fullAddress);
     return `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
   };
-  
+
   const manufacturingFullAddress = getFullAddress(manufacturingAddress);
   const corporateFullAddress = getFullAddress(corporateAddress);
   const registeredFullAddress = getFullAddress(registeredAddress);
-  
+
   const manufacturingGoogleMapsUrl = getGoogleMapsUrl(manufacturingAddress);
   const corporateGoogleMapsUrl = getGoogleMapsUrl(corporateAddress);
   const registeredGoogleMapsUrl = getGoogleMapsUrl(registeredAddress);

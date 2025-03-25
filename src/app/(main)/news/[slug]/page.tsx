@@ -1,9 +1,9 @@
-import React from 'react';
-import { newsItems } from '@/data/news';
-import NewsArticleDetail from '@/components/News/NewsArticleDetail';
-import NewsRelatedArticles from '@/components/News/NewsRelatedArticles';
-import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import React from "react";
+import { newsItems } from "@/data/news";
+import NewsArticleDetail from "@/components/News/NewsArticleDetail";
+import NewsRelatedArticles from "@/components/News/NewsRelatedArticles";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 interface NewsArticlePageProps {
   params: {
@@ -37,7 +37,6 @@ export async function generateStaticParams() {
 
 export default function NewsArticlePage(props: any) {
   const { params } = props;
-
   const article = newsItems.find((item) => item.slug === params.slug);
 
   if (!article) {
