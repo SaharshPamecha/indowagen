@@ -70,17 +70,7 @@ export default function Products() {
       {/* Hero Section */}
       <ProductsHero />
       
-      <Container maxWidth="lg" id="product-categories">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-        >
-          <Box sx={{ bgcolor: theme.palette.primary.main, color: 'white', p: 3, mb: 5, borderRadius: 3, textAlign: 'center', boxShadow: 3 }}>
-            <Typography variant="h5">EXPLORE OUR LATEST ELECTRIC VEHICLE RANGE</Typography>
-          </Box>
-        </motion.div>
-        
+      <Container maxWidth="lg" id="product-categories" sx={{ pt: 4 }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
