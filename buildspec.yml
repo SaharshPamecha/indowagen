@@ -4,7 +4,7 @@ env:
     NODE_ENV: production
     NEXT_TELEMETRY_DISABLED: 1
     parameter-store:
-    NEXT_PUBLIC_SITE_URL:http://localhost:3000
+    NEXT_PUBLIC_SITE_URL: /indowagen/site-url
 phases:
   install:
     runtime-versions:
