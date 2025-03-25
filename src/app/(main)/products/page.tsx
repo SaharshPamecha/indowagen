@@ -19,7 +19,7 @@ import {
   Badge,
   Divider,
 } from '@mui/material';
-import FilterAltIcon from '@mui/icons-material/FilterAlt';
+
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import ElectricCarIcon from '@mui/icons-material/ElectricCar';
 import { motion } from 'framer-motion';
@@ -47,16 +47,10 @@ export default function Products() {
     category: product.category || 'e-rickshaw' // Default category if missing
   }));
   
-  // Get unique categories
-  const categories = React.useMemo(() => {
-    return ['all', ...new Set(productsWithCategories.map(p => p.category))];
+  // Get all products ready for display
+  const displayProducts = React.useMemo(() => {
+    return productsWithCategories;
   }, [productsWithCategories]);
-  
-  // Filter products based on selected category
-  const filteredProducts = React.useMemo(() => {
-    if (category === 'all') return productsWithCategories;
-    return productsWithCategories.filter(product => product.category === category);
-  }, [category, productsWithCategories]);
 
   // Animation variants
   const containerVariants = {
@@ -98,66 +92,7 @@ export default function Products() {
           </Typography>
         </motion.div>
 
-        {/* Category Filter */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          <Paper
-            elevation={1}
-            sx={{ 
-              mb: 6,
-              py: 3,
-              px: 3, 
-              borderRadius: 3,
-              backgroundColor: theme.palette.background.paper,
-            }}
-          >
-            <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-              <FilterAltIcon color="primary" sx={{ mr: 1 }} />
-              <Typography variant="h6" fontWeight="medium" color="text.secondary">
-                Filter by Category
-              </Typography>
-            </Box>
-            
-            <Divider sx={{ mb: 2 }} />
-            
-            <Stack 
-              direction={isMobile ? "column" : "row"}
-              spacing={1.5} 
-              sx={{ 
-                flexWrap: isMobile ? "nowrap" : "wrap", 
-                gap: 1.5,
-                '& > *': { mb: 1 }
-              }}
-            >
-              {categories.map(cat => {
-                const isSelected = category === cat;
-                
-                return (
-                  <Chip
-                    key={cat}
-                    label={formatCategoryName(cat)}
-                    onClick={() => setCategory(cat)}
-                    color={isSelected ? "primary" : "default"}
-                    variant={isSelected ? "filled" : "outlined"}
-                    sx={{
-                      fontWeight: 600,
-                      px: 1,
-                      '&:hover': {
-                        backgroundColor: isSelected ? undefined : `${theme.palette.primary.main}15`
-                      },
-                      transition: 'all 0.2s ease',
-                      transform: isSelected ? 'scale(1.05)' : 'scale(1)',
-                      boxShadow: isSelected ? 1 : 0
-                    }}
-                  />
-                );
-              })}
-            </Stack>
-          </Paper>
-        </motion.div>
+
 
         {/* Products Grid */}
         <motion.div
@@ -166,19 +101,7 @@ export default function Products() {
           animate="visible"
         >
           <Grid container spacing={4}>
-            {filteredProducts.length === 0 ? (
-              <Grid item xs={12}>
-                <Box sx={{ textAlign: 'center', py: 10 }}>
-                  <Typography variant="h5" color="text.secondary" gutterBottom>
-                    No products found in this category
-                  </Typography>
-                  <Typography variant="body1">
-                    Try selecting a different category filter
-                  </Typography>
-                </Box>
-              </Grid>
-            ) : (
-              filteredProducts.map((product, index) => (
+            {displayProducts.map((product, index) => (
                 <Grid item xs={12} sm={6} md={4} key={product.id}>
                   <motion.div
                     variants={itemVariants}
