@@ -9,6 +9,7 @@ import {
   useTheme,
   useMediaQuery,
 } from '@mui/material';
+import { companyInfo } from '@/data/company';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
@@ -72,7 +73,7 @@ const AboutHero = () => {
                 color="text.secondary"
                 sx={{ mb: 4, maxWidth: '600px' }}
               >
-                Since 2013, Indo Wagen has been at the forefront of India’s electric mobility revolution. As a premier brand under Zeniak Innovation Limited, a limited company, we have established ourselves as a trusted name in electric rickshaw manufacturing. Our commitment to innovation and sustainability fuels our mission to provide eco-friendly, affordable, and efficient transportation solutions across India.
+                Since {companyInfo.foundedYear}, Indo Wagen has been at the forefront of India’s electric mobility revolution. As a premier brand under Zeniak Innovation India Limited, we have established ourselves as a trusted name in electric rickshaw manufacturing. Our commitment to innovation and sustainability fuels our mission to provide eco-friendly, affordable, and efficient transportation solutions across India.
               </Typography>
 
               <Box sx={{ display: 'flex', gap: 3, flexWrap: 'wrap' }}>
