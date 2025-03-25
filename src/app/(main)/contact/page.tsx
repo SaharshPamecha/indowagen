@@ -1,9 +1,7 @@
 import React from 'react';
-import ContactHero from '@/components/Contact/ContactHero';
-import ContactForm from '@/components/Contact/ContactForm';
+import ContactHero from "@/components/Contact/ContactHero";
 import ContactMap from '@/components/Contact/ContactMap';
-import ContactFAQ from '@/components/Contact/ContactFAQ';
-import DealerLocator from '@/components/Contact/DealerLocator';
+import ContactFAQ from "@/components/Contact/ContactFAQ";
 import SocialConnect from '@/components/Contact/SocialConnect';
 
 export const metadata = {

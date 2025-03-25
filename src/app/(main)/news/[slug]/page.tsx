@@ -11,16 +11,18 @@ interface NewsArticlePageProps {
   };
 }
 
-export async function generateMetadata({ params }: NewsArticlePageProps): Promise<Metadata> {
+export async function generateMetadata(props: any) {
+  const { params } = props;
+
   const article = newsItems.find((item) => item.slug === params.slug);
-  
+
   if (!article) {
     return {
-      title: 'News Article Not Found | Indo Wagen',
-      description: 'The news article you are looking for could not be found.',
+      title: "News Article Not Found | Indo Wagen",
+      description: "The news article you are looking for could not be found.",
     };
   }
-  
+
   return {
     title: `${article.title} | Indo Wagen News`,
     description: article.excerpt,
@@ -33,22 +35,24 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function NewsArticlePage({ params }: NewsArticlePageProps) {
+export default function NewsArticlePage(props: any) {
+  const { params } = props;
+
   const article = newsItems.find((item) => item.slug === params.slug);
-  
+
   if (!article) {
     notFound();
   }
-  
+
   // Get related articles based on tags
   const relatedArticles = newsItems
     .filter((item) => {
       if (item.id === article.id) return false;
       // Check if there are any matching tags
-      return item.tags.some(tag => article.tags.includes(tag));
+      return item.tags.some((tag) => article.tags.includes(tag));
     })
     .slice(0, 3);
-  
+
   return (
     <>
       <NewsArticleDetail article={article} />

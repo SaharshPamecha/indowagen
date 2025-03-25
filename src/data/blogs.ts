@@ -2,7 +2,7 @@
 export interface BlogPost {
   id: string;
   title: string;
-  slug: string;
+  slug?: string;
   category: string;
   excerpt: string;
   content: string;
@@ -18,9 +18,9 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
-    id: "2",
+    id: "1",
     title: "How E-Rickshaws Are Transforming Rural Transportation",
-    slug: "e-rickshaws-transforming-rural-transportation",
+    slug: "e-rickshaws-transforming-rural-transportation-2",
     category: "Case Studies",
     excerpt:
       "A look at how electric rickshaws are bringing affordable and sustainable transportation to rural India.",
