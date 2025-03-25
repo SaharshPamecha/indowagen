@@ -271,7 +271,7 @@ const ContactMap = () => {
           <Box sx={{ textAlign: "center", mt: 4 }}>
             <Typography variant="body1" gutterBottom>
               Our offices are open Monday through Saturday from{" "}
-              {companyInfo.businessHours.weekdays}.
+              {companyInfo.businessHours?.weekdays || "9:00 AM - 6:00 PM"}.
             </Typography>
             <Typography variant="body1">
               If you're planning a visit, please call ahead to schedule an

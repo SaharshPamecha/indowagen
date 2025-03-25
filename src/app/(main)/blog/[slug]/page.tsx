@@ -5,13 +5,7 @@ import BlogRelatedPosts from '@/components/Blog/BlogRelatedPosts';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-interface BlogPostPageProps {
-  params: {
-    slug: string;
-  };
-}
-
-export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: any): Promise<Metadata> {
   const post = blogPosts.find((post) => post.slug === params.slug);
   
   if (!post) {
@@ -33,7 +27,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function BlogPostPage({ params }: BlogPostPageProps) {
+export default function BlogPostPage(props: any) {
+  const { params } = props;
   const post = blogPosts.find((post) => post.slug === params.slug);
   
   if (!post) {

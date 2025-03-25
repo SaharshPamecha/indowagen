@@ -5,13 +5,7 @@ import NewsRelatedArticles from '@/components/News/NewsRelatedArticles';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-interface NewsArticlePageProps {
-  params: {
-    slug: string;
-  };
-}
-
-export async function generateMetadata({ params }: NewsArticlePageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: any): Promise<Metadata> {
   const article = newsItems.find((item) => item.slug === params.slug);
   
   if (!article) {
@@ -33,7 +27,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function NewsArticlePage({ params }: NewsArticlePageProps) {
+export default function NewsArticlePage(props: any) {
+  const { params } = props;
   const article = newsItems.find((item) => item.slug === params.slug);
   
   if (!article) {
