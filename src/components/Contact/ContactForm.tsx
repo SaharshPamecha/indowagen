@@ -186,7 +186,7 @@ const ContactForm = () => {
                 Send us a Message
               </Typography>
               <Typography variant="body1" color="text.secondary">
-                Fill out the form below, and our team will get back to you within 24 hours. We're available Monday to Saturday, {companyInfo.businessHours.weekdays}.
+                Fill out the form below, and our team will get back to you within 24 hours. We're available Monday to Saturday, {companyInfo.businessHours?.weekdays || "9:00 AM - 6:00 PM"}.
               </Typography>
             </Box>
 
