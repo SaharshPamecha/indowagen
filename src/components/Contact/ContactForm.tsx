@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { companyInfo } from '@/data/company';
 import {
   Box,
   Container,
@@ -112,6 +113,7 @@ const ContactForm = () => {
     
     try {
       // Here you would typically send the form data to your backend
+      // In a real implementation, you would send this to the company email: {companyInfo.contact.email}
       console.log('Form submitted:', formData);
       
       // Simulate API call
@@ -184,7 +186,7 @@ const ContactForm = () => {
                 Send us a Message
               </Typography>
               <Typography variant="body1" color="text.secondary">
-                Fill out the form below, and our team will get back to you within 24 hours
+                Fill out the form below, and our team will get back to you within 24 hours. We're available Monday to Saturday, {companyInfo.businessHours.weekdays}.
               </Typography>
             </Box>
 

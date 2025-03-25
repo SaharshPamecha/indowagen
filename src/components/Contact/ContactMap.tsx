@@ -19,16 +19,35 @@ const ContactMap = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
-  const address = companyInfo?.address || {
-    street: '123, Industrial Area, Phase 1',
-    city: 'Noida',
-    state: 'Uttar Pradesh',
-    zip: '201301',
-    country: 'India'
+  const manufacturingAddress = companyInfo?.manufacturingAddress || companyInfo?.address || {};
+  const corporateAddress = companyInfo?.corporateAddress || {};
+  const registeredAddress = companyInfo?.registeredAddress || {};
+  
+  interface AddressType {
+    street: string;
+    city: string;
+    state: string;
+    zip: string;
+    country: string;
+  }
+
+  const getFullAddress = (address: AddressType) => {
+    return `${address.street}, ${address.city}, ${address.state}, ${address.zip}, ${address.country}`;
   };
-  const fullAddress = `${address.street}, ${address.city}, ${address.state}, ${address.zip}, ${address.country}`;
-  const encodedAddress = encodeURIComponent(fullAddress);
-  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
+  
+  const getGoogleMapsUrl = (address: AddressType) => {
+    const fullAddress = getFullAddress(address);
+    const encodedAddress = encodeURIComponent(fullAddress);
+    return `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
+  };
+  
+  const manufacturingFullAddress = getFullAddress(manufacturingAddress);
+  const corporateFullAddress = getFullAddress(corporateAddress);
+  const registeredFullAddress = getFullAddress(registeredAddress);
+  
+  const manufacturingGoogleMapsUrl = getGoogleMapsUrl(manufacturingAddress);
+  const corporateGoogleMapsUrl = getGoogleMapsUrl(corporateAddress);
+  const registeredGoogleMapsUrl = getGoogleMapsUrl(registeredAddress);
 
   return (
     <Box
@@ -49,9 +68,13 @@ const ContactMap = () => {
             gutterBottom
             sx={{ textAlign: 'center', mb: 4 }}
           >
-            Visit Our Headquarters
+            Visit Our Locations
           </Typography>
           
+          <Typography variant="h6" sx={{ textAlign: 'center', mb: 4, color: 'text.secondary' }}>
+            We have multiple offices across West Bengal to serve you better
+          </Typography>
+
           <Card 
             elevation={4}
             sx={{
@@ -108,19 +131,19 @@ const ContactMap = () => {
                   }}
                 />
                 <Typography variant="h6" sx={{ mb: 1 }}>
-                  Indo Wagen Headquarters
+                  {manufacturingAddress.name || 'Manufacturing Unit'}
                 </Typography>
                 <Typography variant="body2" color="text.secondary" sx={{ mb: 3, textAlign: 'center', px: 2 }}>
-                  {address.street}
+                  {manufacturingAddress.street}
                   <br />
-                  {address.city}, {address.state} {address.zip}
+                  {manufacturingAddress.city}, {manufacturingAddress.state} {manufacturingAddress.zip}
                   <br />
-                  {address.country}
+                  {manufacturingAddress.country}
                 </Typography>
                 <Button 
                   variant="contained" 
                   startIcon={<DirectionsIcon />}
-                  href={googleMapsUrl}
+                  href={manufacturingGoogleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -131,7 +154,13 @@ const ContactMap = () => {
             
             <CardContent sx={{ py: 3 }}>
               <Typography variant="body1" gutterBottom>
-                <strong>Address:</strong> {address.street}, {address.city}, {address.state}, {address.zip}, {address.country}
+                <strong>Manufacturing Unit:</strong> {manufacturingFullAddress}
+              </Typography>
+              <Typography variant="body1" gutterBottom>
+                <strong>Corporate Office:</strong> {corporateFullAddress}
+              </Typography>
+              <Typography variant="body1" gutterBottom>
+                <strong>Registered Office:</strong> {registeredFullAddress}
               </Typography>
               <Typography variant="body1" gutterBottom>
                 <strong>Phone:</strong> {companyInfo.contact?.phone || '+91-120-4567890'}
@@ -144,7 +173,7 @@ const ContactMap = () => {
           
           <Box sx={{ textAlign: 'center', mt: 4 }}>
             <Typography variant="body1" gutterBottom>
-              Our headquarters is open Monday through Friday from 9:00 AM to 6:00 PM.
+              Our offices are open Monday through Saturday from {companyInfo.businessHours.weekdays}.
             </Typography>
             <Typography variant="body1">
               If you're planning a visit, please call ahead to schedule an appointment with our team.
