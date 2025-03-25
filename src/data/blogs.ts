@@ -18,51 +18,58 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
-    id: "1",
-    title: "The Future of Electric Mobility in India",
-    slug: "future-of-electric-mobility-in-india",
-    category: "Industry Insights",
+    id: "2",
+    title: "How E-Rickshaws Are Transforming Rural Transportation",
+    slug: "e-rickshaws-transforming-rural-transportation",
+    category: "Case Studies",
     excerpt:
-      "Exploring the rapidly growing electric vehicle market in India and what it means for transportation and the environment.",
+      "A look at how electric rickshaws are bringing affordable and sustainable transportation to rural India.",
     content: `
-      <p>The electric mobility revolution is well underway in India, transforming how people move across urban and rural landscapes. With government initiatives like FAME II (Faster Adoption and Manufacturing of Electric Vehicles) and ambitious targets to reduce carbon emissions, India is positioned to become a global leader in electric transportation.</p>
+      <p>While much attention is given to electric vehicles in urban centers, a quiet revolution is happening in rural India. Electric rickshaws are transforming mobility in villages and small towns, providing a sustainable and affordable transportation alternative where options were previously limited.</p>
       
-      <h2>Growth Trajectory</h2>
-      <p>The electric vehicle market in India is expected to grow at a CAGR of over 40% between 2022-2030. This remarkable growth is driven by multiple factors:</p>
+      <h2>Filling the Transportation Gap</h2>
+      <p>In many rural areas, public transportation is scarce or non-existent. Residents often rely on private vehicles, shared autos, or simply walking long distances. E-rickshaws are filling this critical gap, connecting villages to market towns and providing essential mobility for rural communities.</p>
+      
+      <h2>Economic Empowerment</h2>
+      <p>For operators, E-rickshaws represent a pathway to economic independence. With lower operational costs compared to conventional fuel vehicles, drivers can earn more while charging less. The data speaks for itself:</p>
       <ul>
-        <li>Rising fuel prices and the need for cost-effective transportation alternatives</li>
-        <li>Increased awareness about environmental sustainability</li>
-        <li>Government incentives and subsidies for EV manufacturers and consumers</li>
-        <li>Improved charging infrastructure across major cities</li>
+        <li>Average daily savings on fuel: ₹300-400</li>
+        <li>Maintenance costs reduced by up to 40%</li>
+        <li>Extended operational hours due to less fatigue and noise</li>
       </ul>
       
-      <h2>The Last Mile Connectivity Solution</h2>
-      <p>Electric rickshaws, in particular, have emerged as the optimal solution for last-mile connectivity in urban and semi-urban areas. Their affordability, zero emissions, and ability to navigate congested streets make them invaluable to India's transportation ecosystem.</p>
+      <p>Many drivers report being able to send their children to better schools and improve their housing conditions after switching to E-rickshaws.</p>
       
-      <p>At Indo Wagen, we've witnessed firsthand the transformative impact of E-rickshaws on communities. Drivers report increased daily earnings, passengers enjoy reduced fares, and neighborhoods benefit from cleaner air and reduced noise pollution.</p>
+      <h2>Case Study: Transforming Mobility in Bihar</h2>
+      <p>In the rural districts of Bihar, Indo Wagen's E-rickshaws have created a network of connectivity between villages and small towns. In Muzaffarpur district, a fleet of 200 E-rickshaws now serves over 50 villages, providing transportation to approximately 15,000 people daily.</p>
       
-      <h2>Challenges and Opportunities</h2>
-      <p>Despite the promising growth, the electric mobility sector faces challenges:</p>
+      <p>Farmers can transport produce to markets more efficiently, students can travel to educational institutions safely, and healthcare becomes more accessible as patients can reach medical facilities faster.</p>
+      
+      <h2>Environmental Impact</h2>
+      <p>The environmental benefits are equally significant. Each E-rickshaw reduces carbon emissions by approximately 4-5 tons annually compared to auto-rickshaws running on fossil fuels. Multiply this by thousands of vehicles, and the impact on air quality and public health becomes substantial.</p>
+      
+      <h2>Challenges in Rural Adoption</h2>
+      <p>Despite the success, challenges remain:</p>
       <ul>
-        <li>Battery technology limitations and range anxiety</li>
-        <li>Need for more extensive charging infrastructure, especially in smaller towns</li>
-        <li>Initial high costs compared to traditional vehicles</li>
+        <li>Limited charging infrastructure in remote areas</li>
+        <li>Financing options for rural entrepreneurs</li>
+        <li>Service and maintenance support in distant locations</li>
       </ul>
       
-      <p>These challenges present opportunities for innovation. The development of improved battery technology, solar-powered charging stations, and battery swapping facilities are all emerging solutions that will accelerate adoption.</p>
+      <p>Indo Wagen is addressing these challenges through innovative solutions like solar charging stations, partnership with rural banks for financing, and mobile service vans that travel to remote areas for maintenance support.</p>
       
-      <h2>Looking Ahead</h2>
-      <p>The future of electric mobility in India is bright. As technology advances and costs decrease, we expect to see electric vehicles become the default choice for personal and commercial transportation. At Indo Wagen, we're committed to leading this transformation with our innovative electric rickshaw solutions designed specifically for the Indian market.</p>
+      <h2>The Road Ahead</h2>
+      <p>As rural electrification improves and solar power becomes more affordable, we expect E-rickshaws to penetrate even the most remote parts of India. This transportation revolution isn't just about mobility—it's about economic empowerment, environmental protection, and connecting communities.</p>
       
-      <p>Through continued investment in research and development, expansion of our service network, and collaboration with government initiatives, we aim to accelerate the transition to sustainable transportation and contribute to a cleaner, greener India.</p>
+      <p>Through continued innovation and focused rural outreach, Indo Wagen is committed to ensuring that the benefits of electric mobility reach every corner of India, leaving no community behind.</p>
     `,
-    author: "Rajesh Kumar",
-    authorTitle: "Head of Research & Development",
-    authorAvatar: "/images/blog/authors/rajesh-kumar.jpg",
-    coverImage: "/images/blog/future-mobility.jpg",
-    publishDate: "March 15, 2025",
-    readTime: 7,
-    tags: ["Electric Vehicles", "Sustainability", "India", "Transportation"],
+    author: "Priya Sharma",
+    authorTitle: "Community Outreach Director",
+    authorAvatar: "/images/blog/authors/priya-sharma.jpg",
+    coverImage: "/images/rural-transportation.jpg",
+    publishDate: "March 10, 2025",
+    readTime: 6,
+    tags: ["Rural Development", "Electric Rickshaws", "Community Impact"],
     featured: true,
   },
   {
