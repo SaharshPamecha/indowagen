@@ -175,7 +175,8 @@ const HeroSection = () => {
                 }}
               >
                 <Image
-                  src={sliderContent[currentSlide].image}
+                 //src={sliderContent[currentSlide].image}
+                 src="/images/products/fixed/q8-base-steel-new/q8-base-steel_new-(1).png"
                   alt="Indo Wagen Electric Vehicle"
                   fill
                   style={{ objectFit: 'contain' }}
@@ -192,9 +193,9 @@ const HeroSection = () => {
                   opacity: 1,
                 }}
               >
-                <Typography variant="subtitle1" color="text.primary" sx={{ fontWeight: 500 }}>
+                {/* <Typography variant="subtitle1" color="text.primary" sx={{ fontWeight: 500 }}>
                   {sliderContent[currentSlide].text}
-                </Typography>
+                </Typography> */}
               </Box>
             </Box>
           </Grid>

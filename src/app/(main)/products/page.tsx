@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
+import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import {
   Box,
   Container,
@@ -14,75 +14,82 @@ import {
   Tabs,
   Tab,
   useTheme,
-  useMediaQuery,
-  Chip,
-} from "@mui/material";
+  useMediaQuery
+} from '@mui/material';
+import ProductsHero from '@/components/Products/ProductsHero';
 import { motion } from "framer-motion";
-import ProductsHero from "@/components/Products/ProductsHero";
-import { products, Product } from "../../../data/products";
 
-// Allow for more flexible category types including additional ones that may be in the data
-type Category =
-  | "all"
-  | "e-rickshaw"
-  | "e-cart"
-  | "e-loader"
-  | "electric-vehicle"
-  | string;
+interface Product {
+  id: number;
+  model_name: string;
+  tagline?: string;
+  price?: string;
+  category?: string;
+  img_link?: string;
+  url?: string;
+}
+
+type Category = 'all' | 'e-rickshaw' | 'e-cart' | 'e-loader' | 'electric-vehicle' | string;
 
 export default function Products() {
-  const [category, setCategory] = React.useState<Category>("all");
+  const [category, setCategory] = useState<Category>('all');
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
-  // Define default category if missing
-  const productsWithCategories = products.map((product) => ({
-    ...product,
-    category: product.category || "e-rickshaw", // Default category if missing
-  }));
+  useEffect(() => {
+    async function fetchProducts() {
+      try {
+        setLoading(true);
+        const response = await fetch('/api/products');
+        if (!response.ok) throw new Error('Failed to fetch products');
+        const data = await response.json();
+        
+        const fetchedProducts = data.map((row: any) => ({
+          id: row.id,
+          model_name: row.model_name,
+          tagline: row.tagline || 'Premium Electric Vehicle',
+          price: row.price ? `₹${row.price}` : 'Contact for price',
+          category: row.category || 'electric-vehicle',
+          img_link: row.img_link || null,
+          url: row.url || null
+        }));
+        
+        setProducts(fetchedProducts);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchProducts();
+  }, []);
 
   const filteredProducts = React.useMemo(() => {
-    if (category === "all") return productsWithCategories;
-    return productsWithCategories.filter(
-      (product) => product.category === category
-    );
-  }, [category, productsWithCategories]);
+    if (category === 'all') return products;
+    return products.filter(product => product.category === category);
+  }, [category, products]);
 
-  const handleCategoryChange = (
-    _event: React.SyntheticEvent,
-    newValue: Category
-  ) => {
+  const handleCategoryChange = (_event: React.SyntheticEvent, newValue: Category) => {
     setCategory(newValue);
   };
 
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 },
-    },
-  };
+  if (loading) {
+    return (
+      <Box sx={{ py: 6, textAlign: 'center' }}>
+        <Typography variant="h5">Loading products...</Typography>
+      </Box>
+    );
+  }
 
   return (
     <Box component="main">
-      {/* Hero Section */}
       <ProductsHero />
-
-      <Container maxWidth="lg" id="product-categories">
-        <motion.div
+      <Container maxWidth="lg">
+      
+  <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -107,235 +114,109 @@ export default function Products() {
             efficiency, sustainability, and exceptional performance
           </Typography>
         </motion.div>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider', mb: 4 }}>
+          {(() => {
+            const categories = ['all', ...new Set(products.map(p => p.category || 'electric-vehicle'))];
+            
+            return (
+              <Tabs
+                value={category}
+                onChange={handleCategoryChange}
+                variant={isMobile ? "scrollable" : "standard"}
+                scrollButtons={isMobile ? "auto" : false}
+                centered={!isMobile}
+              >
+                {categories.map(cat => {
+                  const displayName = cat === 'all' ? 'All Products' : 
+                    cat.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+                  
+                  return <Tab key={cat} label={displayName} value={cat} />;
+                })}
+              </Tabs>
+            );
+          })()}
+        </Box>
 
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          <Box
-            sx={{
-              borderBottom: 1,
-              borderColor: "divider",
-              mb: 5,
-              pb: 1,
-              borderRadius: 1,
-              boxShadow: "0 4px 6px rgba(0,0,0,0.03)",
-            }}
-          >
-            {/* Extract unique categories from products */}
-            {(() => {
-              // Get all unique categories from the products data
-              const categories = [
-                "all",
-                ...new Set(
-                  productsWithCategories.map(
-                    (p) => p.category || "electric-vehicle"
-                  )
-                ),
-              ];
-
-              return (
-                <Tabs
-                  value={category}
-                  onChange={handleCategoryChange}
-                  variant={isMobile ? "scrollable" : "standard"}
-                  scrollButtons={isMobile ? "auto" : false}
-                  centered={!isMobile}
+        <Grid container spacing={4}>
+          {filteredProducts.map((product) => (
+            <Grid item xs={12} sm={6} md={4} key={product.id}>
+              <Link href={`/products/${product.url}`} style={{ textDecoration: 'none' }}>
+                <Card
                   sx={{
-                    "& .MuiTab-root": {
-                      fontWeight: 600,
-                      mx: 0.5,
-                      transition: "all 0.3s",
-                      "&:hover": {
-                        color: "primary.main",
-                      },
-                    },
-                    "& .Mui-selected": {
-                      color: "primary.main",
-                    },
-                    "& .MuiTabs-indicator": {
-                      height: 3,
-                      borderRadius: 2,
-                    },
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    transition: 'transform 0.2s',
+                    '&:hover': {
+                      transform: 'translateY(-4px)'
+                    }
                   }}
                 >
-                  {categories.map((cat) => {
-                    // Format category name for display
-                    const displayName =
-                      cat === "all"
-                        ? "All Products"
-                        : cat
-                            .split("-")
-                            .map(
-                              (word) =>
-                                word.charAt(0).toUpperCase() + word.slice(1)
-                            )
-                            .join(" ");
-
-                    return <Tab key={cat} label={displayName} value={cat} />;
-                  })}
-                </Tabs>
-              );
-            })()}
-          </Box>
-        </motion.div>
-
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <Grid container spacing={4}>
-            {filteredProducts.map((product, index) => (
-              <Grid item xs={12} sm={6} md={4} key={product.id}>
-                <motion.div
-                  variants={itemVariants}
-                  whileHover={{
-                    scale: 1.03,
-                    transition: { duration: 0.2 },
-                  }}
-                >
-                  <Link
-                    href={`/products/${product.id}`}
-                    style={{ textDecoration: "none" }}
+                  <CardMedia
+                    component="div"
+                    sx={{
+                      position: 'relative',
+                      height: 240,
+                      backgroundColor: '#f5f5f5'
+                    }}
                   >
-                    <Card
-                      sx={{
-                        height: "100%",
-                        display: "flex",
-                        flexDirection: "column",
-                        borderRadius: 3,
-                        overflow: "hidden",
-                        boxShadow: 3,
-                        transition: "all 0.3s ease",
-                        "&:hover": {
-                          boxShadow: 6,
-                        },
-                      }}
-                    >
-                      <Box sx={{ position: "relative" }}>
-                        <CardMedia
-                          component="div"
-                          sx={{
-                            position: "relative",
-                            height: 240,
-                            backgroundColor: "#f5f5f5",
-                          }}
-                        >
-                          {/* Use first image from images array if available, otherwise fall back to single image */}
-                          {product.images && product.images.length > 0 ? (
-                            <Image
-                              src={product.images[0]}
-                              alt={product.name}
-                              fill
-                              style={{ objectFit: "contain" }}
-                              unoptimized={true}
-                            />
-                          ) : product.image ? (
-                            <Image
-                              src={product.image}
-                              alt={product.name}
-                              fill
-                              style={{ objectFit: "contain" }}
-                              unoptimized={true}
-                            />
-                          ) : (
-                            <Box
-                              sx={{
-                                position: "absolute",
-                                top: 0,
-                                left: 0,
-                                width: "100%",
-                                height: "100%",
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                bgcolor: "#f0f0f0",
-                              }}
-                            >
-                              <Typography
-                                variant="body2"
-                                color="text.secondary"
-                              >
-                                Image not available
-                              </Typography>
-                            </Box>
-                          )}
-                        </CardMedia>
-
-                        {/* New tag for recent products */}
-                        {index < 2 && (
-                          <Chip
-                            label="New"
-                            size="small"
-                            color="primary"
-                            sx={{
-                              position: "absolute",
-                              top: 10,
-                              right: 10,
-                              fontWeight: "bold",
-                              boxShadow: 2,
-                            }}
-                          />
-                        )}
+                    {product.img_link ? (
+                      <Image
+                        src={`/products/${product.img_link}`}
+                        alt={product.model_name}
+                        fill
+                        style={{ objectFit: 'contain' }}
+                        unoptimized={true}
+                      />
+                    ) : (
+                      <Box
+                        sx={{
+                          position: 'absolute',
+                          top: 0,
+                          left: 0,
+                          width: '100%',
+                          height: '100%',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          bgcolor: '#f0f0f0'
+                        }}
+                      >
+                        <Typography variant="body2" color="text.secondary">
+                          Image not available
+                        </Typography>
                       </Box>
-
-                      <CardContent sx={{ flexGrow: 1, p: 3 }}>
-                        <Typography
-                          variant="h5"
-                          component="h2"
-                          gutterBottom
-                          sx={{ fontWeight: 600 }}
-                        >
-                          {product.name}
-                        </Typography>
-                        <Typography
-                          variant="body1"
-                          color="text.secondary"
-                          paragraph
-                        >
-                          {product.tagline}
-                        </Typography>
-                        <Box
-                          sx={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            alignItems: "center",
-                            mt: 2,
-                          }}
-                        >
-                          <Typography
-                            variant="h6"
-                            color="primary"
-                            fontWeight="bold"
-                          >
-                            {product.price}
-                          </Typography>
-                          <Chip
-                            label={product.category
-                              .split("-")
-                              .map(
-                                (word) =>
-                                  word.charAt(0).toUpperCase() + word.slice(1)
-                              )
-                              .join(" ")}
-                            size="small"
-                            color="secondary"
-                            sx={{
-                              fontWeight: "medium",
-                              borderRadius: "4px",
-                            }}
-                          />
-                        </Box>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                </motion.div>
-              </Grid>
-            ))}
-          </Grid>
-        </motion.div>
+                    )}
+                  </CardMedia>
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography variant="h5" component="h2" gutterBottom>
+                      {product.model_name}
+                    </Typography>
+                    
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <Typography variant="h6" color="primary">
+                        {product.price}
+                      </Typography>
+                      <Typography
+                        variant="caption"
+                        sx={{
+                          textTransform: 'uppercase',
+                          bgcolor: 'primary.main',
+                          color: 'white',
+                          px: 1,
+                          py: 0.5,
+                          borderRadius: 1
+                        }}
+                      >
+                        {product.category}
+                      </Typography>
+                    </Box>
+                  </CardContent>
+                </Card>
+              </Link>
+            </Grid>
+          ))}
+        </Grid>
       </Container>
     </Box>
   );

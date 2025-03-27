@@ -18,19 +18,13 @@ import Image from 'next/image';
 
 interface ProductCardProps {
   product: {
-    id: string;
-    name: string;
-    tagline: string;
-    description: string;
-    image: string;
-    images?: string[];
-    price: string;
-    specs?: Array<{
-      label: string;
-      value: string;
-    }>;
-    featured?: boolean;
+    id: number;
+    model_name: string;
+    max_speed?: string;
     category?: string;
+    img_link?: string;
+    url?: string;
+    charging_time?: string;
   };
 }
 
@@ -67,7 +61,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           },
         }}
       >
-        {product.featured && (
+        {/* {product.featured && ( */}
           <Chip
             label="Featured"
             color="primary"
@@ -81,7 +75,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
             }}
           />
-        )}
+        {/* )} */}
         <Box
           sx={{
             position: "relative",
@@ -90,10 +84,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           }}
         >
           {/* Use first image from images array if available, otherwise fall back to single image */}
-          {product.images && product.images.length > 0 ? (
+          {product.img_link && product.img_link.length > 0 ? (
             <Image
-              src={product.images[0]}
-              alt={product.name}
+              src={`/products/${product.img_link}`}
+              alt={product.model_name}
               fill
               style={{
                 objectFit: "contain",
@@ -103,10 +97,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               unoptimized={true}
             />
-          ) : product.image ? (
+          ) : product.img_link ? (
             <Image
-              src={product.image}
-              alt={product.name}
+              src={product.img_link}
+              alt={product.model_name}
               fill
               style={{
                 objectFit: "contain",
@@ -153,7 +147,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               WebkitBoxOrient: "vertical",
             }}
           >
-            {product.name}
+            {product.model_name}
           </Typography>
           <Typography
             variant="subtitle1"
@@ -165,9 +159,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               opacity: 0.9,
             }}
           >
-            {product.tagline}
+            {product.category}
           </Typography>
-          <Typography
+          {/* <Typography
             variant="body2"
             color="text.secondary"
             sx={{
@@ -178,23 +172,33 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               overflow: "hidden",
             }}
           >
-            {product.description}
-          </Typography>
-          {product.specs && (
+            product.description
+          </Typography> */}
+         
             <Box sx={{ mb: 2 }}>
-              {product.specs.slice(0, 3).map((spec, index) => (
+              
                 <Typography
-                  key={index}
+                  
                   variant="body2"
                   color="text.secondary"
                   sx={{ display: "flex", mb: 0.5 }}
                 >
-                  <strong>{spec.label}:</strong>
-                  <span style={{ marginLeft: "4px" }}>{spec.value}</span>
+                  <strong>Max Speed:</strong>
+                  <span style={{ marginLeft: "4px" }}>{product.max_speed}</span>
                 </Typography>
-              ))}
+
+                <Typography
+                  
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{ display: "flex", mb: 0.5 }}
+                >
+                  <strong>Charging Time:</strong>
+                  <span style={{ marginLeft: "4px" }}>{product.charging_time}</span>
+                </Typography>
+              
             </Box>
-          )}
+
           <Box
             sx={{
               display: "flex",
@@ -204,7 +208,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               pt: 2,
             }}
           >
-            <Button
+            {/* <Button
               component={Link}
               href={"/contact"}
               variant="contained"
@@ -220,10 +224,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               }}
             >
               {product.price}
-            </Button>
+            </Button> */}
             <Button
               component={Link}
-              href={`/products/${product.id}`}
+              href={`/products/${product.url}`}
               variant="contained"
               size="small"
               className="view-details-btn"
@@ -237,6 +241,24 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               }}
             >
               View Details
+            </Button>
+
+            <Button
+              component={Link}
+              href={`/contact`}
+              variant="contained"
+              size="small"
+              className="view-details-btn"
+              sx={{
+                borderRadius: "20px",
+                px: 2,
+                fontWeight: 600,
+                textTransform: "none",
+                boxShadow: "0 2px 4px rgba(0,0,0,0.08)",
+                transition: "all 0.3s ease",
+              }}
+            >
+              Enquire Now
             </Button>
           </Box>
         </CardContent>

@@ -146,12 +146,12 @@ const Footer = () => {
       href: companyInfo.social?.youtube || '#',
       color: '#FF0000'
     },
-    { 
-      name: 'WhatsApp',
-      icon: <WhatsAppIcon />, 
-      href: companyInfo.contact?.phone ? `https://wa.me/${companyInfo.contact.phone.replace(/[^0-9]/g, '')}` : '#',
-      color: '#25D366'
-    },
+    // { 
+    //   name: 'WhatsApp',
+    //   icon: <WhatsAppIcon />, 
+    //   href: companyInfo.contact?.phone ? `https://wa.me/${companyInfo.contact.phone.replace(/[^0-9]/g, '')}` : '#',
+    //   color: '#25D366'
+    // },
   ];
 
   // Legal links
@@ -494,7 +494,7 @@ const Footer = () => {
             <Typography variant="body2" color="text.secondary">
               {currentYear}{" "}
               {companyInfo.fullName || "Indo Wagen Electronics Pvt. Ltd."}. All
-              rights reserved.
+              rights reserved. <a target='_blank' style={{textDecoration: "none"}} href="https://digitalmiles.in/">Powered by Digital Miles</a>
             </Typography>
           </Box>
 
