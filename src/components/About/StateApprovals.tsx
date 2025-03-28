@@ -12,23 +12,35 @@ import {
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
+
+// const states = [
+//   'Maharashtra',
+//   'Gujarat',
+//   'Delhi',
+//   'Uttar Pradesh',
+//   'Karnataka',
+//   'Tamil Nadu',
+//   'Telangana',
+//   'West Bengal',
+//   'Rajasthan',
+//   'Madhya Pradesh',
+//   'Punjab',
+//   'Haryana',
+//   'Bihar',
+//   'Odisha',
+//   'Kerala',
+// ];
 
 const states = [
-  'Maharashtra',
-  'Gujarat',
-  'Delhi',
-  'Uttar Pradesh',
-  'Karnataka',
-  'Tamil Nadu',
-  'Telangana',
-  'West Bengal',
-  'Rajasthan',
-  'Madhya Pradesh',
-  'Punjab',
-  'Haryana',
-  'Bihar',
-  'Odisha',
-  'Kerala',
+  { name: 'Assam', image: 'ASSAM.webp' },
+  { name: 'Uttar Pradesh', image: 'UTTAR-PRADESH.webp' },
+  { name: 'West Bengal', image: 'WEST-BENGAL.webp' },
+  { name: 'Madhya Pradesh', image: 'MADHYA-PRADESH.webp' },
+  { name: 'Jharkhand', image: 'JHARKHAND.webp' },
+  { name: 'Bihar', image: 'BIHAR.webp' },
+  { name: 'Odisha', image: 'ODISHA.webp' },
+  { name: 'Chattisgarh', image: 'CHATTISGARH.webp' },
 ];
 
 const StateApprovals = () => {
@@ -91,8 +103,9 @@ const StateApprovals = () => {
 
           <Grid container spacing={3}>
             {states.map((state, index) => (
-              <Grid item xs={6} sm={4} md={3} key={state}>
+              <Grid item xs={6} sm={4} md={3} key={state.name}>
                 <motion.div variants={itemVariants}>
+                <Link style={{ textDecoration: "none" }} target='_blank' href={`state_approval/${state.image}`}>
                   <Paper
                     sx={{
                       p: 3,
@@ -109,8 +122,9 @@ const StateApprovals = () => {
                       },
                     }}
                   >
-                    <Typography variant="h6">{state}</Typography>
+                    <Typography variant="h6">{state.name}</Typography>
                   </Paper>
+                  </Link>
                 </motion.div>
               </Grid>
             ))}

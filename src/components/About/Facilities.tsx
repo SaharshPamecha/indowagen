@@ -20,6 +20,7 @@ import FactoryIcon from '@mui/icons-material/Factory';
 import ScienceIcon from '@mui/icons-material/Science';
 import BusinessIcon from '@mui/icons-material/Business';
 import { companyInfo } from '@/data/company';
+import { Description } from '@mui/icons-material';
 
 const Facilities = () => {
   const theme = useTheme();
@@ -29,8 +30,12 @@ const Facilities = () => {
     {
       id: 'manufacturing',
       name: 'Manufacturing Facility',
-      location: 'Noida, UP',
-      description: 'Our state-of-the-art manufacturing unit spreads across 50,000 sq ft and produces up to 1,000 vehicles per month. Equipped with modern assembly lines and quality control systems.',
+      //location: 'Noida, UP',
+      location: 'West Bengal',
+      description : `Zeniak Innovation India Limited (INDOWAGEN), Bagpara, (Near Ideal Public School), 
+Village: Kashyabpur, PO - Mahishrekha, Tulsiberia, Block - Uluberia II, Howrah - 711303, 
+West Bengal`,
+      //description: 'Our state-of-the-art manufacturing unit spreads across 50,000 sq ft and produces up to 1,000 vehicles per month. Equipped with modern assembly lines and quality control systems.',
       features: [
         'Assembly Line Production',
         'Quality Control Lab',
@@ -41,15 +46,15 @@ const Facilities = () => {
       icon: <FactoryIcon fontSize="large" />,
     },
     {
-      id: 'r&d',
-      name: 'R&D Center',
-      location: 'Bangalore, Karnataka',
-      description: 'Our R&D center is the innovation hub where we develop new technologies and improve existing products. Focus on battery efficiency, motor performance, and vehicle design.',
+      id: 'c&f',
+      name: 'C&F Center',
+      location: 'Patna (Bihar), Guwahati (Assam), Lucknow (Uttar Pradesh)',
+      description: 'Our C&F center is the innovation hub where we develop new technologies and improve existing products. Focus on battery efficiency, motor performance, and vehicle design.',
       features: [
         'Battery Technology Research',
         'Motor Efficiency Optimization',
         'Vehicle Design Studio',
-        'Performance Testing Track'
+       // 'Performance Testing Track'
       ],
       image: '/facilities/rd.jpg',
       icon: <ScienceIcon fontSize="large" />,

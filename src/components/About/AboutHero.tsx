@@ -89,7 +89,7 @@ const AboutHero = () => {
                     color="primary"
                     sx={{ fontWeight: 700 }}
                   >
-                    5000+
+                    8 Lac+
                   </Typography>
                   <Typography variant="body1" color="text.secondary">
                     Vehicles Delivered
@@ -101,13 +101,13 @@ const AboutHero = () => {
                     color="primary"
                     sx={{ fontWeight: 700 }}
                   >
-                    20+
+                    09
                   </Typography>
                   <Typography variant="body1" color="text.secondary">
                     States Covered
                   </Typography>
                 </Box>
-                <Box>
+                {/* <Box>
                   <Typography
                     variant="h3"
                     color="primary"
@@ -118,7 +118,7 @@ const AboutHero = () => {
                   <Typography variant="body1" color="text.secondary">
                     Service Centers
                   </Typography>
-                </Box>
+                </Box> */}
               </Box>
             </motion.div>
           </Grid>

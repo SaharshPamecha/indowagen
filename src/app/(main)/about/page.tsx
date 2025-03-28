@@ -20,11 +20,12 @@ export default function AboutPage() {
       <WhyChooseUs />
       <Vision />
       <OurProducts />
-      <CompanyHistory />
-      <OurGrowingNetwork />
+      {/* <CompanyHistory /> */}
+     
       <LeadershipTeam />
+      <OurGrowingNetwork />
       <Facilities />
-      <EnvironmentalImpact />
+      {/* <EnvironmentalImpact /> */}
       <Certifications />
       <StateApprovals />
     </>

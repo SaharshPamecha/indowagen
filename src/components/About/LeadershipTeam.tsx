@@ -164,16 +164,16 @@ const LeadershipTeam = () => {
                           src={member.image}
                           alt={member.name}
                           sx={{
-                            width: 120,
-                            height: 120,
+                            width: 165,
+                            height: 170,
                             border: `4px solid ${theme.palette.primary.main}`,
                           }}
                         />
                       ) : (
                         <Avatar
                           sx={{
-                            width: 120,
-                            height: 120,
+                            width: 165,
+                            height: 170,
                             bgcolor: stringToColor(member.name),
                             border: `4px solid ${theme.palette.primary.main}`,
                             fontSize: "2.5rem",
