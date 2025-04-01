@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Container,
   Typography,
@@ -13,6 +13,9 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  Snackbar,
+  Alert,
+  CircularProgress,
 } from '@mui/material';
 import { motion } from 'framer-motion';
 
@@ -25,7 +28,7 @@ const states = [
 ];
 
 const BecomeDistributor = () => {
-  const [formData, setFormData] = React.useState({
+  const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
@@ -36,29 +39,108 @@ const BecomeDistributor = () => {
     message: ''
   });
 
+  const [errors, setErrors] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    state: '',
+    city: '',
+  });
+
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: '',
+    severity: 'success' as 'success' | 'error',
+  });
+
+  const [loading, setLoading] = useState(false); // New state for loading
+
+  const validateForm = () => {
+    const newErrors = {
+      name: formData.name ? '' : 'Full Name is required',
+      email: formData.email ? '' : 'Email is required',
+      phone: formData.phone ? '' : 'Phone is required',
+      company: formData.company ? '' : 'Company Name is required',
+      state: formData.state ? '' : 'State is required',
+      city: formData.city ? '' : 'City is required',
+    };
+
+    setErrors(newErrors);
+
+    return !Object.values(newErrors).some(error => error !== '');
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | { target: { name: string; value: string } }) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
+    // Clear error for the field being edited
+    setErrors(prev => ({
+      ...prev,
+      [name]: ''
+    }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      company: '',
-      state: '',
-      city: '',
-      experience: '',
-      message: ''
-    });
+
+    if (!validateForm()) {
+      return;
+    }
+
+    setLoading(true); // Show loader
+
+    try {
+      const response = await fetch('/api/distributor-applications', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setSnackbar({
+          open: true,
+          message: 'Application submitted successfully!',
+          severity: 'success',
+        });
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          state: '',
+          city: '',
+          experience: '',
+          message: ''
+        });
+      } else {
+        setSnackbar({
+          open: true,
+          message: result.error || 'Failed to submit application',
+          severity: 'error',
+        });
+      }
+    } catch (error) {
+      setSnackbar({
+        open: true,
+        message: 'An error occurred while submitting the application',
+        severity: 'error',
+      });
+    } finally {
+      setLoading(false); // Hide loader
+    }
+  };
+
+  const handleCloseSnackbar = () => {
+    setSnackbar(prev => ({ ...prev, open: false }));
   };
 
   return (
@@ -192,6 +274,8 @@ const BecomeDistributor = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
+                      error={!!errors.name}
+                      helperText={errors.name}
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
@@ -203,6 +287,8 @@ const BecomeDistributor = () => {
                       type="email"
                       value={formData.email}
                       onChange={handleChange}
+                      error={!!errors.email}
+                      helperText={errors.email}
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
@@ -213,6 +299,8 @@ const BecomeDistributor = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
+                      error={!!errors.phone}
+                      helperText={errors.phone}
                     />
                   </Grid>
                   <Grid item xs={12}>
@@ -223,10 +311,12 @@ const BecomeDistributor = () => {
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
+                      error={!!errors.company}
+                      helperText={errors.company}
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
-                    <FormControl fullWidth required>
+                    <FormControl fullWidth required error={!!errors.state}>
                       <InputLabel>State</InputLabel>
                       <Select
                         name="state"
@@ -240,6 +330,7 @@ const BecomeDistributor = () => {
                           </MenuItem>
                         ))}
                       </Select>
+                      {errors.state && <Typography color="error" variant="caption">{errors.state}</Typography>}
                     </FormControl>
                   </Grid>
                   <Grid item xs={12} sm={6}>
@@ -250,6 +341,8 @@ const BecomeDistributor = () => {
                       name="city"
                       value={formData.city}
                       onChange={handleChange}
+                      error={!!errors.city}
+                      helperText={errors.city}
                     />
                   </Grid>
                   <Grid item xs={12}>
@@ -280,8 +373,10 @@ const BecomeDistributor = () => {
                       color="primary"
                       size="large"
                       fullWidth
+                      disabled={loading} // Disable button while loading
+                      startIcon={loading ? <CircularProgress size={20} color="inherit" /> : null} // Show loader
                     >
-                      Submit Application
+                      {loading ? 'Submitting...' : 'Submit Application'}
                     </Button>
                   </Grid>
                 </Grid>
@@ -290,6 +385,18 @@ const BecomeDistributor = () => {
           </Grid>
         </motion.div>
       </Container>
+
+      {/* Snackbar for feedback */}
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      >
+        <Alert onClose={handleCloseSnackbar} severity={snackbar.severity} sx={{ width: '100%' }}>
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 };

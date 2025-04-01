@@ -12,7 +12,6 @@ import {
   MenuItem,
   TextField,
   InputAdornment,
-  Divider,
   Chip,
   Stack,
   Pagination,
@@ -25,7 +24,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import AccessoryCard, { Accessory } from './AccessoryCard';
 import AccessoriesHero from './AccessoriesHero';
-import { accessories } from '@/data/accessories';
 
 const categories = [
   'All Categories',
@@ -46,107 +44,87 @@ const models = [
   'E-Cart Mini',
   'E-Cart Standard',
   'E-Loader 250',
-  'E-Loader 450'
+  'E-Loader 450',
 ];
 
 const sortOptions = [
   { value: 'featured', label: 'Featured' },
-  { value: 'newest', label: 'Newest' },
-  { value: 'price-low-high', label: 'Price: Low to High' },
-  { value: 'price-high-low', label: 'Price: High to Low' },
-  { value: 'best-rated', label: 'Best Rated' },
+  { value: 'name-asc', label: 'Name: A to Z' },
+  { value: 'name-desc', label: 'Name: Z to A' },
 ];
 
 const AccessoriesPage = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
-  
+
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All Categories');
   const [selectedModel, setSelectedModel] = useState('All Models');
   const [sortBy, setSortBy] = useState('featured');
-  const [filteredAccessories, setFilteredAccessories] = useState<Accessory[]>(accessories);
+  const [filteredAccessories, setFilteredAccessories] = useState<Accessory[]>([]);
   const [page, setPage] = useState(1);
-  const accessoriesPerPage = 9;
-  
+  const accessoriesPerPage = 30;
+
+  // Fetch accessories from the API
   useEffect(() => {
-    let filtered = [...accessories];
-    
-    // Apply search filter
-    if (searchQuery) {
-      filtered = filtered.filter(
-        item => item.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                item.description.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-    }
-    
-    // Apply category filter
-    if (selectedCategory !== 'All Categories') {
-      filtered = filtered.filter(item => item.category === selectedCategory);
-    }
-    
-    // Apply model filter
-    if (selectedModel !== 'All Models') {
-      filtered = filtered.filter(item => item.compatibleModels.includes(selectedModel));
-    }
-    
-    // Apply sorting
-    switch (sortBy) {
-      case 'price-low-high':
-        filtered.sort((a, b) => a.priceValue - b.priceValue);
-        break;
-      case 'price-high-low':
-        filtered.sort((a, b) => b.priceValue - a.priceValue);
-        break;
-      case 'newest':
-        // Assuming we'd have a date field for sorting by newest
-        // For now, just leave in default order
-        break;
-      case 'best-rated':
-        filtered.sort((a, b) => (b.rating || 0) - (a.rating || 0));
-        break;
-      case 'featured':
-      default:
-        filtered.sort((a, b) => (a.featured ? -1 : 1) - (b.featured ? -1 : 1));
-        break;
-    }
-    
-    setFilteredAccessories(filtered);
-    setPage(1); // Reset to first page on filter change
-  }, [searchQuery, selectedCategory, selectedModel, sortBy]);
-  
+    const fetchAccessories = async () => {
+      try {
+        const response = await fetch('/api/accessories');
+        if (!response.ok) {
+          throw new Error('Failed to fetch accessories');
+        }
+        const data = await response.json();
+        console.log("data : " , data);
+        // Map the database data to the Accessory interface
+        const accessories: Accessory[] = data.map((item: any) => ({
+          id: item.id.toString(),
+          name: item.name,
+          image: `https://forestgreen-capybara-315761.hostingersite.com/Accesoories/${item.image_name}`
+        }));
+
+        setFilteredAccessories(accessories);
+      } catch (error) {
+        console.error('Error fetching accessories:', error);
+      }
+    };
+
+    fetchAccessories();
+  }, []);
+
+
+
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
   };
-  
+
   const handleCategoryChange = (event: any) => {
     setSelectedCategory(event.target.value);
   };
-  
+
   const handleModelChange = (event: any) => {
     setSelectedModel(event.target.value);
   };
-  
+
   const handleSortChange = (event: any) => {
     setSortBy(event.target.value);
   };
-  
+
   const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-  
+
   // Calculate pagination
-  const indexOfLastAccessory = page * accessoriesPerPage;
-  const indexOfFirstAccessory = indexOfLastAccessory - accessoriesPerPage;
-  const currentAccessories = filteredAccessories.slice(indexOfFirstAccessory, indexOfLastAccessory);
-  const totalPages = Math.ceil(filteredAccessories.length / accessoriesPerPage);
-  
+  // const indexOfLastAccessory = page * accessoriesPerPage;
+  // const indexOfFirstAccessory = indexOfLastAccessory - accessoriesPerPage;
+  // const currentAccessories = filteredAccessories.slice(indexOfFirstAccessory, indexOfLastAccessory);
+  // const totalPages = Math.ceil(filteredAccessories.length / accessoriesPerPage);
+
   return (
     <Box component="main">
       <AccessoriesHero />
-      
+
       <Box sx={{ py: { xs: 4, md: 8 }, bgcolor: 'background.default' }}>
         <Container maxWidth="lg">
           <motion.div
@@ -155,13 +133,13 @@ const AccessoriesPage = () => {
             transition={{ duration: 0.5 }}
           >
             {/* Filters */}
-            <Paper 
-              elevation={2} 
-              sx={{ 
-                p: 3, 
-                mb: 4, 
+            {/* <Paper
+              elevation={2}
+              sx={{
+                p: 3,
+                mb: 4,
                 borderRadius: 2,
-                background: `linear-gradient(to right, ${theme.palette.background.paper}, ${theme.palette.primary.light}10)`
+                background: `linear-gradient(to right, ${theme.palette.background.paper}, ${theme.palette.primary.light}10)`,
               }}
             >
               <Grid container spacing={3} alignItems="center">
@@ -182,60 +160,11 @@ const AccessoriesPage = () => {
                     }}
                   />
                 </Grid>
-                
-                <Grid item xs={12} sm={6} md={3}>
-                  <FormControl fullWidth size="small">
-                    <InputLabel id="category-select-label">Category</InputLabel>
-                    <Select
-                      labelId="category-select-label"
-                      id="category-select"
-                      value={selectedCategory}
-                      label="Category"
-                      onChange={handleCategoryChange}
-                    >
-                      {categories.map((category) => (
-                        <MenuItem key={category} value={category}>{category}</MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-                </Grid>
-                
-                <Grid item xs={12} sm={6} md={3}>
-                  <FormControl fullWidth size="small">
-                    <InputLabel id="model-select-label">Compatible With</InputLabel>
-                    <Select
-                      labelId="model-select-label"
-                      id="model-select"
-                      value={selectedModel}
-                      label="Compatible With"
-                      onChange={handleModelChange}
-                    >
-                      {models.map((model) => (
-                        <MenuItem key={model} value={model}>{model}</MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-                </Grid>
-                
-                <Grid item xs={12} sm={6} md={2}>
-                  <FormControl fullWidth size="small">
-                    <InputLabel id="sort-select-label">Sort By</InputLabel>
-                    <Select
-                      labelId="sort-select-label"
-                      id="sort-select"
-                      value={sortBy}
-                      label="Sort By"
-                      onChange={handleSortChange}
-                    >
-                      {sortOptions.map((option) => (
-                        <MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-                </Grid>
-              </Grid>
+
               
-              {/* Active filters display */}
+              </Grid>
+
+             
               {(selectedCategory !== 'All Categories' || selectedModel !== 'All Models' || searchQuery) && (
                 <Box sx={{ mt: 2, display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
                   <Typography variant="body2" color="text.secondary" sx={{ mr: 1 }}>
@@ -267,20 +196,20 @@ const AccessoriesPage = () => {
                   </Stack>
                 </Box>
               )}
-            </Paper>
-            
+            </Paper> */}
+
             {/* Results summary */}
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
               <Typography variant="h6" component="h2">
-                {filteredAccessories.length} 
+                {filteredAccessories.length}
                 {filteredAccessories.length === 1 ? ' accessory' : ' accessories'} found
               </Typography>
             </Box>
-            
+
             {/* Products grid */}
-            {currentAccessories.length > 0 ? (
+            {filteredAccessories.length > 0 ? (
               <Grid container spacing={3}>
-                {currentAccessories.map((accessory) => (
+                {filteredAccessories.map((accessory) => (
                   <Grid item key={accessory.id} xs={12} sm={6} md={4}>
                     <AccessoryCard accessory={accessory} />
                   </Grid>
@@ -296,19 +225,19 @@ const AccessoriesPage = () => {
                 </Typography>
               </Box>
             )}
-            
+
             {/* Pagination */}
-            {totalPages > 1 && (
+            {/* {totalPages > 1 && (
               <Box sx={{ display: 'flex', justifyContent: 'center', mt: 6 }}>
-                <Pagination 
-                  count={totalPages} 
-                  page={page} 
-                  onChange={handlePageChange} 
+                <Pagination
+                  count={totalPages}
+                  page={page}
+                  onChange={handlePageChange}
                   color="primary"
-                  size={isSmall ? "small" : "medium"}
+                  size={isSmall ? 'small' : 'medium'}
                 />
               </Box>
-            )}
+            )} */}
           </motion.div>
         </Container>
       </Box>
