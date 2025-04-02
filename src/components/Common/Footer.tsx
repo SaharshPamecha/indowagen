@@ -217,13 +217,13 @@ const Footer = () => {
                     sx={{ mr: 1, color: "primary.main", mt: 0.5 }}
                   />
                   <Typography variant="body2">
-                    {companyInfo.address?.street || "Industrial Area"}
+                    {companyInfo.address?.street}
                     <br />
-                    {companyInfo.address?.city || "Noida"},{" "}
-                    {companyInfo.address?.state || "Uttar Pradesh"},{" "}
-                    {companyInfo.address?.zip || "201301"}
+                    {companyInfo.address?.city},{" "}
+                    {companyInfo.address?.state},{" "}
+                    {companyInfo.address?.zip}
                     <br />
-                    {companyInfo.address?.country || "India"}
+                    {companyInfo.address?.country}
                   </Typography>
                 </Box>
 
