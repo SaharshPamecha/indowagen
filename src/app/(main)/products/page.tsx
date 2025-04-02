@@ -162,7 +162,7 @@ export default function Products() {
                   >
                     {product.img_link ? (
                       <Image
-                        src={`/products/${product.img_link}`}
+                        src={`https://forestgreen-capybara-315761.hostingersite.com/assets/products/${product.img_link}`}
                         alt={product.model_name}
                         fill
                         style={{ objectFit: 'contain' }}

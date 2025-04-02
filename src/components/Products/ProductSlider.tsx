@@ -34,10 +34,10 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ images, modelName }) => {
              
               <Box sx={{ textAlign: 'center' }}>
                 <img
-                  src={`${image.img_link}`} // Adjust based on your database field name
+                  src={`https://forestgreen-capybara-315761.hostingersite.com/assets/products/${image.img_link}`} // Adjust based on your database field name
                   alt={`${modelName} ${index + 1}`}
                   style={{
-                    width: '70%',
+                    width: '100%',
                     height: '100%',
                     objectFit: 'contain', // Ensure the entire image is visible
                   }}
