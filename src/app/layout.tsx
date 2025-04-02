@@ -50,6 +50,10 @@ export default function RootLayout({
     <html lang="en">
      
       <body suppressHydrationWarning className={roboto.className} style={{ overflowX: 'hidden' }}>
+      {/* Debug element - will remove after testing */}
+      <div id="debug-element" style={{ position: 'fixed', top: 0, left: 0, padding: '10px', background: 'red', color: 'white', zIndex: 9999 }}>
+        Debug: Root Layout Rendered
+      </div>
       <Providers>
         {/* Apply suppressHydrationWarning to the main content wrapper */}
       
