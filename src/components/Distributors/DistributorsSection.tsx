@@ -1,3 +1,4 @@
+// DistributorsSection.tsx
 'use client';
 
 import React, { useState } from 'react';
@@ -7,18 +8,29 @@ import BecomeDistributor from './BecomeDistributor';
 import { Box } from '@mui/material';
 
 const DistributorsSection: React.FC = () => {
-  const [selectedState, setSelectedState] = useState('');
-  const [selectedCity, setSelectedCity] = useState('');
+  const [selectedState, setSelectedState] = useState<string | undefined>(undefined);
+  const [selectedCity, setSelectedCity] = useState<string | undefined>(undefined);
 
   const handleSearch = (state: string, city: string) => {
-    setSelectedState(state);
-    setSelectedCity(city);
+    console.log('Search triggered:', { state, city });
+    setSelectedState(state || undefined);
+    setSelectedCity(city || undefined);
+  };
+
+  const handleReset = () => {
+    console.log('Reset triggered');
+    setSelectedState(undefined);
+    setSelectedCity(undefined);
   };
 
   return (
     <Box component="main">
       <DistributorSearch onSearch={handleSearch} />
-      <DistributorsMap selectedState={selectedState} selectedCity={selectedCity} />
+      <DistributorsMap 
+        selectedState={selectedState} 
+        selectedCity={selectedCity} 
+        onReset={handleReset} // Pass reset callback
+      />
       <BecomeDistributor />
     </Box>
   );

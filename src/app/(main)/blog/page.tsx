@@ -5,7 +5,7 @@ import BlogCategories from "@/components/Blog/BlogCategories";
 import BlogSubscribe from "@/components/Blog/BlogSubscribe";
 import { Metadata } from "next";
 import FeaturedPosts from "@/components/Blog/FeaturedPosts";
-
+import NewsList from '@/components/News/NewsList';
 export const metadata: Metadata = {
   title: "Blog | Indo Wagen - Electric Mobility Insights",
   description:
@@ -19,6 +19,7 @@ export default function BlogPage() {
       <FeaturedPosts />
       <BlogCategories />
       <BlogList />
+      <NewsList />
       <BlogSubscribe />
     </>
   );
