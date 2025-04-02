@@ -1,4 +1,6 @@
 import { NextResponse } from 'next/server';
+import { blogPosts } from '@/data/blogs';
+import { newsItems } from '@/data/news';
 
 export async function GET() {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://indowagen.com';
@@ -6,8 +8,8 @@ export async function GET() {
   // Generate current date in ISO format for lastmod
   const currentDate = new Date().toISOString();
   
-  // Create the sitemap
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  // Start building the sitemap XML
+  let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
@@ -95,7 +97,14 @@ export async function GET() {
   </url>
   
   <url>
-    <loc>${baseUrl}/distributors</loc>
+    <loc>${baseUrl}/dealers/lounge</loc>
+    <lastmod>${currentDate}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>${baseUrl}/dealers/locator</loc>
     <lastmod>${currentDate}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -134,8 +143,59 @@ export async function GET() {
     <lastmod>${currentDate}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-  </url>
-  
+  </url>`;
+
+  // Add Blog section
+  sitemap += `
+
+  <!-- Blog Pages -->
+  <url>
+    <loc>${baseUrl}/blog</loc>
+    <lastmod>${currentDate}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>`;
+
+  // Add all blog posts
+  blogPosts.forEach(post => {
+    if (post.slug) {
+      sitemap += `
+  <url>
+    <loc>${baseUrl}/blog/${post.slug}</loc>
+    <lastmod>${currentDate}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>`;
+    }
+  });
+
+  // Add News section
+  sitemap += `
+
+  <!-- News Pages -->
+  <url>
+    <loc>${baseUrl}/news</loc>
+    <lastmod>${currentDate}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>`;
+
+  // Add all news articles
+  newsItems.forEach(article => {
+    if (article.slug) {
+      sitemap += `
+  <url>
+    <loc>${baseUrl}/news/${article.slug}</loc>
+    <lastmod>${currentDate}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>`;
+    }
+  });
+
+  // Add legal pages
+  sitemap += `
+
   <!-- Legal Pages -->
   <url>
     <loc>${baseUrl}/terms</loc>
