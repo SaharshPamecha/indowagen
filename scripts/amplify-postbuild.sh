@@ -21,9 +21,21 @@ if [ -d ".next/standalone" ]; then
   fi
   
   # Ensure trace files are available for Amplify
+  # Remove existing trace file if it's not a directory
+  if [ -e ".next/trace" ] && [ ! -d ".next/trace" ]; then
+    rm -f .next/trace
+    echo "Removed existing trace file"
+  fi
+  
+  # Create trace directory
   mkdir -p .next/trace
   touch .next/trace/.trace
   echo "Created trace directory and placeholder file"
+  
+  # Create additional trace files at the root directory
+  mkdir -p trace
+  touch trace/.trace
+  echo "Created root trace directory and placeholder file"
   
   # Verify the directory structure
   echo "Root directory contents:"
