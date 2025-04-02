@@ -38,7 +38,7 @@ const Footer = () => {
       links: [
         { text: 'About Us', href: '/about' },
         { text: 'Contact', href: '/contact' },
-        { text: 'Distributors', href: '/distributors' },
+        { text: 'Dealers', href: '/dealers/lounge' },
         { text: 'Careers', href: '/careers' },
       ],
     },
@@ -49,6 +49,15 @@ const Footer = () => {
         { text: 'Service Centers', href: '/service-centers' },
         { text: 'Warranty', href: '/warranty' },
         { text: 'Documentation', href: '/docs' },
+      ],
+    },
+    {
+      title: 'Resources',
+      links: [
+        { text: 'Blog', href: '/blog' },
+        { text: 'News', href: '/news' },
+        { text: 'Sitemap', href: '/sitemap' },
+        { text: 'Privacy Policy', href: '/privacy' },
       ],
     },
   ];

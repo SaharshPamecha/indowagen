@@ -17,18 +17,12 @@ frontend:
   artifacts:
     baseDirectory: .
     files:
-      - '.next/standalone/**/*'
-      - '.next/static/**/*'
-      - '.next/server/**/*'
-      - '.next/required-server-files.json'
-      - 'required-server-files.json'
-      - 'public/**/*'
+      - '**/*'
+    discard:
       - 'node_modules/**/*'
-      - 'package.json'
-      - 'next.config.js'
-      - 'amplify.json'
-      - 'amplify-next-config.json'
-      - 'customHttp.yml'
+      - '.git/**/*'
+      - 'src/**/*'
+      - '.next/cache/**/*'
   cache:
     paths:
       - node_modules/**/*
