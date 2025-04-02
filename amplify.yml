@@ -11,10 +11,17 @@ frontend:
         - echo "Building Next.js application in SSR mode"
         - export NODE_OPTIONS="--max-old-space-size=4096"
         - npm run build
+        - echo "Running custom Amplify build script"
+        - node amplify-build.js
   artifacts:
-    baseDirectory: .next
+    baseDirectory: .
     files:
-      - '**/*'
+      - .next/**/*
+      - node_modules/**/*
+      - public/**/*
+      - package.json
+      - server.js
+      - next.config.js
   cache:
     paths:
       - node_modules/**/*
