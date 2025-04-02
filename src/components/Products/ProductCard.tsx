@@ -86,7 +86,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           {/* Use first image from images array if available, otherwise fall back to single image */}
           {product.img_link && product.img_link.length > 0 ? (
             <Image
-              src={`/products/${product.img_link}`}
+              src={`https://forestgreen-capybara-315761.hostingersite.com/assets/products/${product.img_link}`}
               alt={product.model_name}
               fill
               style={{
