@@ -8,11 +8,12 @@ frontend:
       commands:
         - echo "Verifying assets"
         - bash scripts/copy-missing-assets.sh
-        - echo "Building Next.js application in SSR mode"
+        - echo "Building Next.js application with static export"
         - export NODE_OPTIONS="--max-old-space-size=4096"
         - npm run build
+        - npx next export
   artifacts:
-    baseDirectory: .next
+    baseDirectory: out
     files:
       - '**/*'
   cache:
