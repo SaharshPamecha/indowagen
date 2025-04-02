@@ -12,7 +12,6 @@ const Providers = ({ children }: ProvidersProps) => {
   // console.log("Providers component rendered");
   return (
     <>
-    <div>h</div>
       <ProgressBar
         height="4px"
         color="black"
