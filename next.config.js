@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Configure output for AWS Amplify static export
-  output: 'export',
-  // Configure image optimization for AWS Amplify static export
+  // Configure output for AWS Amplify SSR
+  output: 'standalone',
+  // Configure image optimization for AWS Amplify
   images: {
     domains: ['localhost', 'indowagen-website-nextjs.d18s43ml1gjftw.amplifyapp.com'],
     remotePatterns: [
@@ -19,8 +19,8 @@ const nextConfig = {
         pathname: '/**',
       },
     ],
-    // Static exports require unoptimized images
-    unoptimized: true,
+    // Set unoptimized based on environment
+    unoptimized: process.env.NODE_ENV !== 'production',
   },
   
   // React strict mode is beneficial for development but can cause double-mounting
