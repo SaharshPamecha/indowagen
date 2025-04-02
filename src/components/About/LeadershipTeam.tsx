@@ -69,7 +69,7 @@ const LeadershipTeam = () => {
       bio: "having more than 25 years of experience in leadership role across sales and marketing in reputed organizations.",
       image: "/team/Rajeev.jpeg",
       social: {
-        linkedin: "https://www.linkedin.com/company/indowagen/",
+        linkedin: "https://www.linkedin.com/in/srivastavarajeev/",
       },
     },
   ];

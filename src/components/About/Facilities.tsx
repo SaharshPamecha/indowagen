@@ -62,8 +62,8 @@ West Bengal`,
     {
       id: 'headquarters',
       name: 'Corporate Headquarters',
-      location: 'Noida, UP',
-      description: 'Our corporate headquarters houses our administrative, marketing, sales, and customer support teams.',
+      location: 'West Bengal',
+      description: 'Merlin Infinite, 10th floor, Room No- 1010, Plot No- 5, DN51, Sector V, Saltlake, Kolkata, West Bengal, 700091, India',
       features: [
         'Executive Offices',
         'Marketing & Sales Department',

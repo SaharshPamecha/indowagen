@@ -26,6 +26,7 @@ const pages = [
   { name: "Home", path: "/" },
   { name: "About Us", path: "/about" },
   { name: "Products", path: "/products" },
+  { name: "Accessories", path: "/accessories" },
   // { name: 'Pricing', path: '/pricing' },
   {
     name: "Dealers",
@@ -37,7 +38,7 @@ const pages = [
   },
   // { name: "Support", path: "/support" },
   { name: "Blog", path: "/blog" },
-  { name: "News", path: "/news" },
+  // { name: "News", path: "/news" },
   { name: "Careers", path: "/careers", icon: WorkIcon },
   { name: "Contact", path: "/contact" },
 ];
@@ -197,7 +198,7 @@ const Navbar = () => {
                       style={{ textDecoration: "none", color: "inherit" }}
                     >
                       <MenuItem onClick={handleCloseNavMenu}>
-                        <Typography textAlign="center">{page.name}</Typography>
+                        <Typography  textAlign="center">{page.name}</Typography>
                       </MenuItem>
                     </Link>
                   );
@@ -294,6 +295,8 @@ const Navbar = () => {
                     <Button
                       onClick={handleCloseNavMenu}
                       sx={{
+                        pl: 2,
+                        pr: 3,
                         mx: 1,
                         color:
                           pathname === page.path
