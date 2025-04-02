@@ -8,27 +8,13 @@ frontend:
       commands:
         - echo "Verifying assets"
         - bash scripts/copy-missing-assets.sh
-        - echo "Creating trace files before build"
-        - bash scripts/create-trace-files.sh
         - echo "Building Next.js application in SSR mode"
         - export NODE_OPTIONS="--max-old-space-size=4096"
         - npm run build
-        - echo "Running post-build script for SSR deployment"
-        - bash scripts/amplify-postbuild.sh
-        - echo "Creating trace files after build"
-        - bash scripts/create-trace-files.sh
   artifacts:
-    baseDirectory: .
+    baseDirectory: .next
     files:
       - '**/*'
-      - '.next/trace/**/*'
-      - 'trace/**/*'
-      - 'required-server-files.json'
-      - 'server.js'
-    discard:
-      - 'node_modules/**/*'
-      - '.git/**/*'
-      - '.next/cache/**/*'
   cache:
     paths:
       - node_modules/**/*
