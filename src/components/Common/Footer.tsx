@@ -46,8 +46,6 @@ import PolicyIcon from '@mui/icons-material/Policy';
 import InfoIcon from '@mui/icons-material/Info';
 
 // Data
-// import { companyInfo } from '@/data/company';
-
 const companyInfo = {
   name: "Indo Wagen",
   fullName: "Indo Wagen Electronics Pvt. Ltd.",
@@ -70,7 +68,6 @@ const companyInfo = {
     zip: "700091",
     country: "India",
   },
-
   registeredAddress: {
     name: "Registered Office",
     street: "8/1a, Sir William Jones Sarani, 4th floor",
@@ -250,12 +247,6 @@ const Footer = () => {
       href: companyInfo.social?.youtube || '#',
       color: '#FF0000'
     },
-    // { 
-    //   name: 'WhatsApp',
-    //   icon: <WhatsAppIcon />, 
-    //   href: companyInfo.contact?.phone ? `https://wa.me/${companyInfo.contact.phone.replace(/[^0-9]/g, '')}` : '#',
-    //   color: '#25D366'
-    // },
   ];
 
   // Legal links
@@ -271,7 +262,7 @@ const Footer = () => {
       sx={{
         bgcolor:
           theme.palette.mode === "light" ? "grey.100" : "background.paper",
-        pt: 8,
+        pt: 4,
         pb: 3,
         borderTop: `1px solid ${theme.palette.divider}`,
         width: "100%",
@@ -279,7 +270,43 @@ const Footer = () => {
       }}
     >
       <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
-        {/* Top Section with Main Content */}
+        {/* Top Section: Powered by and Trademark */}
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: { xs: 'column', sm: 'row' },
+            justifyContent: { xs: 'center', sm: 'space-between' },
+            alignItems: 'center',
+            mb: 4,
+            py: 2,
+            borderBottom: `1px solid ${theme.palette.divider}`,
+          }}
+        >
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{ mb: { xs: 1, sm: 0 } }}
+          >
+            <a
+              target="_blank"
+              href="https://digitalmiles.in/"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              Powered by Digital Miles
+            </a>{' '}
+            | Made with Love ♥
+          </Typography>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{ mt: { xs: 1, sm: 0 } }}
+          >
+            {companyInfo.name || "Indo Wagen"} is a trademark of{' '}
+            {companyInfo.fullName || "Indo Wagen Electronics Pvt. Ltd."}
+          </Typography>
+        </Box>
+
+        {/* Main Content */}
         <Grid container spacing={4}>
           {/* Company Info and Newsletter */}
           <Grid item xs={12} md={4}>
@@ -323,8 +350,7 @@ const Footer = () => {
                   <Typography variant="body2">
                     {companyInfo.address?.street}
                     <br />
-                    {companyInfo.address?.city},{" "}
-                    {companyInfo.address?.state},{" "}
+                    {companyInfo.address?.city}, {companyInfo.address?.state},{' '}
                     {companyInfo.address?.zip}
                     <br />
                     {companyInfo.address?.country}
@@ -590,7 +616,11 @@ const Footer = () => {
             textAlign: "center",
           }}
         >
-          {/* Copyright */}
+          <Box>
+            <Typography variant="body2" color="text.secondary">
+              {/* Removed from here */}
+            </Typography>
+          </Box>
           <Box
             sx={{ display: "flex", alignItems: "center", mb: { xs: 2, sm: 0 } }}
           >
@@ -598,13 +628,11 @@ const Footer = () => {
             <Typography variant="body2" color="text.secondary">
               {currentYear}{" "}
               {companyInfo.fullName || "Indo Wagen Electronics Pvt. Ltd."}. All
-              rights reserved. <a target='_blank' style={{textDecoration: "none"}} href="https://digitalmiles.in/">Powered by Digital Miles</a>
+              rights reserved.
             </Typography>
           </Box>
-
           <Typography variant="caption" color="text.secondary">
-            {companyInfo.name || "Indo Wagen"} is a trademark of{" "}
-            {companyInfo.fullName || "Indo Wagen Electronics Pvt. Ltd."}
+            {/* Removed from here */}
           </Typography>
         </Box>
 

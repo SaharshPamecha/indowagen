@@ -231,8 +231,9 @@ West Bengal`,
 
                   {/* Conditionally render the Get Directions button only for facilities with googleMapsLink */}
                   {facilities[activeTab].googleMapsLink && (
-                    <motion.div variants={itemVariants} sx={{ mt: 3 }}>
+                    <motion.div variants={itemVariants} >
                       <Button
+                     
                         variant="contained"
                         color="primary"
                         size="large"
@@ -240,6 +241,7 @@ West Bengal`,
                         target="_blank"
                         rel="noopener noreferrer"
                         sx={{ 
+                          mt: 3,
                           borderRadius: 2,
                           px: 4, 
                           fontWeight: 600,
