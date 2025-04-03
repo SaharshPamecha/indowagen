@@ -73,7 +73,7 @@ const ProductsHero = () => {
           }}
         />
         {/* Overlay Gradient */}
-        <Box
+        {/* <Box
           sx={{
             position: 'absolute',
             top: 0,
@@ -83,7 +83,7 @@ const ProductsHero = () => {
             background: 'linear-gradient(to right, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0.4) 100%)',
             zIndex: 1,
           }}
-        />
+        /> */}
       </Box>
 
       {/* Content */}
@@ -97,7 +97,7 @@ const ProductsHero = () => {
           zIndex: 2,
         }}
       >
-        <motion.div
+        {/* <motion.div
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
           variants={containerVariants}
@@ -204,7 +204,7 @@ const ProductsHero = () => {
             </motion.div>
           </Box>
           
-          {/* Animation dots */}
+          
           <Box 
             sx={{ 
               display: 'flex', 
@@ -248,7 +248,7 @@ const ProductsHero = () => {
               EV Revolution in Motion
             </Typography>
           </Box>
-        </motion.div>
+        </motion.div> */}
       </Container>
     </Box>
   );

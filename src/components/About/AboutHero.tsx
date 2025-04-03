@@ -137,7 +137,7 @@ const AboutHero = () => {
                 }}
               >
                 <Image
-                  src="/images/products/fixed/q8-easy/q8-easy-new_red.png"
+                  src="/products/Easy-Lite-4.webp"
                   alt="Indo Wagen Factory"
                   fill
                   style={{ objectFit: "contain", borderRadius: "16px" }}
