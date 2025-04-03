@@ -209,13 +209,16 @@ const Footer = () => {
         { name: 'Dealers Lounge', href: '/dealers/lounge' },
         { name: 'Find a Dealer', href: '/dealers/locator' },
         { name: 'Become a Dealer', href: '/dealers/lounge#become-distributor' },
+        // { name: 'Contact Us', href: '/contact' },
       ],
     },
     {
       title: 'Support',
       links: [
-        { name: 'Connect with Us', href: '/contact#sociallinks' },
-        { name: 'Contact Us', href: '/contact' }
+        { name: 'Connect Support', href: '/contact' },
+        { name: 'Connect With Us', href: '/contact#visit-our-locations' },
+        { name: 'Vistors', href: '/contact#sociallinks' },
+        { name: 'FAQ', href: '/contact#faq' }
       ],
     }
    
@@ -277,7 +280,7 @@ const Footer = () => {
     >
       <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
         {/* Top Section: Powered by and Trademark */}
-        <Box
+        {/* <Box
           sx={{
             display: 'flex',
             flexDirection: { xs: 'column', sm: 'row' },
@@ -310,7 +313,7 @@ const Footer = () => {
             {companyInfo.name || "Indo Wagen"} is a trademark of{' '}
             {companyInfo.fullName || "Indo Wagen Electronics Pvt. Ltd."}
           </Typography>
-        </Box>
+        </Box> */}
 
         {/* Main Content */}
         <Grid container spacing={4}>
@@ -610,37 +613,48 @@ const Footer = () => {
         </Box>
 
         {/* Footer Bottom */}
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: { xs: "column", sm: "row" },
-            alignItems: "center",
-            justifyContent: "space-between",
-            mt: 3,
-            pt: 3,
-            borderTop: `1px solid ${theme.palette.divider}`,
-            textAlign: "center",
-          }}
-        >
-          <Box>
-            <Typography variant="body2" color="text.secondary">
-              {/* Removed from here */}
-            </Typography>
-          </Box>
-          <Box
-            sx={{ display: "flex", alignItems: "center", mb: { xs: 2, sm: 0 } }}
-          >
-            <CopyrightIcon sx={{ fontSize: 16, mr: 0.5 }} />
-            <Typography variant="body2" color="text.secondary">
-              {currentYear}{" "}
-              {companyInfo.fullName || "Indo Wagen Electronics Pvt. Ltd."}. All
-              rights reserved.
-            </Typography>
-          </Box>
-          <Typography variant="caption" color="text.secondary">
-            {/* Removed from here */}
-          </Typography>
-        </Box>
+       {/* Footer Bottom */}
+<Box
+  sx={{
+    display: "flex",
+    flexDirection: { xs: "column", sm: "row" },
+    alignItems: "center",
+    justifyContent: "space-between",
+    mt: 3,
+    pt: 3,
+    borderTop: `1px solid ${theme.palette.divider}`,
+    textAlign: "center",
+  }}
+>
+  {/* Left Corner - Copyright */}
+  <Box sx={{ mb: { xs: 2, sm: 0 } }}>
+    <Typography variant="body2" color="text.secondary">
+      <CopyrightIcon sx={{ fontSize: 16, mr: 0.5, verticalAlign: "middle" }} />
+      {currentYear} {companyInfo.fullName || "Indo Wagen Electronics Pvt. Ltd."}. All rights reserved.
+    </Typography>
+  </Box>
+
+  {/* Right Corner - Powered by and Trademark */}
+  <Box sx={{ display: "flex", flexDirection: "column", alignItems: { xs: "center", sm: "flex-end" } }}>
+    {/* Powered by Digital Miles */}
+    <Typography variant="body2" color="text.secondary" sx={{ mb: { xs: 1, sm: 1 } }}>
+      <a
+        target="_blank"
+        href="https://digitalmiles.in/"
+        style={{ textDecoration: "none", color: "inherit" }}
+      >
+        Powered by Digital Miles
+      </a>{' '}
+      | Made with Love ♥
+    </Typography>
+    
+    {/* Trademark */}
+    <Typography variant="body2" color="text.secondary">
+      {companyInfo.name || "Indo Wagen"} is a trademark of{' '}
+      {companyInfo.fullName || "Indo Wagen Electronics Pvt. Ltd."}
+    </Typography>
+  </Box>
+</Box>
 
         {/* Newsletter Subscription Status */}
         <Snackbar

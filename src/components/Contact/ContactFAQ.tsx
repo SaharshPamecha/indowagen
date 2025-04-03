@@ -76,6 +76,7 @@ const ContactFAQ = () => {
         py: { xs: 6, md: 10 },
         bgcolor: theme.palette.background.default,
       }}
+      id="faq"
     >
       <Container maxWidth="lg">
         <motion.div

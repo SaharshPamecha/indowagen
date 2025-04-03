@@ -160,6 +160,7 @@ const ContactMap = () => {
         py: { xs: 6, md: 10 },
         bgcolor: theme.palette.background.paper,
       }}
+      id="visit-our-locations"
     >
       <Container maxWidth="lg">
         <motion.div
