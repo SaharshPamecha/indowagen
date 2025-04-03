@@ -105,7 +105,7 @@ const AccessoriesHero = () => {
                 </Button>
                 <Button
                   component={Link}
-                  href="/contact"
+                  href="/products"
                   variant="outlined"
                   size="large"
                   sx={{
