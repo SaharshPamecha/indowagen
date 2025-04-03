@@ -188,9 +188,9 @@ const Footer = () => {
     {
       title: 'Products',
       links: [
-        { name: 'All Electric Vehicles', href: '/products' },
+        { name: 'Explore Products', href: '/products' },
         { name: 'Accessories', href: '/accessories' },
-        { name: 'Compare Models', href: '/products/compare' },
+        // { name: 'Compare Models', href: '/products/compare' },
       ],
     },
     {
@@ -198,21 +198,27 @@ const Footer = () => {
       links: [
         { name: 'About Us', href: '/about' },
         { name: 'Our Team', href: '/about#team' },
+        { name: 'News & Blog', href: '/blog' },
         { name: 'Careers', href: '/careers' },
-        { name: 'Contact Us', href: '/contact' },
+        
+      ],
+    },
+    {
+      title: 'Dealers',
+      links: [
+        { name: 'Dealers Lounge', href: '/dealers/lounge' },
+        { name: 'Find a Dealer', href: '/dealers/locator' },
+        { name: 'Become a Dealer', href: '/dealers/lounge#become-distributor' },
       ],
     },
     {
       title: 'Support',
       links: [
-        { name: 'Customer Support', href: '/support' },
-        { name: 'Find a Dealer', href: '/distributors' },
-        { name: 'Service Centers', href: '/service-centers' },
-        { name: 'Warranty Information', href: '/warranty' },
-        { name: 'Documentation', href: '/docs' },
-        { name: 'Contact Support', href: '/contact#support' },
+        { name: 'Connect with Us', href: '/contact#sociallinks' },
+        { name: 'Contact Us', href: '/contact' }
       ],
-    },
+    }
+   
   ];
 
   // Social media links with enhanced information
