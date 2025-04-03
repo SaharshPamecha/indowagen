@@ -37,7 +37,7 @@ const pages = [
     ],
   },
   // { name: "Support", path: "/support" },
-  { name: "Blog", path: "/blog" },
+  { name: "News & Blog", path: "/blog" },
   // { name: "News", path: "/news" },
   { name: "Careers", path: "/careers", icon: WorkIcon },
   { name: "Contact", path: "/contact" },
@@ -296,7 +296,7 @@ const Navbar = () => {
                       onClick={handleCloseNavMenu}
                       sx={{
                         pl: 2,
-                        pr: 3,
+                        pr: 2,
                         mx: 1,
                         color:
                           pathname === page.path

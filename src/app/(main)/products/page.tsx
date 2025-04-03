@@ -50,7 +50,7 @@ export default function Products() {
           id: row.id,
           model_name: row.model_name,
           tagline: row.tagline || 'Premium Electric Vehicle',
-          price: row.price ? `₹${row.price}` : 'Contact for price',
+          price: row.price ? `₹${row.price}` : 'Contact',
           category: row.category || 'electric-vehicle',
           img_link: row.img_link || null,
           url: row.url || null

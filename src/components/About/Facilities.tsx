@@ -16,11 +16,6 @@ import {
 } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
 import PlaceIcon from '@mui/icons-material/Place';
-import FactoryIcon from '@mui/icons-material/Factory';
-import ScienceIcon from '@mui/icons-material/Science';
-import BusinessIcon from '@mui/icons-material/Business';
-import { companyInfo } from '@/data/company';
-import { Description } from '@mui/icons-material';
 
 const Facilities = () => {
   const theme = useTheme();
@@ -30,20 +25,19 @@ const Facilities = () => {
     {
       id: 'manufacturing',
       name: 'Manufacturing Facility',
-      //location: 'Noida, UP',
       location: 'West Bengal',
-      description : `Zeniak Innovation India Limited (INDOWAGEN), Bagpara, (Near Ideal Public School), 
+      description: `Zeniak Innovation India Limited (INDOWAGEN), Bagpara, (Near Ideal Public School), 
 Village: Kashyabpur, PO - Mahishrekha, Tulsiberia, Block - Uluberia II, Howrah - 711303, 
 West Bengal`,
-      //description: 'Our state-of-the-art manufacturing unit spreads across 50,000 sq ft and produces up to 1,000 vehicles per month. Equipped with modern assembly lines and quality control systems.',
       features: [
         'Assembly Line Production',
         'Quality Control Lab',
         'Battery Testing Facility',
         'Warehouse & Logistics Hub'
       ],
-      image: '/facilities/manufacturing.jpg',
-      icon: <FactoryIcon fontSize="large" />,
+      image: '/Corporate headquaters image.webp',
+      tabImage: '/manufacturing-tab-image.webp',
+      googleMapsLink: 'https://maps.google.com/?q=Zeniak+Innovation+India+Limited,+Bagpara,+Kashyabpur,+Mahishrekha,+Tulsiberia,+Uluberia+II,+Howrah+711303,+West+Bengal'
     },
     {
       id: 'c&f',
@@ -54,10 +48,10 @@ West Bengal`,
         'Battery Technology Research',
         'Motor Efficiency Optimization',
         'Vehicle Design Studio',
-       // 'Performance Testing Track'
       ],
-      image: '/facilities/rd.jpg',
-      icon: <ScienceIcon fontSize="large" />,
+      image: '/C&F image.webp',
+      tabImage: '/cnf-tab-image.webp',
+      // No googleMapsLink needed since we're not showing the button
     },
     {
       id: 'headquarters',
@@ -70,8 +64,9 @@ West Bengal`,
         'Customer Support Center',
         'Training Facilities'
       ],
-      image: '/facilities/training.jpg',
-      icon: <BusinessIcon fontSize="large" />,
+      image: '/Corporate headquaters image.webp',
+      tabImage: '/headquarters-tab-image.webp',
+      googleMapsLink: 'https://maps.google.com/?q=Merlin+Infinite,+DN51,+Sector+V,+Saltlake,+Kolkata,+West+Bengal,+700091,+India'
     },
   ];
 
@@ -143,15 +138,18 @@ West Bengal`,
               '& .MuiTab-root': {
                 minWidth: 120,
                 fontWeight: 600,
+                padding: 1,
               },
             }}
           >
-            {facilities.map((facility, index) => (
-              <Tab 
+            {facilities.map((facility) => (
+              <Tab
                 key={facility.id}
-                label={facility.name} 
-                icon={facility.icon} 
-                iconPosition="start"
+                label={
+                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    {facility.name}
+                  </Box>
+                }
               />
             ))}
           </Tabs>
@@ -175,34 +173,14 @@ West Bengal`,
                   }}
                 >
                   <CardMedia
-                    component="div"
+                    component="img"
+                    image={facilities[activeTab].image}
+                    alt={facilities[activeTab].name}
                     sx={{
                       height: 300,
-                      bgcolor: 'grey.200',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      position: 'relative',
+                      objectFit: 'cover',
                     }}
-                  >
-                    {facilities[activeTab].icon && (
-                      <Box sx={{ fontSize: 80, color: 'grey.400' }}>
-                        {facilities[activeTab].icon}
-                      </Box>
-                    )}
-                    <Typography 
-                      variant="body2" 
-                      sx={{ 
-                        position: 'absolute', 
-                        bottom: 10, 
-                        right: 10, 
-                        color: 'grey.500',
-                        fontSize: '0.75rem'
-                      }}
-                    >
-                      Facility image placeholder
-                    </Typography>
-                  </CardMedia>
+                  />
                 </Card>
               </Grid>
 
@@ -251,21 +229,27 @@ West Bengal`,
                     </Box>
                   </motion.div>
 
-                  {/* <motion.div variants={itemVariants} style={{ marginTop: 24 }}>
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      size="large"
-                      sx={{ 
-                        borderRadius: 2,
-                        px: 4, 
-                        fontWeight: 600,
-                        textTransform: 'none'
-                      }}
-                    >
-                      Schedule a Visit
-                    </Button>
-                  </motion.div> */}
+                  {/* Conditionally render the Get Directions button only for facilities with googleMapsLink */}
+                  {facilities[activeTab].googleMapsLink && (
+                    <motion.div variants={itemVariants} sx={{ mt: 3 }}>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        size="large"
+                        href={facilities[activeTab].googleMapsLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        sx={{ 
+                          borderRadius: 2,
+                          px: 4, 
+                          fontWeight: 600,
+                          textTransform: 'none'
+                        }}
+                      >
+                        Get Directions
+                      </Button>
+                    </motion.div>
+                  )}
                 </motion.div>
               </Grid>
             </Grid>

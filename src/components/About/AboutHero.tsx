@@ -133,15 +133,15 @@ const AboutHero = () => {
                 sx={{
                   position: "relative",
                   height: { xs: "300px", md: "500px" },
-                  width: "100%",
+                  //width: "100%",
                 }}
               >
                 <Image
-                  src="/images/products/fixed/q8-flexi-steel/flexi-steel_3.png"
+                  src="/images/products/fixed/q8-easy/q8-easy-new_red.png"
                   alt="Indo Wagen Factory"
                   fill
-                  style={{ objectFit: "cover", borderRadius: "16px" }}
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  style={{ objectFit: "contain", borderRadius: "16px" }}
+                  sizes="(max-width: 768px), 50vw"
                   priority
                 />
               </Box>
