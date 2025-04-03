@@ -184,7 +184,7 @@ export default function DealersLoungePage() {
                     size="large"
                     color="primary"
                     component={Link}
-                    href="/contact?dealer=apply"
+                    href="/dealers/locator#become-distributor"
                     sx={{
                       px: 4,
                       py: 1.5,

@@ -144,7 +144,7 @@ const BecomeDistributor = () => {
   };
 
   return (
-    <Box component="section" sx={{ py: 8, bgcolor: 'background.default' }}>
+    <Box component="section" sx={{ py: 8, bgcolor: 'background.default' }} id='become-distributor'>
       <Container maxWidth="lg">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
