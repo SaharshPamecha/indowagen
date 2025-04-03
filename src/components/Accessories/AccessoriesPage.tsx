@@ -125,7 +125,7 @@ const AccessoriesPage = () => {
     <Box component="main">
       <AccessoriesHero />
 
-      <Box sx={{ py: { xs: 4, md: 8 }, bgcolor: 'background.default' }}>
+      <Box id="all-accessories" sx={{ py: { xs: 4, md: 8 }, bgcolor: 'background.default' }}>
         <Container maxWidth="lg">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
