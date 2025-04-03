@@ -639,12 +639,13 @@ const Footer = () => {
   <Box sx={{ display: "flex", flexDirection: "column", alignItems: { xs: "center", sm: "flex-end" } }}>
     {/* Powered by Digital Miles */}
     <Typography variant="body2" color="text.secondary" sx={{ mb: { xs: 1, sm: 1 } }}>
+    Powered by{" "}
       <a
         target="_blank"
         href="https://digitalmiles.in/"
         style={{ textDecoration: "none", color: "#FF0000" }}
       >
-        Powered by Digital Miles
+         Digital Miles
       </a>{' '}
       | Made with Love{' '}
       <span style={{ color: "#FF0000" }}>♥</span>
