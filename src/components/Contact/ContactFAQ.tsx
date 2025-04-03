@@ -198,7 +198,7 @@ const ContactFAQ = () => {
                 <Button 
                   variant="contained" 
                   color="primary"
-                  href="#contact-form"
+                  href="#contact#get-in-touch"
                   sx={{ px: 3 }}
                 >
                   Contact Support
@@ -208,7 +208,7 @@ const ContactFAQ = () => {
                 <Button 
                   variant="outlined" 
                   color="primary"
-                  href="/support"
+                  href="/contact#visit-our-locations"
                   sx={{ px: 3 }}
                 >
                   Visit Help Center

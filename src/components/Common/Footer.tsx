@@ -208,7 +208,7 @@ const Footer = () => {
       links: [
         { name: 'Dealers Lounge', href: '/dealers/lounge' },
         { name: 'Find a Dealer', href: '/dealers/locator' },
-        { name: 'Become a Dealer', href: '/dealers/lounge#become-distributor' },
+        { name: 'Become a Dealer', href: '/dealers/locator#become-distributor' },
         // { name: 'Contact Us', href: '/contact' },
       ],
     },
@@ -216,8 +216,8 @@ const Footer = () => {
       title: 'Support',
       links: [
         { name: 'Connect Support', href: '/contact' },
-        { name: 'Connect With Us', href: '/contact#visit-our-locations' },
-        { name: 'Vistors', href: '/contact#sociallinks' },
+        { name: 'Connect With Us', href: '/contact#sociallinks' },
+        { name: 'Vistors', href: '/contact#visit-our-locations' },
         { name: 'FAQ', href: '/contact#faq' }
       ],
     }
@@ -614,23 +614,24 @@ const Footer = () => {
 
         {/* Footer Bottom */}
        {/* Footer Bottom */}
-<Box
+ {/* Footer Bottom */}
+ <Box
   sx={{
     display: "flex",
     flexDirection: { xs: "column", sm: "row" },
-    alignItems: "center",
+    alignItems: { xs: "center", sm: "flex-end" },
     justifyContent: "space-between",
     mt: 3,
     pt: 3,
     borderTop: `1px solid ${theme.palette.divider}`,
-    textAlign: "center",
+    textAlign: { xs: "center", sm: "right" },
   }}
 >
   {/* Left Corner - Copyright */}
   <Box sx={{ mb: { xs: 2, sm: 0 } }}>
     <Typography variant="body2" color="text.secondary">
       <CopyrightIcon sx={{ fontSize: 16, mr: 0.5, verticalAlign: "middle" }} />
-      {currentYear} {companyInfo.fullName || "Indo Wagen Electronics Pvt. Ltd."}. All rights reserved.
+      {currentYear} {"Zeniak Innovation India Limited"}. All rights reserved.
     </Typography>
   </Box>
 
@@ -641,17 +642,18 @@ const Footer = () => {
       <a
         target="_blank"
         href="https://digitalmiles.in/"
-        style={{ textDecoration: "none", color: "inherit" }}
+        style={{ textDecoration: "none", color: "#FF0000" }}
       >
         Powered by Digital Miles
       </a>{' '}
-      | Made with Love ♥
+      | Made with Love{' '}
+      <span style={{ color: "#FF0000" }}>♥</span>
     </Typography>
     
     {/* Trademark */}
     <Typography variant="body2" color="text.secondary">
       {companyInfo.name || "Indo Wagen"} is a trademark of{' '}
-      {companyInfo.fullName || "Indo Wagen Electronics Pvt. Ltd."}
+      {"Zeniak Innovation India Limited"}
     </Typography>
   </Box>
 </Box>

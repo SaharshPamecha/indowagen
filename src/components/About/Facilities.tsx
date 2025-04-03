@@ -35,7 +35,7 @@ West Bengal`,
         'Battery Testing Facility',
         'Warehouse & Logistics Hub'
       ],
-      image: '/Corporate headquaters image.webp',
+      image: '/manufacturing plant image',
       tabImage: '/manufacturing-tab-image.webp',
       googleMapsLink: 'https://maps.google.com/?q=Zeniak+Innovation+India+Limited,+Bagpara,+Kashyabpur,+Mahishrekha,+Tulsiberia,+Uluberia+II,+Howrah+711303,+West+Bengal'
     },
