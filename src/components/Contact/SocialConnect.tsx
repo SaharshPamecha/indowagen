@@ -80,6 +80,7 @@ const SocialConnect = () => {
         py: { xs: 6, md: 10 },
         bgcolor: '#f8f9fa',
       }}
+      id="social-links"
     >
       <Container maxWidth="lg">
         <motion.div

@@ -216,7 +216,7 @@ const Footer = () => {
       title: 'Support',
       links: [
         { name: 'Connect Support', href: '/contact' },
-        { name: 'Connect With Us', href: '/contact#sociallinks' },
+        { name: 'Connect With Us', href: '/contact#social-links' },
         { name: 'Visit Us ', href: '/contact#visit-our-locations' },
         { name: 'FAQ', href: '/contact#faq' }
       ],
