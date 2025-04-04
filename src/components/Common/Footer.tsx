@@ -44,7 +44,7 @@ import CopyrightIcon from '@mui/icons-material/Copyright';
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import PolicyIcon from '@mui/icons-material/Policy';
 import InfoIcon from '@mui/icons-material/Info';
-
+import XIcon from '@mui/icons-material/X';
 // Data
 const companyInfo = {
   name: "Indo Wagen",
@@ -232,10 +232,10 @@ const Footer = () => {
       color: '#1877F2'
     },
     { 
-      name: 'Twitter',
-      icon: <TwitterIcon />, 
+      name: 'X',
+      icon: <XIcon />, 
       href: companyInfo.social?.twitter || '#',
-      color: '#1DA1F2'
+      color: '#000000'
     },
     { 
       name: 'LinkedIn',

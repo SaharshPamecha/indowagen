@@ -137,7 +137,7 @@ export default function DealersLoungePage() {
 
         <Container maxWidth="lg" sx={{ position: "relative", zIndex: 2 }}>
           <Grid container spacing={4} alignItems="center">
-            <Grid item xs={12} md={7}>
+            <Grid item xs={12} md={6}>
               <motion.div initial="hidden" animate="visible" variants={fadeIn}>
                 <Typography
                   variant="h1"
@@ -302,7 +302,7 @@ export default function DealersLoungePage() {
             <Grid
               item
               xs={12}
-              md={5}
+              md={6}
               sx={{ display: { xs: "none", md: "block" } }}
             >
               <motion.div
@@ -314,11 +314,11 @@ export default function DealersLoungePage() {
                   sx={{
                     position: "relative",
                     height: "440px",
-                    width: "100%",
+                    width: "750px",
                     overflow: "hidden",
-                    borderRadius: 4,
-                    boxShadow: "0 20px 40px rgba(0,0,0,0.4)",
-                    transform: "perspective(1000px) rotateY(-10deg)",
+                    // borderRadius: 4,
+                    // boxShadow: "0 20px 40px rgba(0,0,0,0.4)",
+                    // transform: "perspective(1000px) rotateY(-10deg)",
                   }}
                 >
                   <Image

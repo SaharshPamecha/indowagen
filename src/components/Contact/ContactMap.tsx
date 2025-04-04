@@ -304,7 +304,7 @@ const ContactMap = () => {
               </Box>
 
               {/* Registered Address */}
-              <Box
+              {/* <Box
                 sx={{
                   flex: "1 1 calc(33.33% - 16px)",
                   display: "flex",
@@ -331,7 +331,7 @@ const ContactMap = () => {
                     target.style.display = "none";
                   }}
                 />
-                {/* <Typography variant="h6" sx={{ mb: 1 }}>
+                <Typography variant="h6" sx={{ mb: 1 }}>
                   Registered Office
                 </Typography>
                 <Typography
@@ -340,7 +340,7 @@ const ContactMap = () => {
                   sx={{ mb: 3, textAlign: "center", px: 2 }}
                 >
                   {registeredFullAddress}
-                </Typography> */}
+                </Typography>
                 <Button
                   variant="contained"
                   startIcon={<DirectionsIcon />}
@@ -350,7 +350,7 @@ const ContactMap = () => {
                 >
                   Get Directions
                 </Button>
-              </Box>
+              </Box> */}
             </Box>
 
             <CardContent sx={{ py: 3 }}>
