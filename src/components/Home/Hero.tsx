@@ -178,7 +178,7 @@ const Hero = () => {
                 }}
               >
                 <Image
-                  src="Easy-Lite-1.webp"
+                  src="/Easy-Lite-1.webp"
                   alt="Indo Wagen Electric Vehicle"
                   fill
                   style={{ objectFit: 'contain' }}
