@@ -249,7 +249,7 @@ export default function DealersLoungePage() {
                       fontWeight="bold"
                       color="primary.main"
                     >
-                      200+
+                      350+
                     </Typography>
                     <Typography variant="body2" color="white">
                       Active Dealers
@@ -269,7 +269,7 @@ export default function DealersLoungePage() {
                       fontWeight="bold"
                       color="primary.main"
                     >
-                      40%
+                      100%
                     </Typography>
                     <Typography variant="body2" color="white">
                       Annual Growth
