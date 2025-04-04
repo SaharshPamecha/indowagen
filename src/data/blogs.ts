@@ -19,59 +19,43 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   {
     id: "1",
-    title: "How E-Rickshaws Are Transforming Rural Transportation",
-    slug: "e-rickshaws-transforming-rural-transportation-2",
-    category: "Case Studies",
+    title: "Driving the Sustainable Way: IndoWagen Paving the Path for a Greener Future",
+    slug: "indwagen-sustainable-mobility-greener-future",
+    category: "News",
     excerpt:
-      "A look at how electric rickshaws are bringing affordable and sustainable transportation to rural India.",
+      "IndoWagen spearheads green mobility with innovative electric vehicles, shaping a sustainable future for India.",
     content: `
-      <p>While much attention is given to electric vehicles in urban centers, a quiet revolution is happening in rural India. Electric rickshaws are transforming mobility in villages and small towns, providing a sustainable and affordable transportation alternative where options were previously limited.</p>
+      <p>With the world shifting towards sustainable and eco-friendly transportation, IndoWagen, a brand under Zeniak Innovation India Ltd, is emerging as a leader in the green mobility revolution. Founded by Rajeev Kumar Srivastava, Jewel Mondl, and Moinuddin Golam, IndoWagen is dedicated to providing high-quality, reliable, and technologically advanced electric vehicles (EVs) that redefine urban mobility.</p>
       
-      <h2>Filling the Transportation Gap</h2>
-      <p>In many rural areas, public transportation is scarce or non-existent. Residents often rely on private vehicles, shared autos, or simply walking long distances. E-rickshaws are filling this critical gap, connecting villages to market towns and providing essential mobility for rural communities.</p>
+      <h2>The Journey So Far</h2>
+      <p>IndoWagen began its operations in 2013 with a vision to transform the public transportation sector through innovation and sustainability. Starting with electric rickshaws, the company rapidly expanded its offerings to include diverse EV solutions. By focusing on robust technology, user-friendly designs, and cost-effectiveness, IndoWagen has established itself as a trusted name in the EV market.</p>
       
-      <h2>Economic Empowerment</h2>
-      <p>For operators, E-rickshaws represent a pathway to economic independence. With lower operational costs compared to conventional fuel vehicles, drivers can earn more while charging less. The data speaks for itself:</p>
-      <ul>
-        <li>Average daily savings on fuel: ₹300-400</li>
-        <li>Maintenance costs reduced by up to 40%</li>
-        <li>Extended operational hours due to less fatigue and noise</li>
-      </ul>
+      <h2>Commitment to Sustainability</h2>
+      <p>IndoWagen is committed to reducing urban pollution by offering 100% electric, zero-emission vehicles. With cities across India grappling with rising pollution levels, the company’s solutions provide an eco-friendly alternative to conventional fuel-based transport. By incorporating advanced lithium-ion batteries, IndoWagen’s vehicles ensure extended battery life and enhanced efficiency, making them a preferred choice for daily commuters and business operators alike.</p>
       
-      <p>Many drivers report being able to send their children to better schools and improve their housing conditions after switching to E-rickshaws.</p>
+      <h2>Innovation and Quality: The IndoWagen Promise</h2>
+      <p>The brand prides itself on delivering the best-in-class electric rickshaws that combine durability, comfort, and modern technology. Every IndoWagen vehicle undergoes rigorous quality checks to ensure safety, efficiency, and compliance with industry standards. Additionally, features like ergonomic seating, enhanced suspension, and increased mileage make IndoWagen’s EVs a standout option in the market.</p>
       
-      <h2>Case Study: Transforming Mobility in Bihar</h2>
-      <p>In the rural districts of Bihar, Indo Wagen's E-rickshaws have created a network of connectivity between villages and small towns. In Muzaffarpur district, a fleet of 200 E-rickshaws now serves over 50 villages, providing transportation to approximately 15,000 people daily.</p>
+      <h2>Expanding the Vision</h2>
+      <p>IndoWagen is actively expanding its footprint beyond Kolkata, targeting key cities like Guwahati, Patna, and Odisha. With an increasing demand for sustainable transportation solutions, the company aims to introduce a wider range of EVs, catering to both personal and commercial transportation needs.</p>
       
-      <p>Farmers can transport produce to markets more efficiently, students can travel to educational institutions safely, and healthcare becomes more accessible as patients can reach medical facilities faster.</p>
+      <h2>Overcoming Challenges with Determination</h2>
+      <p>The transition to electric mobility comes with its own set of challenges, including infrastructure limitations and consumer adoption barriers. IndoWagen is tackling these issues by establishing dedicated service centers, investing in battery-swapping technology, and providing easy financing options for customers. By addressing these challenges head-on, IndoWagen continues to foster a seamless transition towards a greener future.</p>
       
-      <h2>Environmental Impact</h2>
-      <p>The environmental benefits are equally significant. Each E-rickshaw reduces carbon emissions by approximately 4-5 tons annually compared to auto-rickshaws running on fossil fuels. Multiply this by thousands of vehicles, and the impact on air quality and public health becomes substantial.</p>
+      <h2>A Sustainable Future with IndoWagen</h2>
+      <p>As the demand for electric mobility rises, IndoWagen remains at the forefront, leading the charge towards an environmentally responsible transportation ecosystem. The company’s vision aligns with the global movement towards green technology, ensuring that future generations inherit a cleaner and healthier planet.</p>
       
-      <h2>Challenges in Rural Adoption</h2>
-      <p>Despite the success, challenges remain:</p>
-      <ul>
-        <li>Limited charging infrastructure in remote areas</li>
-        <li>Financing options for rural entrepreneurs</li>
-        <li>Service and maintenance support in distant locations</li>
-      </ul>
-      
-      <p>Indo Wagen is addressing these challenges through innovative solutions like solar charging stations, partnership with rural banks for financing, and mobile service vans that travel to remote areas for maintenance support.</p>
-      
-      <h2>The Road Ahead</h2>
-      <p>As rural electrification improves and solar power becomes more affordable, we expect E-rickshaws to penetrate even the most remote parts of India. This transportation revolution isn't just about mobility—it's about economic empowerment, environmental protection, and connecting communities.</p>
-      
-      <p>Through continued innovation and focused rural outreach, Indo Wagen is committed to ensuring that the benefits of electric mobility reach every corner of India, leaving no community behind.</p>
+      <p>IndoWagen is not just about vehicles—it’s about a movement, a commitment to sustainability, and a promise for a better tomorrow. Stay tuned for more updates as we continue to drive innovation and sustainability in the electric vehicle industry.</p>
     `,
     author: "Priya Sharma",
     authorTitle: "Community Outreach Director",
     authorAvatar: "/images/blog/authors/priya-sharma.jpg",
-    coverImage: "/images/rural-transportation.jpg",
+    coverImage: "/Leaders Of Change.webp",
     publishDate: "March 10, 2025",
     readTime: 6,
-    tags: ["Rural Development", "Electric Rickshaws", "Community Impact"],
-    featured: true,
-  },
+    tags: ["Green Technology", "Electric Mobility", "Sustainability News"],
+    featured: true
+},
   {
     id: "2",
     title: "How E-Rickshaws Are Transforming Rural Transportation",

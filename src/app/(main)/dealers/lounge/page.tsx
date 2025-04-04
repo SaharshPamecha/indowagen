@@ -272,10 +272,10 @@ export default function DealersLoungePage() {
                       100%
                     </Typography>
                     <Typography variant="body2" color="white">
-                      Annual Growth
+                      ROI
                     </Typography>
                   </Box>
-                  <Box
+                  {/* <Box
                     sx={{
                       backdropFilter: "blur(10px)",
                       backgroundColor: "rgba(255,255,255,0.1)",
@@ -294,7 +294,7 @@ export default function DealersLoungePage() {
                     <Typography variant="body2" color="white">
                       Monthly Income
                     </Typography>
-                  </Box>
+                  </Box> */}
                 </Box>
               </motion.div>
             </Grid>
@@ -322,7 +322,7 @@ export default function DealersLoungePage() {
                   }}
                 >
                   <Image
-                    src="/images/model-comparison.jpg"
+                    src="/Q8 Zap_4.webp"
                     alt="Indowagen Dealership"
                     fill
                     style={{ objectFit: "cover" }}

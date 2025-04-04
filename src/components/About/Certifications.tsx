@@ -28,7 +28,7 @@ const certifications = [
     image: '/certificates/certificate 2.webp',
     alt: 'Indo Wagen Certification',
     title: 'ICAT Certificate',
-    description: 'Certification acknowledging our environmentally responsible practices and sustainable manufacturing standards.',
+    description: 'ICAT certification for our eco-friendly manufacturing and sustainable automotive standards.'
   },
 ];
 

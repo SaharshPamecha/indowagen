@@ -16,8 +16,8 @@ const Providers = ({ children }: ProvidersProps) => {
         height="4px"
         color="black"
         
-       // options={{ showSpinner: false }}
-        //shallowRouting
+       options={{ showSpinner: false }}
+        shallowRouting
       />
       {children}
     </>
