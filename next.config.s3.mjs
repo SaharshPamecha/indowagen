@@ -1,9 +1,15 @@
 /** @type {import('next').NextConfig} */
+
+
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+
 const nextConfig = {
-  // Configure output for AWS Amplify SSR
-  output: 'standalone',
-  
-  // Configure image optimization for AWS Amplify
+  output: 'export',
   images: {
     domains: ['localhost', 'indowagen-website-nextjs.d18s43ml1gjftw.amplifyapp.com'],
     remotePatterns: [
@@ -20,8 +26,8 @@ const nextConfig = {
         pathname: '/**',
       },
     ],
-    // Set to unoptimized in all environments for Amplify compatibility
-    unoptimized: true,
+    // Set unoptimized based on environment
+    unoptimized: process.env.NODE_ENV !== 'production',
   },
   
   // React strict mode is beneficial for development but can cause double-mounting
@@ -57,4 +63,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;
