@@ -19,8 +19,8 @@ const nextConfig = {
         pathname: '/**',
       },
     ],
-    // Set unoptimized based on environment
-    unoptimized: process.env.NODE_ENV !== 'production',
+    // Set to unoptimized in all environments for Amplify compatibility
+    unoptimized: true,
   },
   
   // React strict mode is beneficial for development but can cause double-mounting
