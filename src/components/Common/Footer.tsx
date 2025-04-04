@@ -61,8 +61,7 @@ const companyInfo = {
   },
   corporateAddress: {
     name: "Corporate Office",
-    street:
-      "Merlin Infinite, 10th floor, Room No- 1010, Plot No- 5, DN51, Sector V, Saltlake",
+    street: "Merlin Infinite, 10th floor, Room No- 1010, Plot No- 5, DN51, Sector V, Saltlake",
     city: "Kolkata",
     state: "West Bengal",
     zip: "700091",
