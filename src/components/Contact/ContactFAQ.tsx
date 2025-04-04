@@ -22,7 +22,7 @@ import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 const faqs = [
   {
     question: 'What are the payment options available for purchasing a vehicle?',
-    answer: 'We offer multiple payment options including cash, credit/debit cards, bank transfers, and financing options through our partner banks. We also offer EMI options starting from 6 months to 36 months tenure.'
+    answer: 'We offer multiple payment options including cash, credit/debit cards, bank transfers, and financing options through our finance partners (Akasa Finance, Mufin, AMU, EV.FIN, Surjit Finance, Sanchetna, Team Vedika, PHF, Loksuvidha, Embifi). We also offer EMI options starting from 6 months to 12 months tenure.'
   },
   {
     question: 'How can I schedule a test drive?',
@@ -30,7 +30,7 @@ const faqs = [
   },
   {
     question: 'What is the warranty period for your electric vehicles?',
-    answer: 'Our electric vehicles come with a comprehensive warranty package. This includes a 3-year or 40,000 km warranty (whichever is earlier) on the vehicle and a 5-year warranty on the battery pack subject to our terms and conditions.'
+    answer: 'Our electric vehicles come with a comprehensive warranty package. This includes 12 months warranty.'
   },
   {
     question: 'Do you provide service at home?',
@@ -38,7 +38,7 @@ const faqs = [
   },
   {
     question: 'How long does it take to fully charge the battery?',
-    answer: 'The charging time depends on the vehicle model and the type of charger used. Generally, a full charge using a standard home charger takes 6-8 hours, while a fast-charging station can charge up to 80% in about 45-60 minutes.'
+    answer: 'The charging time depends on the vehicle model and the type of charger used. Generally, a full charge using a standard home charger takes 6-8 hours, while a fast-charging station can charge up to 80% in about 2 hours.'
   },
   {
     question: 'Do you have a buyback or exchange program?',

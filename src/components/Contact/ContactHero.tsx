@@ -49,6 +49,7 @@ const ContactHero = () => {
         position: "relative",
         overflow: "hidden",
       }}
+      id="get-in-touch"
     >
       <Container maxWidth="lg">
         <motion.div
