@@ -19,24 +19,24 @@ import WorkIcon from '@mui/icons-material/Work';
 import SchoolIcon from '@mui/icons-material/School';
 
 const openPositions = [
-  {
-    title: 'Senior Software Engineer',
-    department: 'Engineering',
-    location: 'Noida, UP',
-    type: 'Full-time',
-    experience: '5+ years',
-    education: "Bachelor's in Computer Science or related field",
-    responsibilities: [
-      'Lead development of EV management software systems',
-      'Design and implement scalable backend services',
-      'Mentor junior developers and review code',
-    ],
-    skills: ['React', 'Node.js', 'Python', 'AWS'],
-  },
+  // {
+  //   title: 'Senior Software Engineer',
+  //   department: 'Engineering',
+  //   location: 'Noida, UP',
+  //   type: 'Full-time',
+  //   experience: '5+ years',
+  //   education: "Bachelor's in Computer Science or related field",
+  //   responsibilities: [
+  //     'Lead development of EV management software systems',
+  //     'Design and implement scalable backend services',
+  //     'Mentor junior developers and review code',
+  //   ],
+  //   skills: ['React', 'Node.js', 'Python', 'AWS'],
+  // },
   {
     title: 'Electric Vehicle Technician',
     department: 'Service',
-    location: 'Noida, UP',
+    location: 'Kolkata, West Bengal',
     type: 'Full-time',
     experience: '3+ years',
     education: 'Diploma in Electrical/Automotive Engineering',
@@ -50,7 +50,7 @@ const openPositions = [
   {
     title: 'Sales Manager',
     department: 'Sales',
-    location: 'Delhi NCR',
+    location: 'Kolkata, West Bengal',
     type: 'Full-time',
     experience: '4+ years',
     education: "Bachelor's degree in Business or related field",

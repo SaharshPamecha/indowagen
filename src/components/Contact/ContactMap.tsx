@@ -331,7 +331,7 @@ const ContactMap = () => {
                     target.style.display = "none";
                   }}
                 />
-                <Typography variant="h6" sx={{ mb: 1 }}>
+                {/* <Typography variant="h6" sx={{ mb: 1 }}>
                   Registered Office
                 </Typography>
                 <Typography
@@ -340,7 +340,7 @@ const ContactMap = () => {
                   sx={{ mb: 3, textAlign: "center", px: 2 }}
                 >
                   {registeredFullAddress}
-                </Typography>
+                </Typography> */}
                 <Button
                   variant="contained"
                   startIcon={<DirectionsIcon />}
@@ -360,9 +360,9 @@ const ContactMap = () => {
               <Typography variant="body1" gutterBottom>
                 <strong>Corporate Office:</strong> {corporateFullAddress}
               </Typography>
-              <Typography variant="body1" gutterBottom>
+              {/* <Typography variant="body1" gutterBottom>
                 <strong>Registered Office:</strong> {registeredFullAddress}
-              </Typography>
+              </Typography> */}
               <Typography variant="body1" gutterBottom>
                 <strong>Phone:</strong>{" "}
                 {companyInfo.contact?.phone || "+91-120-4567890"}

@@ -107,14 +107,14 @@ const OurGrowingNetwork = () => {
             >
               We started in Eastern India and have rapidly expanded our
               footprint to multiple states. Today, we are present in{" "}
-              <strong>{states.join(", ")}</strong>. As the fastest-growing
+              <strong>{states.join(", ")}, Tripura, Manipur, Maharashtra and we are
+              expanding aggressively in North India</strong>. As the fastest-growing
               e-rickshaw brand in India, we boast a robust network of over{" "}
               <strong>350+ dealers and sub-dealers</strong>. We lead the market
               in Bengal and Assam, ranking No. 1 as per Vahan Data (July 2024
               onwards). Our manufacturing facilities are strategically located
               in West Bengal, Bihar, Assam, and Uttar Pradesh, with new
-              high-tech production units in the pipeline. Tripura, Manipur, Maharashtra and we are
-              expanding aggressively in North India
+              high-tech production units in the pipeline. 
             </Typography>
 
             {/* Highlights List */}
