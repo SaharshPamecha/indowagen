@@ -3,13 +3,9 @@ frontend:
   phases:
     preBuild:
       commands:
-        - npm ci --legacy-peer-deps
+        - npm ci
     build:
       commands:
-        - echo "Verifying assets"
-        - bash scripts/copy-missing-assets.sh
-        - echo "Building Next.js application in SSR mode"
-        - export NODE_OPTIONS="--max-old-space-size=4096"
         - npm run build
   artifacts:
     baseDirectory: .next
@@ -18,21 +14,3 @@ frontend:
   cache:
     paths:
       - node_modules/**/*
-      - .next/cache/**/*
-  customHeaders:
-    - pattern: '**/*.html'
-      headers:
-        - key: 'Cache-Control'
-          value: 'max-age=0, no-cache, no-store, must-revalidate'
-    - pattern: '/_next/static/**/*'
-      headers:
-        - key: 'Cache-Control'
-          value: 'public, max-age=31536000, immutable'
-    - pattern: 'static/**/*'
-      headers:
-        - key: 'Cache-Control'
-          value: 'public, max-age=31536000, immutable'
-    - pattern: '**/*'
-      headers:
-        - key: 'Cache-Control'
-          value: 'public, max-age=0, must-revalidate'
