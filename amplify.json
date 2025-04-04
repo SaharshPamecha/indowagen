@@ -1,5 +1,9 @@
 {
   "framework": "nextjs-ssr",
   "path": "/",
-  "skipBuild": false
+  "skipBuild": false,
+  "nextConfiguration": {
+    "version": 15,
+    "renderMode": "ssr"
+  }
 }
