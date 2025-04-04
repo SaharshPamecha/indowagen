@@ -20,59 +20,56 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { companyInfo } from '@/data/company';
-
+import XIcon from '@mui/icons-material/X';
 const SocialConnect = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   // Social media platforms with their respective icons and colors
- const socialMedia = [
-   {
-     name: "Facebook",
-     icon: <FacebookIcon sx={{ fontSize: 40 }} />,
-     url: companyInfo.social?.facebook || "https://www.facebook.com/indowagen/",
-     color: "#1877F2",
-     description: "Follow us for latest updates and community stories",
-   },
-   {
-     name: "Twitter",
-     icon: <TwitterIcon sx={{ fontSize: 40 }} />,
-     url: companyInfo.social?.twitter || "https://twitter.com/indowagen",
-     color: "#1DA1F2",
-     description: "Stay updated with our latest news and announcements",
-   },
-   {
-     name: "LinkedIn",
-     icon: <LinkedInIcon sx={{ fontSize: 40 }} />,
-     url:
-       companyInfo.social?.linkedin || "https://linkedin.com/company/indowagen",
-     color: "#0A66C2",
-     description:
-       "Connect with us professionally and explore career opportunities",
-   },
-   {
-     name: "Instagram",
-     icon: <InstagramIcon sx={{ fontSize: 40 }} />,
-     url:
-       companyInfo.social?.instagram || "https://www.instagram.com/indo.wagen/",
-     color: "#E4405F",
-     description: "Explore our visual journey and behind-the-scenes content",
-   },
-   {
-     name: "YouTube",
-     icon: <YouTubeIcon sx={{ fontSize: 40 }} />,
-     url: companyInfo.social?.youtube || "https://youtube.com/indowagen",
-     color: "#FF0000",
-     description: "Watch our product reviews, tutorials, and event highlights",
-   },
-  //  {
-  //    name: "WhatsApp",
-  //    icon: <WhatsAppIcon sx={{ fontSize: 40 }} />,
-  //    url: `https://wa.me/${companyInfo.contact.phone.replace(/[^0-9]/g, "")}`,
-  //    color: "#25D366",
-  //    description: "Chat with our customer support team for quick assistance",
-  //  },
- ];
+  const socialMedia = [
+    {
+      name: "Facebook",
+      icon: <FacebookIcon sx={{ fontSize: 40 }} />,
+      url: companyInfo.social?.facebook || "https://www.facebook.com/indowagen/",
+      color: "#1877F2",
+      description: "Follow us for latest updates and community stories",
+    },
+    {
+      name: "X",
+      icon: <XIcon sx={{ fontSize: 40 }} />,
+      url: companyInfo.social?.twitter || "https://twitter.com/indowagen",
+      color: "#000000", // Updated to X's black branding
+      description: "Stay updated with our latest posts and announcements",
+    },
+    {
+      name: "LinkedIn",
+      icon: <LinkedInIcon sx={{ fontSize: 40 }} />,
+      url: companyInfo.social?.linkedin || "https://linkedin.com/company/indowagen",
+      color: "#0A66C2",
+      description: "Connect with us professionally and explore career opportunities",
+    },
+    {
+      name: "Instagram",
+      icon: <InstagramIcon sx={{ fontSize: 40 }} />,
+      url: companyInfo.social?.instagram || "https://www.instagram.com/indo.wagen/",
+      color: "#E4405F",
+      description: "Explore our visual journey and behind-the-scenes content",
+    },
+    {
+      name: "YouTube",
+      icon: <YouTubeIcon sx={{ fontSize: 40 }} />,
+      url: companyInfo.social?.youtube || "https://youtube.com/indowagen",
+      color: "#FF0000",
+      description: "Watch our product reviews, tutorials, and event highlights",
+    },
+    // {
+    //   name: "WhatsApp",
+    //   icon: <WhatsAppIcon sx={{ fontSize: 40 }} />,
+    //   url: `https://wa.me/${companyInfo.contact.phone.replace(/[^0-9]/g, "")}`,
+    //   color: "#25D366",
+    //   description: "Chat with our customer support team for quick assistance",
+    // },
+  ];
 
   return (
     <Box

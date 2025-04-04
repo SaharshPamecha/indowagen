@@ -38,7 +38,7 @@ const FeaturedPosts = () => {
             gutterBottom
             sx={{ mb: 1, fontWeight: 600 }}
           >
-            Featured Articles
+            ET news article
           </Typography>
           <Typography
             variant="body1"

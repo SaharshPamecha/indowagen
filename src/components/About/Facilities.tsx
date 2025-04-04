@@ -41,9 +41,9 @@ West Bengal`,
     },
     {
       id: 'c&f',
-      name: 'C&F Center',
+      name: 'Other Manufacturing Sites',
       location: 'Patna (Bihar), Guwahati (Assam), Lucknow (Uttar Pradesh)',
-      description: 'Our C&F center is the innovation hub where we develop new technologies and improve existing products. Focus on battery efficiency, motor performance, and vehicle design.',
+      description: 'Our manufacturing sites are key production hubs where we craft cutting-edge solutions and refine our offerings. Emphasis is placed on enhancing battery efficiency, optimizing motor performance, and advancing vehicle design.',
       features: [
         'Battery Technology Research',
         'Motor Efficiency Optimization',
@@ -64,7 +64,8 @@ West Bengal`,
         'Customer Support Center',
         'Training Facilities'
       ],
-      image: '/Corporate headquaters image.webp',
+      //image: '/Corporate headquaters image.webp',
+      image: "/Merlin Infinite.webp",
       tabImage: '/headquarters-tab-image.webp',
       googleMapsLink: 'https://maps.google.com/?q=Merlin+Infinite,+DN51,+Sector+V,+Saltlake,+Kolkata,+West+Bengal,+700091,+India'
     },

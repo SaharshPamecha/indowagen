@@ -20,7 +20,7 @@ import SavingsIcon from '@mui/icons-material/Savings';
 const features = [
   {
     icon: <BatteryChargingFullIcon sx={{ fontSize: 48 }} />,
-    title: 'Long Battery Life',
+    title: 'Best in Class Mileage',
     description: 'Extended range with our advanced lithium-ion battery technology.',
   },
   {
@@ -30,7 +30,7 @@ const features = [
   },
   {
     icon: <SecurityIcon sx={{ fontSize: 48 }} />,
-    title: 'Safety First',
+    title: 'Ergonomic Design',
     description: 'Built with advanced safety features for peace of mind.',
   },
   {

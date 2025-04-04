@@ -186,7 +186,7 @@ const ContactFAQ = () => {
             )}
           </motion.div>
           
-          <Box sx={{ textAlign: 'center', mt: 6 }}>
+          {/* <Box sx={{ textAlign: 'center', mt: 6 }}>
             <Typography variant="h6" gutterBottom>
               Can't find what you're looking for?
             </Typography>
@@ -215,7 +215,7 @@ const ContactFAQ = () => {
                 </Button>
               </Grid>
             </Grid>
-          </Box>
+          </Box> */}
         </motion.div>
       </Container>
     </Box>

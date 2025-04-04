@@ -419,7 +419,7 @@ const Footer = () => {
               </Box>
 
               {/* Newsletter Subscription */}
-              <Box sx={{ mt: 4 }}>
+              {/* <Box sx={{ mt: 4 }}>
                 <Typography
                   variant="subtitle2"
                   sx={{ fontWeight: "bold", mb: 1.5 }}
@@ -461,7 +461,7 @@ const Footer = () => {
                     </Button>
                   </Box>
                 </form>
-              </Box>
+              </Box> */}
             </Paper>
           </Grid>
 
@@ -526,37 +526,36 @@ const Footer = () => {
           </Divider>
 
           <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              flexWrap: "wrap",
-              gap: 1,
-              mt: 3,
-            }}
-          >
-            {socialLinks.map((social) => (
-              <Tooltip key={social.name} title={social.name} arrow>
-                <IconButton
-                  component="a"
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.name}
-                  sx={{
-                    color: "grey.700",
-                    "&:hover": {
-                      bgcolor: social.color + "1A",
-                      color: social.color,
-                      transform: "translateY(-3px)",
-                    },
-                    transition: "all 0.2s",
-                  }}
-                >
-                  {social.icon}
-                </IconButton>
-              </Tooltip>
-            ))}
-          </Box>
+  sx={{
+    display: "flex",
+    justifyContent: "center",
+    flexWrap: "wrap",
+    gap: 1,
+    mt: 3,
+  }}
+>
+  {socialLinks.map((social) => (
+    <Tooltip key={social.name} title={social.name} arrow>
+      <IconButton
+        component="a"
+        href={social.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={social.name}
+        sx={{
+          color: social.color, // Set the original color by default
+          "&:hover": {
+            bgcolor: social.color + "1A", // Slight background tint on hover
+            transform: "translateY(-3px)", // Keep the hover animation
+          },
+          transition: "all 0.2s",
+        }}
+      >
+        {social.icon}
+      </IconButton>
+    </Tooltip>
+  ))}
+</Box>
         </Box>
 
         {/* Certifications and Achievements */}

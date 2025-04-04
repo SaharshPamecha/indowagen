@@ -20,7 +20,7 @@ export default function BlogPage() {
       <BlogCategories />
       <BlogList />
       <NewsList />
-      <BlogSubscribe />
+      {/* <BlogSubscribe /> */}
     </>
   );
 }

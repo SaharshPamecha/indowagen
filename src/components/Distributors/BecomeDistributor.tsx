@@ -152,10 +152,10 @@ const BecomeDistributor = () => {
           transition={{ duration: 0.5 }}
         >
           <Typography variant="h2" component="h1" align="center" gutterBottom>
-            Become a Distributor
+            Become a Dealer
           </Typography>
           <Typography variant="h5" component="h2" align="center" color="text.secondary" paragraph>
-            Join our network of successful distributors and grow with us
+            Join our network of successful dealers and grow with us
           </Typography>
 
           <Grid container spacing={4} sx={{ mt: 4 }}>

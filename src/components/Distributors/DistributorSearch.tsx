@@ -37,12 +37,12 @@ const DistributorSearch: React.FC<DistributorSearchProps> = ({ onSearch }) => {
 
   return (
     <Box sx={{ py: 4, bgcolor: 'background.paper' }}>
-      <Container maxWidth="lg">
+      <Container maxWidth="lg"> 
         <Typography variant="h4" component="h2" align="center" gutterBottom>
-          Find a Distributor Near You
+          Find a Dealer Near You
         </Typography>
         <Typography variant="subtitle1" align="center" color="text.secondary" paragraph>
-          Locate your nearest INDO WAGEN distributor by selecting your state and city
+          Locate your nearest INDO WAGEN dealer by selecting your state and city
         </Typography>
 
         <Grid container spacing={2} sx={{ mt: 2 }} justifyContent="center">

@@ -49,7 +49,7 @@ const LeadershipTeam = () => {
       bio: "having more than 25 years of experience in retail trade, manufacturing, shipping",
       image: "/team/Moinuddin.jpeg",
       social: {
-        linkedin: "https://www.linkedin.com/company/indowagen/",
+        //linkedin: "https://www.linkedin.com/company/indowagen/",
       },
     },
     {
@@ -59,7 +59,7 @@ const LeadershipTeam = () => {
       bio: "having more than 25 years of experience in retail trade, manufacturing, shipping.",
       image: "/team/Dilwar.jpeg",
       social: {
-        linkedin: "https://www.linkedin.com/company/indowagen/",
+        //linkedin: "https://www.linkedin.com/company/indowagen/",
       },
     },
     {

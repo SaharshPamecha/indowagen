@@ -178,7 +178,7 @@ const Hero = () => {
                 }}
               >
                 <Image
-                  src="/images/products/fixed/q8-base-steel-new/q8-base-steel_new-(1).png"
+                  src="Easy-Lite-1.webp"
                   alt="Indo Wagen Electric Vehicle"
                   fill
                   style={{ objectFit: 'contain' }}

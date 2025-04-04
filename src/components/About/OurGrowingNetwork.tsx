@@ -113,7 +113,8 @@ const OurGrowingNetwork = () => {
               in Bengal and Assam, ranking No. 1 as per Vahan Data (July 2024
               onwards). Our manufacturing facilities are strategically located
               in West Bengal, Bihar, Assam, and Uttar Pradesh, with new
-              high-tech production units in the pipeline.
+              high-tech production units in the pipeline. Tripura, Manipur, Maharashtra and we are
+              expanding aggressively in North India
             </Typography>
 
             {/* Highlights List */}

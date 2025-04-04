@@ -171,9 +171,9 @@ const DistributorsMap: React.FC<DistributorsMapProps> = ({ selectedState, select
                   <Grid item xs={12}>
                     <Paper sx={{ p: 3, textAlign: 'center' }}>
                       <Typography>
-                        No distributors found in the selected location. Please try a different search or{' '}
+                        No dealers found in the selected location. Please try a different search or{' '}
                         <a href="#become-distributor" style={{ color: 'inherit', textDecoration: 'underline' }}>
-                          become a distributor
+                          become a dealer
                         </a>
                         .
                       </Typography>

@@ -92,7 +92,7 @@ const AboutHero = () => {
                     8 Lac+
                   </Typography>
                   <Typography variant="body1" color="text.secondary">
-                    Vehicles Delivered
+                  Happy Customers
                   </Typography>
                 </Box>
                 <Box>
@@ -101,7 +101,7 @@ const AboutHero = () => {
                     color="primary"
                     sx={{ fontWeight: 700 }}
                   >
-                    09
+                    11
                   </Typography>
                   <Typography variant="body1" color="text.secondary">
                     States Covered
