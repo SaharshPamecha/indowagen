@@ -9,6 +9,7 @@ import UniqueFeatures from '@/components/Careers/UniqueFeatures';
 import Benefits from '@/components/Careers/Benefits';
 import OpenPositions from '@/components/Careers/OpenPositions';
 import JoinTeam from '@/components/Careers/JoinTeam';
+import EmployeeEngagementPhotoGallery from '@/components/Careers/EmployeeEngagementPhotoGallery';
 
 export default function CareersPage() {
   return (
@@ -19,6 +20,7 @@ export default function CareersPage() {
       <UniqueFeatures />
       <Benefits />
       <OpenPositions />
+      <EmployeeEngagementPhotoGallery />
       <JoinTeam />
     </Box>
   );
