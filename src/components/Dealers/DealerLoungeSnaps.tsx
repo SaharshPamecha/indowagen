@@ -31,7 +31,7 @@ const DealerLoungeSnaps: React.FC = () => {
   const gallerySections = [
     {
       id: 'dealerss-meet',
-      title: 'Dealerss Meet',
+      title: `Dealers's Meet`,
       images: [
         { src: '/dealer-lounge-snaps/Dealerss-Meet/Dealerss-1.webp', alt: 'Dealerss Meet Snap 1' },
         { src: '/dealer-lounge-snaps/Dealerss-Meet/Dealerss-2.webp', alt: 'Dealerss Meet Snap 2' },

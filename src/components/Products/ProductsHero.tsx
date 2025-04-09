@@ -46,7 +46,7 @@ const ProductsHero = () => {
     <Box
       sx={{
         position: 'relative',
-        height: { xs: '600px', md: '700px' },
+        height: { xs: '600px', md: '600px' },
         mb: 8,
         overflow: 'hidden',
       }}
