@@ -31,6 +31,7 @@ import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import TestimonialsSection from '@/components/Dealers/TestimonialsSection';
+import DealerLoungeSnaps from '@/components/Dealers/DealerLoungeSnaps';
 
 export default function DealersLoungePage() {
   const theme = useTheme();
@@ -818,6 +819,8 @@ export default function DealersLoungePage() {
           </motion.div>
         </Container>
       </Box>
+
+      <DealerLoungeSnaps />
     </Box>
   );
 }

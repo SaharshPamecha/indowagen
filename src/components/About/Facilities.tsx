@@ -43,15 +43,18 @@ West Bengal`,
       id: 'c&f',
       name: 'Other Manufacturing Sites',
       location: 'Patna (Bihar), Guwahati (Assam), Lucknow (Uttar Pradesh)',
-      description: 'Our manufacturing sites are key production hubs where we craft cutting-edge solutions and refine our offerings. Emphasis is placed on enhancing battery efficiency, optimizing motor performance, and advancing vehicle design.',
-      features: [
-        'Battery Technology Research',
-        'Motor Efficiency Optimization',
-        'Vehicle Design Studio',
+      addresses: [
+        'Guwahati: Sarusajai, Near Sarusajai Stadium, Lokhra, Guwahati, Kamrup (M), Assam, PIN - 781040',
+        'Patna: Society Plot No. 5, Besides Patel Seva Sadan, Patel Colony, Transport Nagar, Gate No. 4, Patna, Bihar, PIN - 800026',
+        'Lucknow: Khasra No. 1025, Dewa Road, Village Goila, Jainabad, Chinhat, Lucknow, Uttar Pradesh, PIN - 226028'
       ],
       image: '/C&F image.webp',
       tabImage: '/cnf-tab-image.webp',
-      // No googleMapsLink needed since we're not showing the button
+      googleMapsLinks: [
+        'https://maps.google.com/?q=Sarusajai,+Near+Sarusajai+Stadium,+Lokhra,+Guwahati,+Kamrup+(M),+Assam,+781040',
+        'https://maps.googleegarcom/?q=Society+Plot+no+5,+Besides+Patel+Seva+Sadan,+Patel+Colony,+Transport+Nagar,+Gate+No-4,+Patna,+Bihar,+800026',
+        'https://maps.google.com/?q=Khasra+No+1025,+Dewa+Road,+Village+Goila,+Jainabad,+Chinhat,+Lucknow,+Uttar+Pradesh,+226028'
+      ]
     },
     {
       id: 'headquarters',
@@ -64,8 +67,7 @@ West Bengal`,
         'Customer Support Center',
         'Training Facilities'
       ],
-      //image: '/Corporate headquaters image.webp',
-      image: "/Merlin Infinite.webp",
+      image: '/Merlin Infinite.webp',
       tabImage: '/headquarters-tab-image.webp',
       googleMapsLink: 'https://maps.google.com/?q=Merlin+Infinite,+DN51,+Sector+V,+Saltlake,+Kolkata,+West+Bengal,+700091,+India'
     },
@@ -202,39 +204,63 @@ West Bengal`,
                     </Box>
                   </motion.div>
 
-                  <motion.div variants={itemVariants}>
-                    <Typography variant="body1" paragraph>
-                      {facilities[activeTab].description}
-                    </Typography>
-                  </motion.div>
+                  {facilities[activeTab].description && (
+                    <motion.div variants={itemVariants}>
+                      <Typography variant="body1" paragraph>
+                        {facilities[activeTab].description}
+                      </Typography>
+                    </motion.div>
+                  )}
 
-                  <motion.div variants={itemVariants}>
-                    <Typography variant="h6" gutterBottom fontWeight="medium" sx={{ mt: 3 }}>
-                      Key Features:
-                    </Typography>
-                    <Box component="ul" sx={{ pl: 2 }}>
-                      {facilities[activeTab].features.map((feature, index) => (
-                        <motion.li
-                          key={index}
-                          variants={itemVariants}
-                          custom={index}
-                          initial="hidden"
-                          animate="visible"
-                          transition={{ delay: index * 0.1 }}
-                        >
-                          <Typography variant="body1" paragraph>
-                            {feature}
-                          </Typography>
-                        </motion.li>
-                      ))}
-                    </Box>
-                  </motion.div>
+                  {facilities[activeTab].addresses && (
+                    <motion.div variants={itemVariants}>
+                      <Box component="ul" sx={{ pl: 2 }}>
+                        {facilities[activeTab].addresses.map((address, index) => (
+                          <motion.li
+                            key={index}
+                            variants={itemVariants}
+                            custom={index}
+                            initial="hidden"
+                            animate="visible"
+                            transition={{ delay: index * 0.1 }}
+                          >
+                            <Typography variant="body1" paragraph>
+                              {address}
+                            </Typography>
+                          </motion.li>
+                        ))}
+                      </Box>
+                    </motion.div>
+                  )}
 
-                  {/* Conditionally render the Get Directions button only for facilities with googleMapsLink */}
-                  {facilities[activeTab].googleMapsLink && (
-                    <motion.div variants={itemVariants} >
+                  {facilities[activeTab].features && (
+                    <motion.div variants={itemVariants}>
+                      <Typography variant="h6" gutterBottom fontWeight="medium" sx={{ mt: 3 }}>
+                        Key Features:
+                      </Typography>
+                      <Box component="ul" sx={{ pl: 2 }}>
+                        {facilities[activeTab].features.map((feature, index) => (
+                          <motion.li
+                            key={index}
+                            variants={itemVariants}
+                            custom={index}
+                            initial="hidden"
+                            animate="visible"
+                            transition={{ delay: index * 0.1 }}
+                          >
+                            <Typography variant="body1" paragraph>
+                              {feature}
+                            </Typography>
+                          </motion.li>
+                        ))}
+                      </Box>
+                    </motion.div>
+                  )}
+
+                  {/* Render Get Directions button(s) */}
+                  <motion.div variants={itemVariants}>
+                    {facilities[activeTab].googleMapsLink ? (
                       <Button
-                     
                         variant="contained"
                         color="primary"
                         size="large"
@@ -251,8 +277,32 @@ West Bengal`,
                       >
                         Get Directions
                       </Button>
-                    </motion.div>
-                  )}
+                    ) : facilities[activeTab].googleMapsLinks ? (
+                      <Box sx={{ mt: 3 }}>
+                        {facilities[activeTab].googleMapsLinks.map((link, index) => (
+                          <Button
+                            key={index}
+                            variant="contained"
+                            color="primary"
+                            size="large"
+                            href={link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            sx={{ 
+                              mr: 2,
+                              mb: 2,
+                              borderRadius: 2,
+                              px: 4, 
+                              fontWeight: 600,
+                              textTransform: 'none'
+                            }}
+                          >
+                            Get Directions ({['Guwahati', 'Patna', 'Lucknow'][index]})
+                          </Button>
+                        ))}
+                      </Box>
+                    ) : null}
+                  </motion.div>
                 </motion.div>
               </Grid>
             </Grid>
