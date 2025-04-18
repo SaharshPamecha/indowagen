@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   description: 'Experience the future of sustainable transportation with Indo Wagen electric vehicles. Discover our range of innovative e-rickshaws designed for different needs.',
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://indowagen.com'),
   icons: {
-    icon: '/favicon.ico',
+    icon: '/IW Logo V-1.png',
   },
 };
 

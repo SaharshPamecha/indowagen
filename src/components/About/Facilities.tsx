@@ -35,7 +35,7 @@ West Bengal`,
         'Battery Testing Facility',
         'Warehouse & Logistics Hub'
       ],
-      image: '/manufacturing plant image.webp',
+      image: '/3.png',
       tabImage: '/manufacturing-tab-image.webp',
       googleMapsLink: 'https://maps.google.com/?q=Zeniak+Innovation+India+Limited,+Bagpara,+Kashyabpur,+Mahishrekha,+Tulsiberia,+Uluberia+II,+Howrah+711303,+West+Bengal'
     },
@@ -48,7 +48,7 @@ West Bengal`,
         'Patna: Society Plot No. 5, Besides Patel Seva Sadan, Patel Colony, Transport Nagar, Gate No. 4, Patna, Bihar, PIN - 800026',
         'Lucknow: Khasra No. 1025, Dewa Road, Village Goila, Jainabad, Chinhat, Lucknow, Uttar Pradesh, PIN - 226028'
       ],
-      image: '/C&F image.webp',
+      image: '/4.png',
       tabImage: '/cnf-tab-image.webp',
       googleMapsLinks: [
         'https://maps.google.com/?q=Sarusajai,+Near+Sarusajai+Stadium,+Lokhra,+Guwahati,+Kamrup+(M),+Assam,+781040',

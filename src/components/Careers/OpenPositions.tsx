@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Box,
   Container,
@@ -17,60 +17,66 @@ import { motion } from 'framer-motion';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import WorkIcon from '@mui/icons-material/Work';
 import SchoolIcon from '@mui/icons-material/School';
-
-const openPositions = [
-  // {
-  //   title: 'Senior Software Engineer',
-  //   department: 'Engineering',
-  //   location: 'Noida, UP',
-  //   type: 'Full-time',
-  //   experience: '5+ years',
-  //   education: "Bachelor's in Computer Science or related field",
-  //   responsibilities: [
-  //     'Lead development of EV management software systems',
-  //     'Design and implement scalable backend services',
-  //     'Mentor junior developers and review code',
-  //   ],
-  //   skills: ['React', 'Node.js', 'Python', 'AWS'],
-  // },
-  {
-    title: 'Electric Vehicle Technician',
-    department: 'Service',
-    location: 'Kolkata, West Bengal',
-    type: 'Full-time',
-    experience: '3+ years',
-    education: 'Diploma in Electrical/Automotive Engineering',
-    responsibilities: [
-      'Diagnose and repair electric vehicles',
-      'Perform preventive maintenance',
-      'Document service procedures',
-    ],
-    skills: ['EV Systems', 'Diagnostics', 'Electrical Repair'],
-  },
-  {
-    title: 'Sales Manager',
-    department: 'Sales',
-    location: 'Kolkata, West Bengal',
-    type: 'Full-time',
-    experience: '4+ years',
-    education: "Bachelor's degree in Business or related field",
-    responsibilities: [
-      'Develop and execute sales strategies',
-      'Manage dealer relationships',
-      'Achieve revenue targets',
-    ],
-    skills: ['B2B Sales', 'Team Management', 'Market Analysis'],
-  },
-];
+import DOMPurify from 'dompurify';
 
 const OpenPositions = () => {
   const theme = useTheme();
+  const [openPositions, setOpenPositions] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        const response = await fetch('/api/job_listings');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        const transformedData = data.map((job: any) => ({
+          title: DOMPurify.sanitize(job.job_heading || ''),
+          department: 'Unknown', // Derive or add to DB
+          location: DOMPurify.sanitize(job.location || ''),
+          type: 'Full-time', // Default, adjust if in DB
+          experience: 'N/A', // Derive from requirements or add to DB
+          education: 'N/A', // Derive from requirements or add to DB
+          responsibilities: (job.requirements || '')
+            .split('\n')
+            .filter((line: string) => line.trim())
+            .map((line: string) => DOMPurify.sanitize(line)),
+          description: DOMPurify.sanitize(job.description || ''),
+          salary: DOMPurify.sanitize(job.salary || 'N/A'),
+          application_email: DOMPurify.sanitize(job.application_email || 'hr@zeniak.com'),
+        }));
+        setOpenPositions(transformedData);
+      } catch (error) {
+        console.error('Error fetching jobs:', error);
+        setError('Failed to load job listings. Please try again later.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchJobs();
+  }, []);
+
+  if (loading) {
+    return <Typography align="center">Loading...</Typography>;
+  }
+
+  if (error) {
+    return <Typography align="center" color="error">{error}</Typography>;
+  }
+
+  if (!openPositions.length) {
+    return <Typography align="center">No open positions available.</Typography>;
+  }
 
   return (
-    <Box 
+    <Box
       id="open-positions"
-      sx={{ 
-        py: { xs: 6, md: 8 }, 
+      sx={{
+        py: { xs: 6, md: 8 },
         bgcolor: 'background.default',
         borderTop: `1px solid ${theme.palette.divider}`,
       }}
@@ -87,7 +93,7 @@ const OpenPositions = () => {
             align="center"
             color="text.primary"
             gutterBottom
-            sx={{ 
+            sx={{
               mb: 6,
               fontWeight: 600,
               position: 'relative',
@@ -101,7 +107,7 @@ const OpenPositions = () => {
                 height: 4,
                 bgcolor: 'primary.main',
                 borderRadius: 2,
-              }
+              },
             }}
           >
             Open Positions
@@ -110,9 +116,9 @@ const OpenPositions = () => {
           <Grid container spacing={4}>
             {openPositions.map((position, index) => (
               <Grid item xs={12} sm={6} md={4} key={index}>
-                <Card 
+                <Card
                   component={motion.div}
-                  whileHover={{ 
+                  whileHover={{
                     scale: 1.02,
                     boxShadow: theme.shadows[8],
                   }}
@@ -133,29 +139,40 @@ const OpenPositions = () => {
                       right: 0,
                       height: 4,
                       bgcolor: 'primary.main',
-                    }
+                    },
                   }}
                 >
                   <CardContent sx={{ p: 3, flexGrow: 1 }}>
                     <Box sx={{ mb: 3 }}>
-                      <Typography 
-                        variant="h6" 
+                      <Typography
+                        variant="h6"
                         gutterBottom
-                        sx={{ 
+                        sx={{
                           fontWeight: 600,
                           color: 'text.primary',
                           mb: 2,
+                          fontSize: '1.25rem', // Normal heading size
                         }}
                       >
                         {position.title}
                       </Typography>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          color: 'text.secondary',
+                          mb: 2,
+                          fontSize: '1rem', // Normal font size for description
+                        }}
+                      >
+                        {position.description}
+                      </Typography>
                       <Stack direction="row" spacing={1} flexWrap="wrap" gap={1}>
                         <Chip
                           icon={<WorkIcon sx={{ fontSize: 16 }} />}
-                          label={position.department}
+                          label={position.salary} // Changed from department to salary
                           color="primary"
                           size="small"
-                          sx={{ 
+                          sx={{
                             borderRadius: 1,
                             '& .MuiChip-label': { px: 1 },
                           }}
@@ -164,103 +181,70 @@ const OpenPositions = () => {
                           icon={<LocationOnIcon sx={{ fontSize: 16 }} />}
                           label={position.location}
                           size="small"
-                          sx={{ 
+                          sx={{
                             borderRadius: 1,
                             bgcolor: 'background.paper',
                             '& .MuiChip-label': { px: 1 },
                           }}
                         />
-                        <Chip
+                        {/* <Chip
                           icon={<SchoolIcon sx={{ fontSize: 16 }} />}
                           label={position.experience}
                           size="small"
-                          sx={{ 
+                          sx={{
                             borderRadius: 1,
                             bgcolor: 'background.paper',
                             '& .MuiChip-label': { px: 1 },
                           }}
-                        />
+                        /> */}
                       </Stack>
                     </Box>
 
-                    <Typography 
-                      variant="subtitle2" 
-                      sx={{ 
+                    <Typography
+                      variant="subtitle2"
+                      sx={{
                         color: 'text.secondary',
                         fontWeight: 600,
                         mb: 1,
+                        fontSize: '0.875rem', // Normal subtitle size
                       }}
                     >
                       Key Responsibilities:
                     </Typography>
-                    <Box 
-                      component="ul" 
-                      sx={{ 
-                        mt: 0.5, 
-                        mb: 2.5, 
+                    <Box
+                      component="ul"
+                      sx={{
+                        mt: 0.5,
+                        mb: 2.5,
                         pl: 2,
                         '& li': {
                           mb: 0.5,
                           color: 'text.secondary',
+                          fontSize: '1rem', // Normal body text size
                         },
                         '& li::marker': {
                           color: 'primary.main',
-                        }
+                        },
                       }}
                     >
                       {position.responsibilities.map((resp, idx) => (
-                        <Typography 
-                          component="li" 
-                          key={idx} 
+                        <Typography
+                          component="li"
+                          key={idx}
                           variant="body2"
-                          sx={{ fontSize: '0.875rem' }}
+                          sx={{ fontSize: '1rem' }}
                         >
                           {resp}
                         </Typography>
                       ))}
                     </Box>
 
-                    <Typography 
-                      variant="subtitle2" 
-                      sx={{ 
-                        color: 'text.secondary',
-                        fontWeight: 600,
-                        mb: 1,
-                      }}
-                    >
-                      Required Skills:
-                    </Typography>
-                    <Stack 
-                      direction="row" 
-                      spacing={0.5} 
-                      sx={{ 
-                        mb: 3, 
-                        flexWrap: 'wrap', 
-                        gap: 0.5 
-                      }}
-                    >
-                      {position.skills.map((skill, idx) => (
-                        <Chip 
-                          key={idx} 
-                          label={skill} 
-                          size="small"
-                          sx={{
-                            borderRadius: 1,
-                            bgcolor: theme.palette.primary.main + '10',
-                            color: 'primary.main',
-                            fontWeight: 500,
-                            '& .MuiChip-label': { px: 1 },
-                          }}
-                        />
-                      ))}
-                    </Stack>
-
                     <Box sx={{ mt: 'auto' }}>
-                      <Button 
-                        variant="contained" 
+                      <Button
+                        variant="contained"
                         color="primary"
                         fullWidth
-                        href="mailto:hr@zeniak.com?subject=Application for Position"
+                        href={`mailto:${position.application_email}?subject=Application for ${position.title}`}
                         sx={{
                           py: 1,
                           textTransform: 'none',
@@ -269,7 +253,7 @@ const OpenPositions = () => {
                           boxShadow: 'none',
                           '&:hover': {
                             boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-                          }
+                          },
                         }}
                       >
                         Apply Now

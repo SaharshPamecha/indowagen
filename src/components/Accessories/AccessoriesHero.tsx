@@ -133,11 +133,11 @@ const AccessoriesHero = () => {
                 }}
               >
                 <Image
-                  src="/Accessories-img.webp" // Replace with actual image path
+                  src="/1.png" // Replace with actual image path
                   alt="Accessory Showcase"
                   fill
                   style={{ objectFit: 'contain', borderRadius: '16px' }}
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="(max-width: 768px) 100vw, 70vw"
                   priority
                 />
               </Box>

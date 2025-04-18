@@ -41,8 +41,8 @@ export default function DealersLoungePage() {
   const testimonials = [
     {
       quote: "I have a long standing relationship with Indo Wagen and am proud to say that we have 90% market share in our area of operation. Indo Wagen stands for Quality, Trust, Durability, Innovation and strong Performance on road.",
-      author: "Karim Khan",
-      position: "Owner (M/S Tamralipta Enterprise)",
+      author: "Zakir Ali",
+      position: "Bbadshah Enterprise",
       image: "/images/testimonials/dealer1.jpg"
     },
     {
@@ -53,8 +53,8 @@ export default function DealersLoungePage() {
     },
     {
       quote: "Proud to be part of Indo Wagen family. It's like my own brand for whatever market feedbacks are given, the same gets implemented and improved in the shortest possible time. Thank you Indo Wagen for reposing the trust on us.",
-      author: "Mehboob Alam",
-      position: "Owner (M/S Rounaq Auto)",
+      author: "Nandani automobile",
+      position: "Nandani automobile",
       image: "/images/testimonials/dealer3.jpg"
     }
   ];
@@ -138,167 +138,182 @@ export default function DealersLoungePage() {
 
         <Container maxWidth="lg" sx={{ position: "relative", zIndex: 2 }}>
           <Grid container spacing={4} alignItems="center">
-            <Grid item xs={12} md={6}>
-              <motion.div initial="hidden" animate="visible" variants={fadeIn}>
-                <Typography
-                  variant="h1"
-                  component="h1"
-                  sx={{
-                    color: "white",
-                    fontWeight: 800,
-                    fontSize: { xs: "2.5rem", sm: "3.5rem", md: "4rem" },
-                    textShadow: "2px 2px 4px rgba(0,0,0,0.5)",
-                    mb: 2,
-                    position: "relative",
-                    "&::after": {
-                      content: '""',
-                      position: "absolute",
-                      bottom: -10,
-                      left: 0,
-                      width: "80px",
-                      height: "4px",
-                      backgroundColor: theme.palette.primary.main,
-                      borderRadius: "2px",
-                    },
-                  }}
-                >
-                  Join the Indowagen Dealer Network
-                </Typography>
-                <Typography
-                  variant="h5"
-                  sx={{
-                    color: "white",
-                    maxWidth: "600px",
-                    textShadow: "1px 1px 2px rgba(0,0,0,0.3)",
-                    mb: 4,
-                    fontWeight: 400,
-                    lineHeight: 1.4,
-                  }}
-                >
-                  Drive the Future of E-Mobility and be part of India's
-                  fastest-growing EV revolution.
-                </Typography>
+          <Grid item xs={12} md={6}>
+  <motion.div initial="hidden" animate="visible" variants={fadeIn}>
+    <Typography
+      variant="h1"
+      component="h1"
+      sx={{
+        color: "white",
+        fontWeight: 800,
+        fontSize: { xs: "2.5rem", sm: "3.5rem", md: "4rem" },
+        textShadow: "2px 2px 4px rgba(0,0,0,0.5)",
+        mb: 2,
+        position: "relative",
+        "&::after": {
+          content: '""',
+          position: "absolute",
+          bottom: -10,
+          left: 0,
+          width: "80px",
+          height: "4px",
+          backgroundColor: theme.palette.primary.main,
+          borderRadius: "2px",
+        },
+      }}
+    >
+      Join the Indowagen Dealer Network
+    </Typography>
+    <Typography
+      variant="h5"
+      sx={{
+        color: "white",
+        maxWidth: "600px",
+        textShadow: "1px 1px 2px rgba(0,0,0,0.3)",
+        mb: 4,
+        fontWeight: 400,
+        lineHeight: 1.4,
+      }}
+    >
+      Drive the Future of E-Mobility and be part of India's fastest-growing EV revolution.
+    </Typography>
 
-                <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap", mb: 4 }}>
-                  <Button
-                    variant="contained"
-                    size="large"
-                    color="primary"
-                    component={Link}
-                    href="/dealers/locator#become-distributor"
-                    sx={{
-                      px: 4,
-                      py: 1.5,
-                      fontWeight: "bold",
-                      borderRadius: 2,
-                      boxShadow: "0 4px 14px rgba(0, 0, 0, 0.25)",
-                      transition: "all 0.3s ease",
-                      "&:hover": {
-                        transform: "translateY(-3px)",
-                        boxShadow: "0 6px 20px rgba(0, 0, 0, 0.3)",
-                      },
-                    }}
-                  >
-                    Apply Now
-                  </Button>
+    {/* Flex container for buttons, stats, and image */}
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: { xs: "column", sm: "row" }, // Stack on mobile, row on larger screens
+        alignItems: { xs: "center", sm: "flex-start" },
+        gap: { xs: 2, sm: 4 },
+        flexWrap: "wrap",
+      }}
+    >
+      {/* Buttons and Stats Container */}
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 2,
+          flex: 1,
+          minWidth: { xs: "100%", sm: "200px" },
+        }}
+      >
+        {/* Buttons */}
+        <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
+          <Button
+            variant="contained"
+            size="large"
+            color="primary"
+            component={Link}
+            href="/dealers/locator#become-distributor"
+            sx={{
+              px: 4,
+              py: 1.5,
+              fontWeight: "bold",
+              borderRadius: 2,
+              boxShadow: "0 4px 14px rgba(0, 0, 0, 0.25)",
+              transition: "all 0.3s ease",
+              "&:hover": {
+                transform: "translateY(-3px)",
+                boxShadow: "0 6px 20px rgba(0, 0, 0, 0.3)",
+              },
+            }}
+          >
+            Apply Now
+          </Button>
 
-                  <Button
-                    variant="outlined"
-                    size="large"
-                    component={Link}
-                    href="/dealers/locator"
-                    sx={{
-                      px: 4,
-                      py: 1.5,
-                      fontWeight: "bold",
-                      borderRadius: 2,
-                      borderColor: "white",
-                      color: "white",
-                      backgroundColor: "rgba(255,255,255,0.1)",
-                      backdropFilter: "blur(10px)",
-                      transition: "all 0.3s ease",
-                      "&:hover": {
-                        borderColor: "white",
-                        backgroundColor: "rgba(255,255,255,0.2)",
-                      },
-                    }}
-                  >
-                    Find Dealers
-                  </Button>
-                </Box>
+          <Button
+            variant="outlined"
+            size="large"
+            component={Link}
+            href="/dealers/locator"
+            sx={{
+              px: 4,
+              py: 1.5,
+              fontWeight: "bold",
+              borderRadius: 2,
+              borderColor: "white",
+              color: "white",
+              backgroundColor: "rgba(255,255,255,0.1)",
+              backdropFilter: "blur(10px)",
+              transition: "all 0.3s ease",
+              "&:hover": {
+                borderColor: "white",
+                backgroundColor: "rgba(255,255,255,0.2)",
+              },
+            }}
+          >
+            Find Dealers
+          </Button>
+        </Box>
 
-                {/* Stats */}
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    gap: { xs: 2, md: 4 },
-                    mt: 2,
-                  }}
-                >
-                  <Box
-                    sx={{
-                      backdropFilter: "blur(10px)",
-                      backgroundColor: "rgba(255,255,255,0.1)",
-                      p: 2,
-                      borderRadius: 2,
-                      width: { xs: "calc(50% - 8px)", sm: "auto" },
-                    }}
-                  >
-                    <Typography
-                      variant="h4"
-                      fontWeight="bold"
-                      color="primary.main"
-                    >
-                      350+
-                    </Typography>
-                    <Typography variant="body2" color="white">
-                      Active Dealers
-                    </Typography>
-                  </Box>
-                  <Box
-                    sx={{
-                      backdropFilter: "blur(10px)",
-                      backgroundColor: "rgba(255,255,255,0.1)",
-                      p: 2,
-                      borderRadius: 2,
-                      width: { xs: "calc(50% - 8px)", sm: "auto" },
-                    }}
-                  >
-                    <Typography
-                      variant="h4"
-                      fontWeight="bold"
-                      color="primary.main"
-                    >
-                      100%
-                    </Typography>
-                    <Typography variant="body2" color="white">
-                      ROI
-                    </Typography>
-                  </Box>
-                  {/* <Box
-                    sx={{
-                      backdropFilter: "blur(10px)",
-                      backgroundColor: "rgba(255,255,255,0.1)",
-                      p: 2,
-                      borderRadius: 2,
-                      width: { xs: "calc(50% - 8px)", sm: "auto" },
-                    }}
-                  >
-                    <Typography
-                      variant="h4"
-                      fontWeight="bold"
-                      color="primary.main"
-                    >
-                      ₹10L+
-                    </Typography>
-                    <Typography variant="body2" color="white">
-                      Monthly Income
-                    </Typography>
-                  </Box> */}
-                </Box>
-              </motion.div>
-            </Grid>
+        {/* Stats */}
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: { xs: 2, md: 4 },
+            mt: 2,
+          }}
+        >
+          <Box
+            sx={{
+              backdropFilter: "blur(10px)",
+              backgroundColor: "rgba(255,255,255,0.1)",
+              p: 2,
+              borderRadius: 2,
+              width: { xs: "calc(50% - 8px)", sm: "auto" },
+            }}
+          >
+            <Typography variant="h4" fontWeight="bold" color="primary.main">
+              350+
+            </Typography>
+            <Typography variant="body2" color="white">
+              Active Dealers
+            </Typography>
+          </Box>
+          <Box
+            sx={{
+              backdropFilter: "blur(10px)",
+              backgroundColor: "rgba(255,255,255,0.1)",
+              p: 2,
+              borderRadius: 2,
+              width: { xs: "calc(50% - 8px)", sm: "auto" },
+            }}
+          >
+            <Typography variant="h4" fontWeight="bold" color="primary.main">
+              100%
+            </Typography>
+            <Typography variant="body2" color="white">
+              ROI
+            </Typography>
+          </Box>
+        </Box>
+      </Box>
+
+      {/* Dum Hai Boss Image */}
+      <Box
+        sx={{
+          width: { xs: "100%", sm: "250px" }, // Smaller width for side-by-side placement
+          height: { xs: "auto", sm: "150px" }, // Adjust height to match buttons/stats
+          position: "relative",
+          borderRadius: 2,
+          overflow: "hidden",
+          boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
+          flexShrink: 0, // Prevent image from shrinking
+        }}
+      >
+        <Image
+          src="/dum-hai-boss.jpg"
+          alt="Dum Hai Boss Campaign"
+          fill
+          style={{ objectFit: "cover" }}
+          priority
+        />
+      </Box>
+    </Box>
+  </motion.div>
+</Grid>
 
             <Grid
               item

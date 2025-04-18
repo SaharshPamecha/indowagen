@@ -163,7 +163,7 @@ const CareersHero = () => {
                     }}
                   >
                     <Image
-                      src="/images/careers.jpg"
+                      src="/2.png"
                       alt="Join Our Team at Indo Wagen"
                       fill
                       style={{

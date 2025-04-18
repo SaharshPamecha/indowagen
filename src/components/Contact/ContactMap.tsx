@@ -13,7 +13,6 @@ import {
 } from "@mui/material";
 import { motion } from "framer-motion";
 import DirectionsIcon from "@mui/icons-material/Directions";
-//import { companyInfo } from "@/data/company";
 
 const companyInfo = {
   name: "Indo Wagen",
@@ -28,6 +27,33 @@ const companyInfo = {
     zip: "711306",
     country: "India",
   },
+  manufacturingAddressAssam: {
+    name: "Manufacturing Unit Assam",
+    street:
+      "Zeniak Innovation India Ltd, Sarusajai, Near Sarusajai Stadium, Lokhra",
+    city: "Guwahati",
+    state: "Assam",
+    zip: "781040",
+    country: "India",
+  },
+  manufacturingAddressBihar: {
+    name: "Manufacturing Unit Bihar",
+    street:
+      "Zeniak Innovation India Ltd, Society Plot no 5, Besides Patel Seva Sadan, Patel Colony, Transport Nagar, Gate No-4",
+    city: "Patna",
+    state: "Bihar",
+    zip: "800026",
+    country: "India",
+  },
+  manufacturingAddressUP: {
+    name: "Manufacturing Unit Uttar Pradesh",
+    street:
+      "Zeniak Innovation India Ltd, Khasra No 1025, Dewa Road, Village Goila, Jainabad, Chinhat",
+    city: "Lucknow",
+    state: "Uttar Pradesh",
+    zip: "226028",
+    country: "India",
+  },
   corporateAddress: {
     name: "Corporate Office",
     street:
@@ -37,7 +63,6 @@ const companyInfo = {
     zip: "700091",
     country: "India",
   },
-
   registeredAddress: {
     name: "Registered Office",
     street: "8/1a, Sir William Jones Sarani, 4th floor",
@@ -46,7 +71,6 @@ const companyInfo = {
     zip: "700071",
     country: "India",
   },
-  // Keep old address for backward compatibility
   address: {
     street:
       "Merlin Infinite, 10th floor, Room No- 1010, Plot No- 5, DN51, Sector V, Saltlake",
@@ -123,12 +147,17 @@ const ContactMap = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-  const manufacturingAddress =
-    companyInfo?.manufacturingAddress || companyInfo?.address || {};
-  const corporateAddress = companyInfo?.corporateAddress || {};
-  const registeredAddress = companyInfo?.registeredAddress || {};
+  const addresses = [
+    companyInfo.manufacturingAddress,
+    companyInfo.manufacturingAddressAssam,
+    companyInfo.manufacturingAddressBihar,
+    companyInfo.manufacturingAddressUP,
+    companyInfo.corporateAddress,
+    // companyInfo.registeredAddress, // Commented out as per original code
+  ].filter(Boolean);
 
   interface AddressType {
+    name?: string;
     street: string;
     city: string;
     state: string;
@@ -145,14 +174,6 @@ const ContactMap = () => {
     const encodedAddress = encodeURIComponent(fullAddress);
     return `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
   };
-
-  const manufacturingFullAddress = getFullAddress(manufacturingAddress);
-  const corporateFullAddress = getFullAddress(corporateAddress);
-  const registeredFullAddress = getFullAddress(registeredAddress);
-
-  const manufacturingGoogleMapsUrl = getGoogleMapsUrl(manufacturingAddress);
-  const corporateGoogleMapsUrl = getGoogleMapsUrl(corporateAddress);
-  const registeredGoogleMapsUrl = getGoogleMapsUrl(registeredAddress);
 
   return (
     <Box
@@ -181,7 +202,7 @@ const ContactMap = () => {
             variant="h6"
             sx={{ textAlign: "center", mb: 4, color: "text.secondary" }}
           >
-            We have multiple offices across West Bengal to serve you better
+            We have multiple offices and manufacturing units across India to serve you better
           </Typography>
 
           <Card
@@ -198,171 +219,76 @@ const ContactMap = () => {
                 justifyContent: "space-between",
                 flexWrap: "wrap",
                 gap: 2,
+                p: 2,
               }}
             >
-              {/* Manufacturing Address */}
-              <Box
-                sx={{
-                  flex: "1 1 calc(33.33% - 16px)",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  bgcolor: "rgba(0, 0, 0, 0.05)",
-                  borderRadius: 2,
-                  p: 2,
-                }}
-              >
+              {addresses.map((address, index) => (
                 <Box
-                  component="img"
-                  src="/location-pin.svg"
-                  alt="Location"
+                  key={index}
                   sx={{
-                    width: 60,
-                    height: 60,
-                    filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.2))",
-                    mb: 2,
+                    flex: {
+                      xs: "1 1 100%",
+                      sm: "1 1 calc(50% - 16px)",
+                      md: "1 1 calc(33.33% - 16px)",
+                    },
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    bgcolor: "rgba(0, 0, 0, 0.05)",
+                    borderRadius: 2,
+                    p: 2,
                   }}
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = "none";
-                  }}
-                />
-                <Typography variant="h6" sx={{ mb: 1 }}>
-                  {manufacturingAddress.name || "Manufacturing Unit"}
-                </Typography>
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  sx={{ mb: 3, textAlign: "center", px: 2 }}
                 >
-                  {manufacturingAddress.street}
-                  <br />
-                  {manufacturingAddress.city}, {manufacturingAddress.state}{" "}
-                  {manufacturingAddress.zip}
-                  <br />
-                  {manufacturingAddress.country}
-                </Typography>
-                <Button
-                  variant="contained"
-                  startIcon={<DirectionsIcon />}
-                  href={manufacturingGoogleMapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Get Directions
-                </Button>
-              </Box>
-
-              {/* Corporate Address */}
-              <Box
-                sx={{
-                  flex: "1 1 calc(33.33% - 16px)",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  bgcolor: "rgba(0, 0, 0, 0.05)",
-                  borderRadius: 2,
-                  p: 2,
-                }}
-              >
-                <Box
-                  component="img"
-                  src="/location-pin.svg"
-                  alt="Location"
-                  sx={{
-                    width: 60,
-                    height: 60,
-                    filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.2))",
-                    mb: 2,
-                  }}
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = "none";
-                  }}
-                />
-                <Typography variant="h6" sx={{ mb: 1 }}>
-                  Corporate Office
-                </Typography>
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  sx={{ mb: 3, textAlign: "center", px: 2 }}
-                >
-                  {corporateFullAddress}
-                </Typography>
-                <Button
-                  variant="contained"
-                  startIcon={<DirectionsIcon />}
-                  href={corporateGoogleMapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Get Directions
-                </Button>
-              </Box>
-
-              {/* Registered Address */}
-              {/* <Box
-                sx={{
-                  flex: "1 1 calc(33.33% - 16px)",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  bgcolor: "rgba(0, 0, 0, 0.05)",
-                  borderRadius: 2,
-                  p: 2,
-                }}
-              >
-                <Box
-                  component="img"
-                  src="/location-pin.svg"
-                  alt="Location"
-                  sx={{
-                    width: 60,
-                    height: 60,
-                    filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.2))",
-                    mb: 2,
-                  }}
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = "none";
-                  }}
-                />
-                <Typography variant="h6" sx={{ mb: 1 }}>
-                  Registered Office
-                </Typography>
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  sx={{ mb: 3, textAlign: "center", px: 2 }}
-                >
-                  {registeredFullAddress}
-                </Typography>
-                <Button
-                  variant="contained"
-                  startIcon={<DirectionsIcon />}
-                  href={registeredGoogleMapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Get Directions
-                </Button>
-              </Box> */}
+                  <Box
+                    component="img"
+                    src="/location-pin.svg"
+                    alt="Location"
+                    sx={{
+                      width: 60,
+                      height: 60,
+                      filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.2))",
+                      mb: 2,
+                    }}
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = "none";
+                    }}
+                  />
+                  <Typography variant="h6" sx={{ mb: 1 }}>
+                    {address.name || "Office"}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ mb: 3, textAlign: "center", px: 2 }}
+                  >
+                    {address.street}
+                    <br />
+                    {address.city}, {address.state} {address.zip}
+                    <br />
+                    {address.country}
+                  </Typography>
+                  <Button
+                    variant="contained"
+                    startIcon={<DirectionsIcon />}
+                    href={getGoogleMapsUrl(address)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Get Directions
+                  </Button>
+                </Box>
+              ))}
             </Box>
 
             <CardContent sx={{ py: 3 }}>
-              <Typography variant="body1" gutterBottom>
-                <strong>Manufacturing Unit:</strong> {manufacturingFullAddress}
-              </Typography>
-              <Typography variant="body1" gutterBottom>
-                <strong>Corporate Office:</strong> {corporateFullAddress}
-              </Typography>
-              {/* <Typography variant="body1" gutterBottom>
-                <strong>Registered Office:</strong> {registeredFullAddress}
-              </Typography> */}
+              {addresses.map((address, index) => (
+                <Typography key={index} variant="body1" gutterBottom>
+                  <strong>{address.name || "Office"}:</strong>{" "}
+                  {getFullAddress(address)}
+                </Typography>
+              ))}
               <Typography variant="body1" gutterBottom>
                 <strong>Phone:</strong>{" "}
                 {companyInfo.contact?.phone || "+91-120-4567890"}

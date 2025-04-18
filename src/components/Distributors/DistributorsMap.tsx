@@ -125,7 +125,7 @@ const DistributorsMap: React.FC<DistributorsMapProps> = ({ selectedState, select
       <Container maxWidth="lg">
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
           <Typography variant="h4" component="h2">
-            Our Distributors
+            Our Dealers
           </Typography>
           {(selectedState || selectedDealer) && (
             <Button
@@ -156,10 +156,10 @@ const DistributorsMap: React.FC<DistributorsMapProps> = ({ selectedState, select
                           {distributor.city}, {distributor.state}
                         </Typography>
                       </Box>
-                      <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+                      {/* <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
                         <PhoneIcon sx={{ mr: 1 }} color="primary" />
                         <Typography>{distributor.phone}</Typography>
-                      </Box>
+                      </Box> */}
                       <Box sx={{ display: 'flex', alignItems: 'center' }}>
                         <EmailIcon sx={{ mr: 1 }} color="primary" />
                         <Typography>{distributor.email}</Typography>

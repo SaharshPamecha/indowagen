@@ -11,13 +11,13 @@ const ProductsHero = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [isVisible, setIsVisible] = useState(false);
-  
+
   useEffect(() => {
     // Delay visibility for animation effect
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 200);
-    
+
     return () => clearTimeout(timer);
   }, []);
 
@@ -28,31 +28,33 @@ const ProductsHero = () => {
       transition: {
         delay: 0.3,
         duration: 0.8,
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
-  
+
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6 }
-    }
+      transition: { duration: 0.6 },
+    },
   };
 
   return (
     <Box
       sx={{
         position: 'relative',
-        height: { xs: '600px', md: '600px' },
+        height: { xs: 'auto', md: '600px' }, // Auto height on mobile, fixed 600px on desktop/laptop
+        minHeight: { xs: '158px', md: '600px' }, // Minimum height for mobile to ensure content visibility
         mb: 8,
+        width: '100%', // Ensure full width
         overflow: 'hidden',
       }}
     >
       {/* Banner Image */}
-      <Box 
+      <Box
         sx={{
           position: 'absolute',
           top: 0,
@@ -67,12 +69,12 @@ const ProductsHero = () => {
           alt="Indo Wagen Products"
           fill
           priority
-          style={{ 
-            objectFit: 'cover', 
+          style={{
+            objectFit: 'cover',
             objectPosition: 'center',
           }}
         />
-        {/* Overlay Gradient */}
+        {/* Overlay Gradient (optional, uncomment if needed) */}
         {/* <Box
           sx={{
             position: 'absolute',
@@ -87,168 +89,19 @@ const ProductsHero = () => {
       </Box>
 
       {/* Content */}
-      <Container 
-        maxWidth="lg"
+      <Container
+        maxWidth={false} // Full width container
         sx={{
           height: '100%',
           display: 'flex',
           alignItems: 'center',
+          justifyContent: 'center', // Center content horizontally
           position: 'relative',
           zIndex: 2,
+          px: { xs: 2, md: 4 }, // Padding adjustment for mobile and desktop
         }}
       >
-        {/* <motion.div
-          initial="hidden"
-          animate={isVisible ? "visible" : "hidden"}
-          variants={containerVariants}
-          style={{
-            width: isMobile ? '100%' : '60%',
-            padding: isMobile ? theme.spacing(3) : theme.spacing(5),
-          }}
-        >
-          <motion.div variants={itemVariants}>
-            <Typography
-              variant="overline"
-              sx={{
-                color: theme.palette.primary.light,
-                fontWeight: 600,
-                fontSize: { xs: '0.9rem', md: '1.1rem' },
-                mb: 1,
-                display: 'block',
-              }}
-            >
-              INDO WAGEN INNOVATIONS
-            </Typography>
-          </motion.div>
-          
-          <motion.div variants={itemVariants}>
-            <Typography
-              variant="h2"
-              component="h1"
-              sx={{
-                color: 'white',
-                fontWeight: 800,
-                mb: 3,
-                fontSize: { xs: '2.5rem', md: '3.5rem' },
-                lineHeight: 1.2,
-                textShadow: '0 2px 4px rgba(0,0,0,0.3)',
-              }}
-            >
-              Revolutionizing Electric Mobility in India
-            </Typography>
-          </motion.div>
-          
-          <motion.div variants={itemVariants}>
-            <Typography
-              variant="h6"
-              sx={{
-                color: 'white',
-                mb: 4,
-                opacity: 0.9,
-                maxWidth: '90%',
-                lineHeight: 1.6,
-              }}
-            >
-              Discover our premium range of electric vehicles designed for efficiency, 
-              sustainability, and exceptional performance. From e-rickshaws to e-loaders, 
-              we provide innovative solutions for modern transportation needs.
-            </Typography>
-          </motion.div>
-          
-          <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
-            <motion.div variants={itemVariants}>
-              <Button
-                variant="contained"
-                size="large"
-                color="primary"
-                href="#product-categories"
-                startIcon={<ElectricRickshawIcon />}
-                sx={{
-                  py: 1.5,
-                  px: 3,
-                  borderRadius: 2,
-                  fontWeight: 'bold',
-                  textTransform: 'none',
-                  fontSize: '1rem',
-                  boxShadow: '0 4px 14px rgba(0, 123, 255, 0.4)',
-                }}
-              >
-                Explore Products
-              </Button>
-            </motion.div>
-            
-            <motion.div variants={itemVariants}>
-              <Button
-                variant="outlined"
-                size="large"
-                color="inherit"
-                href="/contact"
-                startIcon={<DirectionsCarIcon />}
-                sx={{
-                  py: 1.5,
-                  px: 3,
-                  borderRadius: 2,
-                  fontWeight: 'bold',
-                  textTransform: 'none',
-                  fontSize: '1rem',
-                  borderColor: 'white',
-                  color: 'white',
-                  '&:hover': {
-                    borderColor: theme.palette.primary.light,
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                  },
-                }}
-              >
-                Request Demo
-              </Button>
-            </motion.div>
-          </Box>
-          
-          
-          <Box 
-            sx={{ 
-              display: 'flex', 
-              gap: 1, 
-              mt: 6,
-              alignItems: 'center',
-            }}
-          >
-            {[...Array(4)].map((_, i) => (
-              <motion.div
-                key={i}
-                animate={{ 
-                  scale: [1, 1.2, 1],
-                  opacity: [0.7, 1, 0.7],
-                }}
-                transition={{ 
-                  duration: 1.5, 
-                  repeat: Infinity, 
-                  delay: i * 0.3,
-                  ease: "easeInOut",
-                }}
-              >
-                <Box
-                  sx={{
-                    width: { xs: 8, md: 12 },
-                    height: { xs: 8, md: 12 },
-                    borderRadius: '50%',
-                    backgroundColor: theme.palette.primary.main,
-                  }}
-                />
-              </motion.div>
-            ))}
-            <Typography 
-              variant="caption" 
-              sx={{ 
-                color: 'white', 
-                ml: 1,
-                opacity: 0.8,
-              }}
-            >
-              EV Revolution in Motion
-            </Typography>
-          </Box>
-        </motion.div> */}
+       
       </Container>
     </Box>
   );
