@@ -19,9 +19,23 @@ import WorkIcon from '@mui/icons-material/Work';
 import SchoolIcon from '@mui/icons-material/School';
 import DOMPurify from 'dompurify';
 
+// Define the interface for a job position
+interface JobPosition {
+  title: string;
+  department: string;
+  location: string;
+  type: string;
+  experience: string;
+  education: string;
+  responsibilities: string[];
+  description: string;
+  salary: string;
+  application_email: string;
+}
+
 const OpenPositions = () => {
   const theme = useTheme();
-  const [openPositions, setOpenPositions] = useState([]);
+  const [openPositions, setOpenPositions] = useState<JobPosition[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -169,7 +183,7 @@ const OpenPositions = () => {
                       <Stack direction="row" spacing={1} flexWrap="wrap" gap={1}>
                         <Chip
                           icon={<WorkIcon sx={{ fontSize: 16 }} />}
-                          label={position.salary} // Changed from department to salary
+                          label={position.salary} // Salary in blue chip
                           color="primary"
                           size="small"
                           sx={{
@@ -187,7 +201,7 @@ const OpenPositions = () => {
                             '& .MuiChip-label': { px: 1 },
                           }}
                         />
-                        {/* <Chip
+                        <Chip
                           icon={<SchoolIcon sx={{ fontSize: 16 }} />}
                           label={position.experience}
                           size="small"
@@ -196,7 +210,7 @@ const OpenPositions = () => {
                             bgcolor: 'background.paper',
                             '& .MuiChip-label': { px: 1 },
                           }}
-                        /> */}
+                        />
                       </Stack>
                     </Box>
 
