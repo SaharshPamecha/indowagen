@@ -148,11 +148,11 @@ const ContactMap = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const addresses = [
-    companyInfo.manufacturingAddress,
-    companyInfo.manufacturingAddressAssam,
-    companyInfo.manufacturingAddressBihar,
-    companyInfo.manufacturingAddressUP,
-    companyInfo.corporateAddress,
+    companyInfo.manufacturingAddress, // 1st: Manufacturing Unit
+    companyInfo.corporateAddress,    // 2nd: Corporate Office
+    companyInfo.manufacturingAddressAssam, // 3rd: Manufacturing Unit Assam
+    companyInfo.manufacturingAddressBihar, // 4th: Manufacturing Unit Bihar
+    companyInfo.manufacturingAddressUP,    // 5th: Manufacturing Unit UP
     // companyInfo.registeredAddress, // Commented out as per original code
   ].filter(Boolean);
 
@@ -222,15 +222,67 @@ const ContactMap = () => {
                 p: 2,
               }}
             >
-              {addresses.map((address, index) => (
+              {/* First row: 2 boxes (Manufacturing Unit and Corporate Office) */}
+              {addresses.slice(0, 2).map((address, index) => (
                 <Box
                   key={index}
                   sx={{
-                    flex: {
-                      xs: "1 1 100%",
-                      sm: "1 1 calc(50% - 16px)",
-                      md: "1 1 calc(33.33% - 16px)",
-                    },
+                    flex: "1 1 calc(50% - 16px)", // 2 boxes per row
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    bgcolor: "rgba(0, 0, 0, 0.05)",
+                    borderRadius: 2,
+                    p: 2,
+                  }}
+                >
+                  <Box
+                    component="img"
+                    src="/location-pin.svg"
+                    alt="Location"
+                    sx={{
+                      width: 60,
+                      height: 60,
+                      filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.2))",
+                      mb: 2,
+                    }}
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = "none";
+                    }}
+                  />
+                  <Typography variant="h6" sx={{ mb: 1 }}>
+                    {address.name || "Office"}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ mb: 3, textAlign: "center", px: 2 }}
+                  >
+                    {address.street}
+                    <br />
+                    {address.city}, {address.state} {address.zip}
+                    <br />
+                    {address.country}
+                  </Typography>
+                  <Button
+                    variant="contained"
+                    startIcon={<DirectionsIcon />}
+                    href={getGoogleMapsUrl(address)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Get Directions
+                  </Button>
+                </Box>
+              ))}
+              {/* Second row: 3 boxes */}
+              {addresses.slice(2, 5).map((address, index) => (
+                <Box
+                  key={index + 2} // Offset key to avoid duplication
+                  sx={{
+                    flex: "1 1 calc(33.33% - 16px)", // 3 boxes per row
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
