@@ -45,6 +45,7 @@ import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import PolicyIcon from '@mui/icons-material/Policy';
 import InfoIcon from '@mui/icons-material/Info';
 import XIcon from '@mui/icons-material/X';
+
 // Data
 const companyInfo = {
   name: "Indo Wagen",
@@ -75,7 +76,6 @@ const companyInfo = {
     zip: "700071",
     country: "India",
   },
-  // Keep old address for backward compatibility
   address: {
     street:
       "Merlin Infinite, 10th floor, Room No- 1010, Plot No- 5, DN51, Sector V, Saltlake",
@@ -153,7 +153,7 @@ const Footer = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const isTablet = useMediaQuery(theme.breakpoints.down('md'));
   const currentYear = new Date().getFullYear();
-  
+
   // Newsletter subscription state
   const [email, setEmail] = useState('');
   const [subscribeStatus, setSubscribeStatus] = useState<{
@@ -161,15 +161,14 @@ const Footer = () => {
     message: string;
     severity: 'success' | 'error' | 'info';
   }>({ open: false, message: '', severity: 'info' });
-  
+
   // Newsletter subscription handler
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
-    
-    // Here you would typically integrate with your newsletter service
+
     console.log('Subscribing email:', email);
-    
+
     setSubscribeStatus({
       open: true,
       message: 'Thanks for subscribing to our newsletter!',
@@ -177,7 +176,7 @@ const Footer = () => {
     });
     setEmail('');
   };
-  
+
   const handleCloseSnackbar = () => {
     setSubscribeStatus({ ...subscribeStatus, open: false });
   };
@@ -189,7 +188,6 @@ const Footer = () => {
       links: [
         { name: 'Explore Products', href: '/products' },
         { name: 'Accessories', href: '/accessories' },
-        // { name: 'Compare Models', href: '/products/compare' },
       ],
     },
     {
@@ -199,7 +197,6 @@ const Footer = () => {
         { name: 'Our Team', href: '/about#team' },
         { name: 'News & Blog', href: '/blog' },
         { name: 'Careers', href: '/careers' },
-        
       ],
     },
     {
@@ -208,7 +205,6 @@ const Footer = () => {
         { name: 'Dealers Lounge', href: '/dealers/lounge' },
         { name: 'Find a Dealer', href: '/dealers/locator' },
         { name: 'Become a Dealer', href: '/dealers/locator#become-distributor' },
-        // { name: 'Contact Us', href: '/contact' },
       ],
     },
     {
@@ -217,43 +213,42 @@ const Footer = () => {
         { name: 'Connect Support', href: '/contact' },
         { name: 'Connect With Us', href: '/contact#social-links' },
         { name: 'Visit Us ', href: '/contact#visit-our-locations' },
-        { name: 'FAQ', href: '/contact#faq' }
+        { name: 'FAQ', href: '/contact#faq' },
       ],
-    }
-   
+    },
   ];
 
-  // Social media links with enhanced information
+  // Social media links
   const socialLinks = [
-    { 
+    {
       name: 'Facebook',
-      icon: <FacebookIcon />, 
+      icon: <FacebookIcon />,
       href: companyInfo.social?.facebook || '#',
-      color: '#1877F2'
+      color: '#1877F2',
     },
-    { 
+    {
       name: 'X',
-      icon: <XIcon />, 
+      icon: <XIcon />,
       href: companyInfo.social?.twitter || '#',
-      color: '#000000'
+      color: '#000000',
     },
-    { 
+    {
       name: 'LinkedIn',
-      icon: <LinkedInIcon />, 
+      icon: <LinkedInIcon />,
       href: companyInfo.social?.linkedin || '#',
-      color: '#0A66C2'
+      color: '#0A66C2',
     },
-    { 
+    {
       name: 'Instagram',
-      icon: <InstagramIcon />, 
+      icon: <InstagramIcon />,
       href: companyInfo.social?.instagram || '#',
-      color: '#E4405F'
+      color: '#E4405F',
     },
-    { 
+    {
       name: 'YouTube',
-      icon: <YouTubeIcon />, 
+      icon: <YouTubeIcon />,
       href: companyInfo.social?.youtube || '#',
-      color: '#FF0000'
+      color: '#FF0000',
     },
   ];
 
@@ -269,296 +264,229 @@ const Footer = () => {
       component="footer"
       sx={{
         bgcolor:
-          theme.palette.mode === "light" ? "grey.100" : "background.paper",
+          theme.palette.mode === 'light' ? 'grey.100' : 'background.paper',
         pt: 4,
         pb: 3,
         borderTop: `1px solid ${theme.palette.divider}`,
-        width: "100%",
-        marginTop: "auto",
+        width: '100%',
+        marginTop: 'auto',
       }}
     >
       <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
-        {/* Top Section: Powered by and Trademark */}
-        {/* <Box
-          sx={{
-            display: 'flex',
-            flexDirection: { xs: 'column', sm: 'row' },
-            justifyContent: { xs: 'center', sm: 'space-between' },
-            alignItems: 'center',
-            mb: 4,
-            py: 2,
-            borderBottom: `1px solid ${theme.palette.divider}`,
-          }}
-        >
-          <Typography
-            variant="body2"
-            color="text.secondary"
-            sx={{ mb: { xs: 1, sm: 0 } }}
-          >
-            <a
-              target="_blank"
-              href="https://digitalmiles.in/"
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              Powered by Digital Miles
-            </a>{' '}
-            | Made with Love ♥
-          </Typography>
-          <Typography
-            variant="body2"
-            color="text.secondary"
-            sx={{ mt: { xs: 1, sm: 0 } }}
-          >
-            {companyInfo.name || "Indo Wagen"} is a trademark of{' '}
-            {companyInfo.fullName || "Indo Wagen Electronics Pvt. Ltd."}
-          </Typography>
-        </Box> */}
-
         {/* Main Content */}
         <Grid container spacing={4}>
-          {/* Company Info and Newsletter */}
-          <Grid item xs={12} md={4}>
-            <Paper elevation={0} sx={{ p: 3, bgcolor: "transparent" }}>
-              {/* Logo */}
-              <Box sx={{ position: "relative", width: 180, height: 60, mb: 3 }}>
-                <Image
-                  src="/images/brand/logo.png"
-                  alt={companyInfo.name}
-                  fill
-                  style={{ objectFit: "contain" }}
-                  priority
-                />
-              </Box>
-
-              {/* Company Description */}
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                paragraph
-                sx={{ mb: 3 }}
-              >
-                {companyInfo.description ||
-                  "Leading manufacturer of electric vehicles in India"}
-              </Typography>
-
-              {/* Contact Information */}
-              <Box sx={{ mb: 3 }}>
-                <Typography
-                  variant="subtitle2"
-                  sx={{ fontWeight: "bold", mb: 1.5 }}
-                >
-                  Contact Information
-                </Typography>
-
-                {/* Address */}
-                <Box sx={{ display: "flex", alignItems: "flex-start", mb: 2 }}>
-                  <LocationOnIcon
-                    sx={{ mr: 1, color: "primary.main", mt: 0.5 }}
+          {/* First Row: Logo and Description */}
+          <Grid item xs={12}>
+            <Grid container spacing={2}>
+              {/* Logo Column */}
+              <Grid item xs={12} sm={4}>
+                <Box sx={{ position: 'relative', width: 180, height: 60 }}>
+                  <Image
+                    src="/images/brand/logo.png"
+                    alt={companyInfo.name}
+                    fill
+                    style={{ objectFit: 'contain' }}
+                    priority
                   />
-                  <Typography variant="body2">
-                    {companyInfo.address?.street}
-                    <br />
-                    {companyInfo.address?.city}, {companyInfo.address?.state},{' '}
-                    {companyInfo.address?.zip}
-                    <br />
-                    {companyInfo.address?.country}
-                  </Typography>
                 </Box>
-
-                {/* Phone */}
-                <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                  <PhoneIcon sx={{ mr: 1, color: "primary.main" }} />
-                  <MuiLink
-                    href={
-                      companyInfo.contact?.phone
-                        ? `tel:${companyInfo.contact.phone.replace(
-                            /[^0-9]/g,
-                            ""
-                          )}`
-                        : "#"
-                    }
-                    variant="body2"
-                    sx={{
-                      textDecoration: "none",
-                      "&:hover": { color: "primary.main" },
-                    }}
-                  >
-                    {companyInfo.contact?.phone || "+91-120-4567890"}
-                  </MuiLink>
-                </Box>
-
-                {/* Email */}
-                <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                  <EmailIcon sx={{ mr: 1, color: "primary.main" }} />
-                  <MuiLink
-                    href={`mailto:${
-                      companyInfo.contact?.email || "info@indowagen.com"
-                    }`}
-                    variant="body2"
-                    sx={{
-                      textDecoration: "none",
-                      "&:hover": { color: "primary.main" },
-                    }}
-                  >
-                    {companyInfo.contact?.email || "info@indowagen.com"}
-                  </MuiLink>
-                </Box>
-
-                {/* Business Hours */}
-                <Box sx={{ display: "flex", alignItems: "flex-start", mb: 2 }}>
-                  <AccessTimeIcon
-                    sx={{ mr: 1, color: "primary.main", mt: 0.5 }}
-                  />
-                  <Typography variant="body2">
-                    Mon - Sat: 9:00 AM - 6:00 PM
-                    <br />
-                    Sun: Closed
-                  </Typography>
-                </Box>
-              </Box>
-
-              {/* Newsletter Subscription */}
-              {/* <Box sx={{ mt: 4 }}>
-                <Typography
-                  variant="subtitle2"
-                  sx={{ fontWeight: "bold", mb: 1.5 }}
-                >
-                  Subscribe to Our Newsletter
-                </Typography>
+              </Grid>
+              {/* Description Column */}
+              <Grid item xs={12} sm={8}>
                 <Typography
                   variant="body2"
                   color="text.secondary"
-                  sx={{ mb: 2 }}
+                  paragraph
+                  sx={{ mb: 3 }}
                 >
-                  Stay updated with our latest news and offers
+                  {companyInfo.description ||
+                    'Leading manufacturer of electric vehicles in India'}
                 </Typography>
-
-                <form onSubmit={handleSubscribe}>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: isTablet ? "column" : "row",
-                    }}
-                  >
-                    <TextField
-                      fullWidth
-                      size="small"
-                      label="Email Address"
-                      variant="outlined"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      sx={{ mr: isTablet ? 0 : 1, mb: isTablet ? 1 : 0 }}
-                    />
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      type="submit"
-                      startIcon={<SendIcon />}
-                      sx={{ whiteSpace: "nowrap" }}
-                    >
-                      Subscribe
-                    </Button>
-                  </Box>
-                </form>
-              </Box> */}
-            </Paper>
+              </Grid>
+            </Grid>
           </Grid>
 
-          {/* Navigation Links */}
-          {footerSections.map((section, index) => (
-            <Grid item xs={12} sm={6} md={2} key={section.title}>
-              <Typography
-                variant="h6"
-                gutterBottom
-                sx={{
-                  fontWeight: "bold",
-                  position: "relative",
-                  pb: 1,
-                  "&:after": {
-                    content: '""',
-                    position: "absolute",
-                    bottom: 0,
-                    left: 0,
-                    width: "40px",
-                    height: "2px",
-                    bgcolor: "primary.main",
-                  },
-                }}
-              >
-                {section.title}
-              </Typography>
-              <Box component="nav">
-                <Box component="ul" sx={{ listStyle: "none", p: 0, m: 0 }}>
-                  {section.links.map((link) => (
-                    <Box component="li" key={link.name} sx={{ mb: 1 }}>
-                      <Link href={link.href} style={{ textDecoration: "none" }}>
-                        <MuiLink
-                          component="span"
-                          variant="body2"
-                          color="text.secondary"
-                          sx={{
-                            display: "inline-block",
-                            transition: "transform 0.2s, color 0.2s",
-                            "&:hover": {
-                              color: "primary.main",
-                              transform: "translateX(5px)",
-                            },
-                          }}
-                        >
-                          {link.name}
-                        </MuiLink>
-                      </Link>
-                    </Box>
+          {/* Second Row: Contact Info and Menus */}
+          <Grid item xs={12}>
+            <Grid container spacing={4}>
+              {/* Contact Information */}
+              <Grid item xs={12} md={4}>
+                <Paper elevation={0} sx={{ p: 3, bgcolor: 'transparent' }}>
+                  <Typography
+                    variant="subtitle2"
+                    sx={{ fontWeight: 'bold', mb: 1.5 }}
+                  >
+                    Contact Information
+                  </Typography>
+
+                  {/* Address */}
+                  <Box sx={{ display: 'flex', alignItems: 'flex-start', mb: 2 }}>
+                    <LocationOnIcon
+                      sx={{ mr: 1, color: 'primary.main', mt: 0.5 }}
+                    />
+                    <Typography variant="body2">
+                      {companyInfo.address?.street}
+                      <br />
+                      {companyInfo.address?.city}, {companyInfo.address?.state},{' '}
+                      {companyInfo.address?.zip}
+                      <br />
+                      {companyInfo.address?.country}
+                    </Typography>
+                  </Box>
+
+                  {/* Phone */}
+                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                    <PhoneIcon sx={{ mr: 1, color: 'primary.main' }} />
+                    <MuiLink
+                      href={
+                        companyInfo.contact?.phone
+                          ? `tel:${companyInfo.contact.phone.replace(
+                              /[^0-9]/g,
+                              ''
+                            )}`
+                          : '#'
+                      }
+                      variant="body2"
+                      sx={{
+                        textDecoration: 'none',
+                        '&:hover': { color: 'primary.main' },
+                      }}
+                    >
+                      {companyInfo.contact?.phone || '+91-120-4567890'}
+                    </MuiLink>
+                  </Box>
+
+                  {/* Email */}
+                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                    <EmailIcon sx={{ mr: 1, color: 'primary.main' }} />
+                    <MuiLink
+                      href={`mailto:${
+                        companyInfo.contact?.email || 'info@indowagen.com'
+                      }`}
+                      variant="body2"
+                      sx={{
+                        textDecoration: 'none',
+                        '&:hover': { color: 'primary.main' },
+                      }}
+                    >
+                      {companyInfo.contact?.email || 'info@indowagen.com'}
+                    </MuiLink>
+                  </Box>
+
+                  {/* Business Hours */}
+                  <Box sx={{ display: 'flex', alignItems: 'flex-start', mb: 2 }}>
+                    <AccessTimeIcon
+                      sx={{ mr: 1, color: 'primary.main', mt: 0.5 }}
+                    />
+                    <Typography variant="body2">
+                      Mon - Sat: 9:00 AM - 6:00 PM
+                      <br />
+                      Sun: Closed
+                    </Typography>
+                  </Box>
+                </Paper>
+              </Grid>
+
+              {/* Navigation Menus */}
+              <Grid item xs={12} md={8}>
+                <Grid container spacing={4}>
+                  {footerSections.map((section) => (
+                    <Grid item xs={12} sm={6} md={3} key={section.title}>
+                      <Typography
+                        variant="h6"
+                        gutterBottom
+                        sx={{
+                          fontWeight: 'bold',
+                          position: 'relative',
+                          pb: 1,
+                          '&:after': {
+                            content: '""',
+                            position: 'absolute',
+                            bottom: 0,
+                            left: 0,
+                            width: '40px',
+                            height: '2px',
+                            bgcolor: 'primary.main',
+                          },
+                        }}
+                      >
+                        {section.title}
+                      </Typography>
+                      <Box component="nav">
+                        <Box component="ul" sx={{ listStyle: 'none', p: 0, m: 0 }}>
+                          {section.links.map((link) => (
+                            <Box component="li" key={link.name} sx={{ mb: 1 }}>
+                              <Link href={link.href} style={{ textDecoration: 'none' }}>
+                                <MuiLink
+                                  component="span"
+                                  variant="body2"
+                                  color="text.secondary"
+                                  sx={{
+                                    display: 'inline-block',
+                                    transition: 'transform 0.2s, color 0.2s',
+                                    '&:hover': {
+                                      color: 'primary.main',
+                                      transform: 'translateX(5px)',
+                                    },
+                                  }}
+                                >
+                                  {link.name}
+                                </MuiLink>
+                              </Link>
+                            </Box>
+                          ))}
+                        </Box>
+                      </Box>
+                    </Grid>
                   ))}
-                </Box>
-              </Box>
+                </Grid>
+              </Grid>
             </Grid>
-          ))}
+          </Grid>
         </Grid>
 
         {/* Social Media Section */}
         <Box sx={{ mt: 6, mb: 4 }}>
           <Divider>
-            <Typography variant="subtitle2" sx={{ px: 2, fontWeight: "bold" }}>
+            <Typography variant="subtitle2" sx={{ px: 2, fontWeight: 'bold' }}>
               Connect With Us
             </Typography>
           </Divider>
 
           <Box
-  sx={{
-    display: "flex",
-    justifyContent: "center",
-    flexWrap: "wrap",
-    gap: 1,
-    mt: 3,
-  }}
->
-  {socialLinks.map((social) => (
-    <Tooltip key={social.name} title={social.name} arrow>
-      <IconButton
-        component="a"
-        href={social.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={social.name}
-        sx={{
-          color: social.color, // Set the original color by default
-          "&:hover": {
-            bgcolor: social.color + "1A", // Slight background tint on hover
-            transform: "translateY(-3px)", // Keep the hover animation
-          },
-          transition: "all 0.2s",
-        }}
-      >
-        {social.icon}
-      </IconButton>
-    </Tooltip>
-  ))}
-</Box>
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              flexWrap: 'wrap',
+              gap: 1,
+              mt: 3,
+            }}
+          >
+            {socialLinks.map((social) => (
+              <Tooltip key={social.name} title={social.name} arrow>
+                <IconButton
+                  component="a"
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.name}
+                  sx={{
+                    color: social.color,
+                    '&:hover': {
+                      bgcolor: social.color + '1A',
+                      transform: 'translateY(-3px)',
+                    },
+                    transition: 'all 0.2s',
+                  }}
+                >
+                  {social.icon}
+                </IconButton>
+              </Tooltip>
+            ))}
+          </Box>
         </Box>
 
         {/* Certifications and Achievements */}
-        <Box sx={{ mt: 3, mb: 4, textAlign: "center" }}>
+        <Box sx={{ mt: 3, mb: 4, textAlign: 'center' }}>
           <Stack
             direction="row"
             spacing={1}
@@ -582,7 +510,7 @@ const Footer = () => {
         </Box>
 
         {/* Legal Links */}
-        <Box sx={{ textAlign: "center", mt: 4, mb: 3 }}>
+        <Box sx={{ textAlign: 'center', mt: 4, mb: 3 }}>
           <Stack
             direction="row"
             spacing={2}
@@ -595,13 +523,13 @@ const Footer = () => {
               <Link
                 key={link.name}
                 href={link.href}
-                style={{ textDecoration: "none" }}
+                style={{ textDecoration: 'none' }}
               >
                 <MuiLink
                   component="span"
                   variant="caption"
                   color="text.secondary"
-                  sx={{ "&:hover": { color: "primary.main" } }}
+                  sx={{ '&:hover': { color: 'primary.main' } }}
                 >
                   {link.name}
                 </MuiLink>
@@ -611,64 +539,67 @@ const Footer = () => {
         </Box>
 
         {/* Footer Bottom */}
-       {/* Footer Bottom */}
- {/* Footer Bottom */}
- <Box
-  sx={{
-    display: "flex",
-    flexDirection: { xs: "column", sm: "row" },
-    alignItems: { xs: "center", sm: "flex-end" },
-    justifyContent: "space-between",
-    mt: 3,
-    pt: 3,
-    borderTop: `1px solid ${theme.palette.divider}`,
-    textAlign: { xs: "center", sm: "right" },
-  }}
->
-  {/* Left Corner - Copyright */}
-  <Box sx={{ mb: { xs: 2, sm: 0 } }}>
-    <Typography variant="body2" color="text.secondary">
-      <CopyrightIcon sx={{ fontSize: 16, mr: 0.5, verticalAlign: "middle" }} />
-      {currentYear} {"Zeniak Innovation India Limited"}. All rights reserved.
-    </Typography>
-  </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: { xs: 'column', sm: 'row' },
+            alignItems: { xs: 'center', sm: 'flex-end' },
+            justifyContent: 'space-between',
+            mt: 3,
+            pt: 3,
+            borderTop: `1px solid ${theme.palette.divider}`,
+            textAlign: { xs: 'center', sm: 'right' },
+          }}
+        >
+          {/* Left Corner - Copyright */}
+          <Box sx={{ mb: { xs: 2, sm: 0 } }}>
+            <Typography variant="body2" color="text.secondary">
+              <CopyrightIcon
+                sx={{ fontSize: 16, mr: 0.5, verticalAlign: 'middle' }}
+              />
+              {currentYear} {'Zeniak Innovation India Limited'}. All rights reserved.
+            </Typography>
+          </Box>
 
-  {/* Right Corner - Powered by and Trademark */}
-  <Box sx={{ display: "flex", flexDirection: "column", alignItems: { xs: "center", sm: "flex-end" } }}>
-    {/* Powered by Digital Miles */}
-    <Typography variant="body2" color="text.secondary" sx={{ mb: { xs: 1, sm: 1 } }}>
-    Powered by{" "}
-      <a
-        target="_blank"
-        href="https://digitalmiles.in/"
-        style={{ textDecoration: "none", color: "#FF0000" }}
-      >
-         Digital Miles
-      </a>{' '}
-      | Made with Love{' '}
-      <span style={{ color: "#FF0000" }}>♥</span>
-    </Typography>
-    
-    {/* Trademark */}
-    <Typography variant="body2" color="text.secondary">
-      {companyInfo.name || "Indo Wagen"} is a trademark of{' '}
-      {"Zeniak Innovation India Limited"}
-    </Typography>
-  </Box>
-</Box>
+          {/* Right Corner - Powered by and Trademark */}
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: { xs: 'center', sm: 'flex-end' },
+            }}
+          >
+            <Typography variant="body2" color="text.secondary" sx={{ mb: { xs: 1, sm: 1 } }}>
+              Powered by{' '}
+              <a
+                target="_blank"
+                href="https://digitalmiles.in/"
+                style={{ textDecoration: 'none', color: '#FF0000' }}
+              >
+                Digital Miles
+              </a>{' '}
+              | Made with Love{' '}
+              <span style={{ color: '#FF0000' }}>♥</span>
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {companyInfo.name || 'Indo Wagen'} is a trademark of{' '}
+              {'Zeniak Innovation India Limited'}
+            </Typography>
+          </Box>
+        </Box>
 
         {/* Newsletter Subscription Status */}
         <Snackbar
           open={subscribeStatus.open}
           autoHideDuration={6000}
           onClose={handleCloseSnackbar}
-          anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
         >
           <Alert
             onClose={handleCloseSnackbar}
             severity={subscribeStatus.severity}
             variant="filled"
-            sx={{ width: "100%" }}
+            sx={{ width: '100%' }}
           >
             {subscribeStatus.message}
           </Alert>

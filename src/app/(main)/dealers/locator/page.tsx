@@ -28,8 +28,10 @@ export default function DealerLocatorPage() {
       <Box
         sx={{
           position: "relative",
-          height: "30vh",
-          minHeight: "300px",
+          //  height: "30vh",
+          // minHeight: "300px",
+          height: { xs: 'auto', md: '30vh' }, // Auto height on mobile, fixed 600px on desktop/laptop
+        minHeight: { xs: '150px', md: '350px' }, // Minimum height for mobile to ensure content visibility
           width: "100%",
           display: "flex",
           alignItems: "center",
@@ -48,18 +50,18 @@ export default function DealerLocatorPage() {
           }}
         >
           <img
-            src="/images/dealer.jpg"
+            src="/dealer-banner.png"
             alt="Indowagen Dealer Network Map"
             style={{
               width: "100%",
               height: "100%",
               objectFit: "cover",
-              opacity: 0.6,
+              opacity: 1,
             }}
           />
         </Box>
 
-        <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
+        {/* <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
           <motion.div initial="hidden" animate="visible" variants={fadeIn}>
             <Typography
               variant="h2"
@@ -85,7 +87,7 @@ export default function DealerLocatorPage() {
               Locate your nearest authorized dealer for sales and support
             </Typography>
           </motion.div>
-        </Container>
+        </Container> */}
       </Box>
 
       {/* Distributor Map Section */}

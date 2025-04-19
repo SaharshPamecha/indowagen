@@ -19,7 +19,7 @@ const companyInfo = {
   fullName: "Indo Wagen Electronics Pvt. Ltd.",
   foundedYear: 2018,
   manufacturingAddress: {
-    name: "Manufacturing Unit",
+    name: "Manufacturing Unit - Main",
     street:
       "Zeniak Innovation India Limited, Kulgachia, Uluberia Coke Oven Plant, Near Ideal Public School, Tulsiberia Road, Mohishrekha",
     city: "Howrah",

@@ -42,7 +42,7 @@ export default function DealersLoungePage() {
     {
       quote: "I have a long standing relationship with Indo Wagen and am proud to say that we have 90% market share in our area of operation. Indo Wagen stands for Quality, Trust, Durability, Innovation and strong Performance on road.",
       author: "Zakir Ali",
-      position: "Bbadshah Enterprise",
+      position: "Badshah Enterprise",
       image: "/images/testimonials/dealer1.jpg"
     },
     {
@@ -53,7 +53,7 @@ export default function DealersLoungePage() {
     },
     {
       quote: "Proud to be part of Indo Wagen family. It's like my own brand for whatever market feedbacks are given, the same gets implemented and improved in the shortest possible time. Thank you Indo Wagen for reposing the trust on us.",
-      author: "Nandani automobile",
+      author: "Raja",
       position: "Nandani automobile",
       image: "/images/testimonials/dealer3.jpg"
     }
@@ -292,7 +292,7 @@ export default function DealersLoungePage() {
       </Box>
 
       {/* Dum Hai Boss Image */}
-      <Box
+      {/* <Box
         sx={{
           width: { xs: "100%", sm: "250px" }, // Smaller width for side-by-side placement
           height: { xs: "auto", sm: "150px" }, // Adjust height to match buttons/stats
@@ -310,7 +310,7 @@ export default function DealersLoungePage() {
           style={{ objectFit: "cover" }}
           priority
         />
-      </Box>
+      </Box> */}
     </Box>
   </motion.div>
 </Grid>
