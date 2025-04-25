@@ -57,7 +57,7 @@ const Map: React.FC<MapProps> = ({
               <div>
                 <h3>{location.name}</h3>
                 <p>{location.address}</p>
-                <p>Phone: {location.phone}</p>
+                {/* <p>Phone: {location.phone}</p> */}
                 <a 
                   href={`https://www.google.com/maps/search/?api=1&query=${location.location.lat},${location.location.lng}`}
                   target="_blank"

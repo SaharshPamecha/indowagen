@@ -30,7 +30,7 @@ const companyInfo = {
   manufacturingAddressAssam: {
     name: "Manufacturing Unit Assam",
     street:
-      "Zeniak Innovation India Ltd, Sarusajai, Near Sarusajai Stadium, Lokhra",
+      "Zeniak Innovation India Ltd, Ground Floor, Betkuchi, Behind DTO office, Balaji Nagar, Ahom Gaon",
     city: "Guwahati",
     state: "Assam",
     zip: "781040",

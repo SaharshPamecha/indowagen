@@ -31,7 +31,7 @@ const DealerLoungeSnaps: React.FC = () => {
   const gallerySections = [
     {
       id: 'dealerss-meet',
-      title: `Dealers's Meet`,
+      title: `Dealers meet`,
       images: [
         { src: '/dealer-lounge-snaps/Dealerss-Meet/Dealerss-1.webp', alt: 'Dealerss Meet Snap 1' },
         { src: '/dealer-lounge-snaps/Dealerss-Meet/Dealerss-2.webp', alt: 'Dealerss Meet Snap 2' },
@@ -99,7 +99,7 @@ const DealerLoungeSnaps: React.FC = () => {
     },
     {
       id: 'scratch-win',
-      title: 'Scratch Win',
+      title: 'Scratch & win',
       images: [
         { src: '/dealer-lounge-snaps/Scratch-Win/Scratch-1.webp', alt: 'Scratch Win Snap 1' },
         { src: '/dealer-lounge-snaps/Scratch-Win/Scratch-2.webp', alt: 'Scratch Win Snap 2' },

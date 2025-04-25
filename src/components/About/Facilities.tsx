@@ -44,14 +44,14 @@ West Bengal`,
       name: 'Other Manufacturing Sites',
       location: 'Patna (Bihar), Guwahati (Assam), Lucknow (Uttar Pradesh)',
       addresses: [
-        'Guwahati: Sarusajai, Near Sarusajai Stadium, Lokhra, Guwahati, Kamrup (M), Assam, PIN - 781040',
+        'Zeniak Innovation India Ltd, Ground Floor, Betkuchi, Behind DTO office, Balaji Nagar, Ahom Gaon Guwahati, Assam 781040 India',
         'Patna: Society Plot No. 5, Besides Patel Seva Sadan, Patel Colony, Transport Nagar, Gate No. 4, Patna, Bihar, PIN - 800026',
         'Lucknow: Khasra No. 1025, Dewa Road, Village Goila, Jainabad, Chinhat, Lucknow, Uttar Pradesh, PIN - 226028'
       ],
       image: '/4.png',
       tabImage: '/cnf-tab-image.webp',
       googleMapsLinks: [
-        'https://maps.google.com/?q=Sarusajai,+Near+Sarusajai+Stadium,+Lokhra,+Guwahati,+Kamrup+(M),+Assam,+781040',
+        'https://www.google.co.in/maps/place/ZENIAK+INNOVATION+INDIA+LTD/@22.4761252,88.0097902,17z/data=!3m1!4b1!4m6!3m5!1s0x3a0285c6e622b813:0x5037d20d5787d844!8m2!3d22.4761252!4d88.0123651!16s%2Fg%2F11v9mrf84r?entry=ttu&g_ep=EgoyMDI1MDQyMi4wIKXMDSoASAFQAw%3D%3D',
         'https://maps.googleegarcom/?q=Society+Plot+no+5,+Besides+Patel+Seva+Sadan,+Patel+Colony,+Transport+Nagar,+Gate+No-4,+Patna,+Bihar,+800026',
         'https://maps.google.com/?q=Khasra+No+1025,+Dewa+Road,+Village+Goila,+Jainabad,+Chinhat,+Lucknow,+Uttar+Pradesh,+226028'
       ]
