@@ -5,6 +5,8 @@ import Navbar from '../../components/Common/Navbar';
 import Footer from '../../components/Common/Footer';
 import { Box } from '@mui/material';
 import { CartProvider } from '../../context/CartContext';
+
+
 // import Providers from './providers';
 
 export default function MainLayout({

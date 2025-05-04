@@ -65,7 +65,7 @@ const ProductsHero = () => {
         }}
       >
         <Image
-          src="/product page image_indowagen.png"
+          src="/product-web-banner-1.png"
           alt="Indo Wagen Products"
           fill
           priority

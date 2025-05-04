@@ -70,13 +70,22 @@ interface Vehicle extends RowDataPacket {
 interface ProductImage extends RowDataPacket {
   id?: number;
   prod_id: number;
-  image_url: string; // Adjust based on your actual column name
+  img_link: string;
+}
+
+// Define the ProductColor interface based on your product_colors table schema
+interface ProductColor extends RowDataPacket {
+  id?: number;
+  prod_id: number;
+  color_name: string;
+  color_img: string;
 }
 
 // Define the response type for getData
 interface GetDataResponse {
   row: Vehicle | null;
   images: ProductImage[];
+  colors: ProductColor[];
   error?: Error;
 }
 
@@ -89,7 +98,7 @@ const getData = async (proId: string): Promise<GetDataResponse> => {
     const [rows]: [Vehicle[], any] = await db.query(q, [proId]);
 
     if (!rows || rows.length === 0) {
-      return { row: null, images: [] };
+      return { row: null, images: [], colors: [] };
     }
 
     const id = rows[0].id;
@@ -98,22 +107,27 @@ const getData = async (proId: string): Promise<GetDataResponse> => {
     const q1 = "SELECT * FROM product_images WHERE prod_id = ?";
     const [images]: [ProductImage[], any] = await db.query(q1, [id]);
 
+    // Third query: Fetch the product colors by prod_id
+    const q2 = "SELECT * FROM product_colors WHERE prod_id = ?";
+    const [colors]: [ProductColor[], any] = await db.query(q2, [id]);
+
     return {
       row: rows[0] || null,
       images: images || [],
+      colors: colors || [],
     };
   } catch (err) {
     console.error("Database error: ", err);
-    return { row: null, images: [], error: err as Error };
+    return { row: null, images: [], colors: [], error: err as Error };
   }
 };
 
 interface ProductDetailProps {
-  params: Promise<{ id: string }>; // Fix: params is a Promise in Next.js App Router
+  params: Promise<{ id: string }>;
 }
 
 const ProductDetail: React.FC<ProductDetailProps> = async ({ params }) => {
-  const { id } = await params; // Await the params to get the resolved value
+  const { id } = await params;
   if (!id) {
     return (
       <Container sx={{ py: 8 }}>
@@ -125,7 +139,7 @@ const ProductDetail: React.FC<ProductDetailProps> = async ({ params }) => {
   }
 
   const arrproId = id;
-  const { row: products, images } = await getData(arrproId);
+  const { row: products, images, colors } = await getData(arrproId);
 
   if (!products) {
     return (
@@ -226,7 +240,6 @@ const ProductDetail: React.FC<ProductDetailProps> = async ({ params }) => {
                 sx={{
                   position: 'relative',
                   width: { xs: '100%', md: '50%' },
-                  height: { xs: 300, sm: 400, md: 500 },
                   bgcolor: 'white',
                   display: 'flex',
                   flexDirection: 'column',
@@ -236,7 +249,17 @@ const ProductDetail: React.FC<ProductDetailProps> = async ({ params }) => {
                   p: 2,
                 }}
               >
-                <ProductSlider images={images} modelName={products.model_name || "Product"} />
+                <Box
+                  sx={{
+                    width: '100%',
+                    height: { xs: 300, sm: 400, md: 500 },
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <ProductSlider images={images} modelName={products.model_name || "Product"} />
+                </Box>
               </Box>
 
               {/* Info Section */}
@@ -395,6 +418,75 @@ const ProductDetail: React.FC<ProductDetailProps> = async ({ params }) => {
               </Box>
             </Paper>
           </Grid>
+
+          {/* Available Colors Section */}
+          {colors.length > 0 && (
+            <Grid item xs={12}>
+              <Paper
+                sx={{
+                  p: { xs: 3, sm: 4 },
+                  borderRadius: 4,
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
+                  bgcolor: 'white',
+                }}
+              >
+                <Typography
+                  variant="h6"
+                  gutterBottom
+                  sx={{
+                    fontWeight: 600,
+                    color: '#1e88e5',
+                    mb: 3,
+                    fontSize: { xs: '1.25rem', sm: '1.5rem' },
+                  }}
+                >
+                  Available Colors
+                </Typography>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    gap: 2,
+                    justifyContent: 'flex-start',
+                  }}
+                >
+                  {colors.map((color) => (
+                    <Box
+                      key={color.id}
+                      sx={{
+                        textAlign: 'center',
+                        width: { xs: 80, sm: 100 },
+                      }}
+                    >
+                      <Box
+                        component="img"
+                        src={`https://forestgreen-capybara-315761.hostingersite.com/assets/colors/${color.color_img}`}
+                        alt={color.color_name}
+                        sx={{
+                          width: 40,
+                          height: 40,
+                          borderRadius: '50%',
+                          objectFit: 'cover',
+                        }}
+                      />
+                      <Typography
+                        variant="caption"
+                        sx={{
+                          color: '#1f2937',
+                          textTransform: 'capitalize',
+                          fontSize: '0.85rem',
+                          mt: 0.5,
+                          display: 'block',
+                        }}
+                      >
+                        {color.color_name}
+                      </Typography>
+                    </Box>
+                  ))}
+                </Box>
+              </Paper>
+            </Grid>
+          )}
 
           {/* Full Specifications Section */}
           <Grid item xs={12}>
