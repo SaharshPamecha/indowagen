@@ -12,20 +12,18 @@ import {
   CardMedia,
   Chip,
   Stack,
-  useTheme,
+  Divider,
 } from '@mui/material';
 import { motion } from 'framer-motion';
-import { BlogPost } from '@/data/blogs';
+import { Post } from '@/types/post';
 import Link from 'next/link';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 
 interface BlogRelatedPostsProps {
-  posts: BlogPost[];
+  posts: Post[];
 }
 
 const BlogRelatedPosts: React.FC<BlogRelatedPostsProps> = ({ posts }) => {
-  const theme = useTheme();
-
   if (posts.length === 0) {
     return null;
   }
@@ -49,18 +47,18 @@ const BlogRelatedPosts: React.FC<BlogRelatedPostsProps> = ({ posts }) => {
           </Typography>
 
           <Grid container spacing={4}>
-            {posts.map((post) => (
-              <Grid item xs={12} md={4} key={post.id}>
+            {posts.map((post, index) => (
+              <Grid item xs={12} sm={6} md={4} key={post.id}>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 * parseInt(post.id) }}
+                  transition={{ duration: 0.5, delay: 0.1 * (index % 3) }}
                   viewport={{ once: true }}
                 >
-                  <Card 
-                    sx={{ 
-                      height: '100%', 
-                      display: 'flex', 
+                  <Card
+                    sx={{
+                      height: '100%',
+                      display: 'flex',
                       flexDirection: 'column',
                       transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                       '&:hover': {
@@ -82,32 +80,32 @@ const BlogRelatedPosts: React.FC<BlogRelatedPostsProps> = ({ posts }) => {
                             alt={post.title}
                             sx={{ objectFit: 'cover' }}
                           />
-                          <Chip 
-                            label={post.category} 
-                            size="small" 
-                            sx={{ 
-                              position: 'absolute', 
-                              top: 16, 
+                          <Chip
+                            label={post.category}
+                            size="small"
+                            sx={{
+                              position: 'absolute',
+                              top: 16,
                               left: 16,
                               bgcolor: 'primary.main',
                               color: 'white',
                               fontWeight: 500,
-                            }} 
+                            }}
                           />
                         </Box>
                         <CardContent sx={{ flexGrow: 1, p: 3 }}>
-                          <Typography 
-                            gutterBottom 
-                            variant="h6" 
+                          <Typography
+                            gutterBottom
+                            variant="h6"
                             component="h3"
                             sx={{ fontWeight: 600, mb: 1 }}
                           >
                             {post.title}
                           </Typography>
-                          <Typography 
-                            variant="body2" 
+                          <Typography
+                            variant="body2"
                             color="text.secondary"
-                            sx={{ 
+                            sx={{
                               mb: 2,
                               display: '-webkit-box',
                               overflow: 'hidden',
@@ -117,20 +115,25 @@ const BlogRelatedPosts: React.FC<BlogRelatedPostsProps> = ({ posts }) => {
                           >
                             {post.excerpt}
                           </Typography>
-                          
-                          <Stack 
-                            direction="row" 
-                            spacing={1} 
+
+                          <Divider sx={{ my: 2 }} />
+
+                          <Stack
+                            direction="row"
+                            spacing={1}
                             alignItems="center"
                             sx={{ mt: 'auto' }}
                           >
-                            <AccessTimeIcon fontSize="small" sx={{ color: 'text.disabled' }} />
-                            <Typography variant="caption" color="text.disabled">
-                              {post.readTime} min read
+                            <Typography variant="caption" fontWeight={500}>
+                              {post.author}
                             </Typography>
                             <Box sx={{ flexGrow: 1 }} />
+                            <CalendarTodayIcon
+                              fontSize="small"
+                              sx={{ color: 'text.disabled' }}
+                            />
                             <Typography variant="caption" color="text.disabled">
-                              {post.publishDate}
+                              {post.publishDate || post.date}
                             </Typography>
                           </Stack>
                         </CardContent>

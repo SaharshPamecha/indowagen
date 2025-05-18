@@ -1,6 +1,7 @@
+// components/Blog/BlogCategories.tsx
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Box,
   Container,
@@ -8,20 +9,81 @@ import {
   Tabs,
   Tab,
   useTheme,
+  CircularProgress,
 } from '@mui/material';
 import { motion } from 'framer-motion';
-import { blogPosts } from '@/data/blogs';
+import useSWR from 'swr';
+import { fetchGraphPosts, PostEdge } from '@/app/libs/graphapi';
+import he from 'he';
 
-// Extract unique categories
-const categories = ['All', ...Array.from(new Set(blogPosts.map(post => post.category)))];
+// Utility function to strip HTML tags and decode HTML entities
+const stripHtmlTags = (html: string): string => {
+  return he.decode(
+    html
+      .replace(/<\/?[^>]+(>|$)/g, '')
+      .replace(/\[…\]/g, '...')
+      .replace(/\n/g, ' ')
+      .trim()
+  );
+};
 
-const BlogCategories = () => {
+// Props type for BlogCategories
+type BlogCategoriesProps = {
+  onCategoryChange: (category: string) => void;
+};
+
+const BlogCategories = ({ onCategoryChange }: BlogCategoriesProps) => {
   const theme = useTheme();
-  const [value, setValue] = useState(0);
+  const [value, setValue] = React.useState(0);
+
+  // Fetch posts from Graph API
+  const { data: postEdges = [], error, isLoading } = useSWR<PostEdge[]>(
+    'posts',
+    fetchGraphPosts,
+    {
+      revalidateOnFocus: false,
+      dedupingInterval: 60000,
+    }
+  );
+
+  // Extract unique categories from fetched posts
+  const categories = postEdges.length
+    ? [
+        'All',
+        ...Array.from(
+          new Set(
+            postEdges.map((edge) =>
+              stripHtmlTags(
+                edge.node.categories.edges[0]?.node?.name || 'Uncategorized'
+              ).trim().toLowerCase()
+            )
+          )
+        ).sort().map(category => category.charAt(0).toUpperCase() + category.slice(1)),
+      ]
+    : ['All'];
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
+    onCategoryChange(categories[newValue]); // Notify parent of selected category
   };
+
+  if (isLoading) {
+    return (
+      <Box sx={{ display: 'flex', justifyContent: 'center', py: 4 }}>
+        <CircularProgress />
+      </Box>
+    );
+  }
+
+  if (error) {
+    return (
+      <Box sx={{ py: 4, textAlign: 'center' }}>
+        <Typography variant="body1" color="error">
+          Failed to load categories.
+        </Typography>
+      </Box>
+    );
+  }
 
   return (
     <Box sx={{ py: 4, bgcolor: theme.palette.grey[50] }}>
@@ -40,9 +102,9 @@ const BlogCategories = () => {
           >
             Browse by Category
           </Typography>
-          
-          <Tabs 
-            value={value} 
+
+          <Tabs
+            value={value}
             onChange={handleChange}
             variant="scrollable"
             scrollButtons="auto"
@@ -50,9 +112,9 @@ const BlogCategories = () => {
             TabIndicatorProps={{
               style: {
                 backgroundColor: theme.palette.primary.main,
-              }
+              },
             }}
-            sx={{ 
+            sx={{
               mb: 2,
               '& .MuiTabs-flexContainer': {
                 justifyContent: 'center',
@@ -71,10 +133,10 @@ const BlogCategories = () => {
               '& .Mui-selected': {
                 color: theme.palette.primary.main,
                 fontWeight: 600,
-              }
+              },
             }}
           >
-            {categories.map((category, index) => (
+            {categories.map((category) => (
               <Tab key={category} label={category} />
             ))}
           </Tabs>
