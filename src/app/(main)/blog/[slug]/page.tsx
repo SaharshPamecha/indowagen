@@ -138,7 +138,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   return (
     <>
       <BlogPostDetail post={post} />
-      <BlogRelatedPosts posts={relatedPosts} />
+      {/* <BlogRelatedPosts posts={relatedPosts} /> */}
     </>
   );
 }
