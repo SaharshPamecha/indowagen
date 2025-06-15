@@ -1,8 +1,8 @@
 "use client"; // Mark this as a Client Component
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Thumbs, FreeMode } from 'swiper/modules';
+import { Navigation, Pagination } from 'swiper/modules';
 import { Box, Typography, IconButton } from '@mui/material';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
@@ -10,8 +10,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/thumbs';
-import 'swiper/css/free-mode';
+import 'swiper/css/pagination';
 
 interface ProductSliderProps {
   images: any[]; // Array of image objects (e.g., [{ image_url: "url1" }, { image_url: "url2" }])
@@ -19,27 +18,27 @@ interface ProductSliderProps {
 }
 
 const ProductSlider: React.FC<ProductSliderProps> = ({ images, modelName }) => {
-  const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
-
   return (
     <Box sx={{ position: 'relative', width: '100%', maxWidth: '800px', margin: '0 auto' }}>
       {images && images.length > 0 ? (
         <>
           {/* Main Slider */}
           <Swiper
-            modules={[Navigation, Thumbs]}
-            thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
+            modules={[Navigation, Pagination]}
             navigation={{
               prevEl: '.custom-prev',
               nextEl: '.custom-next',
             }}
+            pagination={{ 
+              clickable: true,
+              el: '.custom-pagination'
+            }}
             loop
             style={{ 
               width: '100%',
-              aspectRatio: '1/0.6',
+              aspectRatio: '1/0.9',
               backgroundColor: '#fff',
               borderRadius: '8px',
-              marginBottom: '0.25rem'
             }}
           >
             {images.map((image, index) => (
@@ -99,46 +98,27 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ images, modelName }) => {
             <ArrowForwardIosIcon sx={{ fontSize: '1.2rem' }} />
           </IconButton>
 
-          {/* Thumbnail Slider */}
-          <Swiper
-            onSwiper={setThumbsSwiper}
-            modules={[FreeMode, Navigation, Thumbs]}
-            spaceBetween={4}
-            slidesPerView={4}
-            freeMode={true}
-            watchSlidesProgress={true}
-            style={{ 
-              height: '60px',
-              marginTop: '0.25rem'
+          {/* Custom Pagination */}
+          <Box 
+            className="custom-pagination"
+            sx={{ 
+              position: 'absolute',
+              bottom: '10px',
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'center',
+              zIndex: 2,
+              '& .swiper-pagination-bullet': {
+                width: '8px',
+                height: '8px',
+                margin: '0 4px',
+                backgroundColor: 'rgba(0,0,0,0.5)',
+                '&-active': {
+                  backgroundColor: '#000',
+                }
+              }
             }}
-          >
-            {images.map((image, index) => (
-              <SwiperSlide key={index}>
-                <Box 
-                  sx={{ 
-                    height: '100%',
-                    border: '1px solid #eee',
-                    borderRadius: '2px',
-                    cursor: 'pointer',
-                    overflow: 'hidden',
-                    '&:hover': {
-                      border: '1px solid #purple',
-                    }
-                  }}
-                >
-                  <img
-                    src={`https://forestgreen-capybara-315761.hostingersite.com/assets/products/${image.img_link}`}
-                    alt={`${modelName} thumbnail ${index + 1}`}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                    }}
-                  />
-                </Box>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          />
         </>
       ) : (
         <Typography
