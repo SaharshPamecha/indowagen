@@ -5,7 +5,7 @@ import Navbar from '../../components/Common/Navbar';
 import Footer from '../../components/Common/Footer';
 import { Box } from '@mui/material';
 import { CartProvider } from '../../context/CartContext';
-
+import Head from 'next/head';
 
 // import Providers from './providers';
 
@@ -17,6 +17,21 @@ export default function MainLayout({
   return (
    
     <CartProvider>
+
+    <Head>
+        {/* Google Tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17042797828"></script>
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-17042797828');
+          `
+        }} />
+      </Head>
+
+
       <Box sx={{ 
         display: 'flex', 
         flexDirection: 'column', 
