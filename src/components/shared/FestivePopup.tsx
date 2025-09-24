@@ -22,7 +22,8 @@ const containerSx = {
   borderRadius: 2,
   overflow: 'hidden',
   boxShadow: '0 20px 45px rgba(0,0,0,0.35)',
-  maxWidth: { xs: '92vw', sm: 520, md: 640 },
+  width: { xs: '96vw', sm: 'auto' },
+  maxWidth: { xs: '96vw', sm: 560, md: 720 },
 };
 
 const closeButtonSx = {
