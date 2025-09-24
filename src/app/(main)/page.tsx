@@ -4,6 +4,7 @@ import React from 'react';
 import { Box } from '@mui/material';
 import dynamic from 'next/dynamic';
 import Hero from '@/components/Home/Hero';
+import FestivePopup from '@/components/shared/FestivePopup';
 
 const HeroSection = dynamic(() => import('../../components/Home/HeroSection'));
 const ProductsSection = dynamic(() => import('../../components/Home/ProductsSection'));
@@ -20,6 +21,7 @@ export default function Home() {
       py: { xs: 2, md: 4 }, 
       width: '100%'
     }}>
+      <FestivePopup />
       {/* <HeroSection /> */}
       <Hero />
       <ProductsSection />
