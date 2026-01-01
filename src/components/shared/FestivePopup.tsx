@@ -37,7 +37,7 @@ const closeButtonSx = {
 };
 
 export default function FestivePopup({
-  imageSrc = '/gurga-puja-pop-up.jpg',
+  imageSrc = '/new-year-wish.jpg',
   openDelayMs = 100,
 }: FestivePopupProps) {
   const [open, setOpen] = useState(false);
