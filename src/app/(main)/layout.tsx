@@ -54,7 +54,7 @@ export default function MainLayout({
         >
           {children}
         </Box>
-        <BrandSlider />
+        v
         <Footer />
 
       </Box>
