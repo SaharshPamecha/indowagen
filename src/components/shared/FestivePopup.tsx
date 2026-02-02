@@ -1,8 +1,11 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { Box, IconButton, Modal } from '@mui/material';
+import { Box, IconButton, Modal, Skeleton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import useSWR from 'swr';
+
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 type FestivePopupProps = {
   imageSrc?: string;
@@ -24,6 +27,9 @@ const containerSx = {
   boxShadow: '0 20px 45px rgba(0,0,0,0.35)',
   width: { xs: '96vw', sm: 'auto' },
   maxWidth: { xs: '96vw', sm: 560, md: 720 },
+  minWidth: { sm: 300 },
+  minHeight: { sm: 150 },
+  bgcolor: 'background.paper',
 };
 
 const closeButtonSx = {
@@ -36,18 +42,25 @@ const closeButtonSx = {
   zIndex: 2,
 };
 
-export default function FestivePopup({
-  imageSrc = '/new-year-wish.jpg',
-  openDelayMs = 100,
-}: FestivePopupProps) {
+export default function FestivePopup() {
   const [open, setOpen] = useState(false);
+  const { data, error, isLoading } = useSWR('/api/popup', fetcher);
 
   useEffect(() => {
-    const t = setTimeout(() => setOpen(true), openDelayMs);
-    return () => clearTimeout(t);
-  }, [openDelayMs]);
+    // Only attempt to open if we have data and it's active
+    if (data && data.image_src && data.is_active) {
+      const delay = data.open_delay_ms || 100;
+      const t = setTimeout(() => setOpen(true), delay);
+      return () => clearTimeout(t);
+    }
+  }, [data]);
 
   const handleClose = () => setOpen(false);
+
+  // Don't render anything if loading, error, or no active popup data
+  if (isLoading || error || !data || !data.image_src || !data.is_active) {
+    return null;
+  }
 
   return (
     <Modal open={open} onClose={handleClose} aria-labelledby="festive-popup" sx={{ backdropFilter: 'blur(2px)' }}>
@@ -58,7 +71,7 @@ export default function FestivePopup({
           </IconButton>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={imageSrc}
+            src={data.image_src}
             alt="Festive promotion"
             style={{ display: 'block', width: '100%', height: 'auto' }}
             loading="eager"

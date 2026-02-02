@@ -3,6 +3,7 @@
 import React from 'react';
 import Navbar from '../../components/Common/Navbar';
 import Footer from '../../components/Common/Footer';
+import BrandSlider from '../../components/Common/BrandSlider';
 import { Box } from '@mui/material';
 import { CartProvider } from '../../context/CartContext';
 import Head from 'next/head';
@@ -15,10 +16,10 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   return (
-   
+
     <CartProvider>
 
-    <Head>
+      <Head>
         {/* Google Tag (gtag.js) */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17042797828"></script>
         <script dangerouslySetInnerHTML={{
@@ -32,18 +33,18 @@ export default function MainLayout({
       </Head>
 
 
-      <Box sx={{ 
-        display: 'flex', 
-        flexDirection: 'column', 
+      <Box sx={{
+        display: 'flex',
+        flexDirection: 'column',
         minHeight: '100vh'
       }}>
-        
+
         <Navbar />
-        <Box 
-          component="main" 
-          sx={{ 
-            display: 'flex', 
-            flexDirection: 'column', 
+        <Box
+          component="main"
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
             flexGrow: 1,
             width: '100%',
             minHeight: '100vh',
@@ -53,11 +54,12 @@ export default function MainLayout({
         >
           {children}
         </Box>
+        <BrandSlider />
         <Footer />
-       
+
       </Box>
-     
+
     </CartProvider>
-    
+
   );
 }
