@@ -54,7 +54,7 @@ export default function MainLayout({
         >
           {children}
         </Box>
-        v
+
         <Footer />
 
       </Box>
