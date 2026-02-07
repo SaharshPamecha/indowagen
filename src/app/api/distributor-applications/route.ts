@@ -54,6 +54,19 @@ import { NextRequest } from 'next/server';
 import pool from '@/app/libs/mysql';
 import nodemailer from 'nodemailer';
 
+// BCC email for receiving copies of all emails
+const BCC_EMAIL = 'rajeev.k@zeniak.com';
+
+// From email (sender) - GoDaddy Email
+const FROM_EMAIL = 'info@indowagen.com';
+const FROM_NAME = 'Indo Wagen';
+
+// Admin email (recipient for notifications)
+const ADMIN_EMAIL = 'info@indowagen.com';
+
+// Email password (GoDaddy app password)
+const EMAIL_PASSWORD = 'S335nmnWJQij@U#';
+
 // Nodemailer transporter configuration
 interface TransporterConfig {
   host: string;
@@ -66,12 +79,12 @@ interface TransporterConfig {
 }
 
 const transporter = nodemailer.createTransport({
-  host:'smtp.gmail.com',
+  host: 'smtpout.secureserver.net', // GoDaddy SMTP server
   port: 465,
-  secure: true, // Explicitly set to true for Gmail on port 465
+  secure: true,
   auth: {
-    user: 'harshpython1009@gmail.com',
-    pass: 'jnrq auxi eyru mhqz', // Ensure this is the correct app password
+    user: FROM_EMAIL,
+    pass: EMAIL_PASSWORD,
   },
 } as TransporterConfig);
 
@@ -336,8 +349,9 @@ export async function POST(request: NextRequest) {
     // Send email to admin
     try {
       await transporter.sendMail({
-        from: '"Indo Wagen" <harshpython1009@gmail.com>',
-        to: process.env.ADMIN_EMAIL || 'harshpython1009@gmail.com',
+        from: `"${FROM_NAME}" <${FROM_EMAIL}>`,
+        to: ADMIN_EMAIL,
+        bcc: BCC_EMAIL,
         subject: 'New Distributor Application Received',
         html: adminEmailTemplate(formData),
       });
@@ -349,8 +363,9 @@ export async function POST(request: NextRequest) {
     // Send confirmation email to user
     try {
       await transporter.sendMail({
-        from: '"Indo Wagen" <harshpython1009@gmail.com>',
+        from: `"${FROM_NAME}" <${FROM_EMAIL}>`,
         to: email,
+        bcc: BCC_EMAIL,
         subject: 'Your Distributor Application Has Been Received',
         html: userEmailTemplate(formData),
       });

@@ -6,16 +6,16 @@ import Slider from 'react-slick';
 import Image from 'next/image';
 
 const brands = [
-    { name: 'Akasa', logo: '/brands/akasa.png' },
-    { name: 'AMU', logo: '/brands/amu.png' },
-    { name: 'Credifin', logo: '/brands/credifin.png' },
-    { name: 'EV Finserv', logo: '/brands/ev-finserv.png' },
-    { name: 'Loksuvidha', logo: '/brands/loksuvidha.png' },
-    { name: 'Mufin', logo: '/brands/mufin.png' },
-    { name: 'Sanchenta', logo: '/brands/sanchenta.png' },
-    { name: 'SF', logo: '/brands/sf.png' },
-    { name: 'Shriram Green', logo: '/brands/shriram-green.png' },
-    { name: 'Vediks', logo: '/brands/vediks.png' },
+    { name: 'Brand 1', logo: '/brands/1.png' },
+    { name: 'Brand 2', logo: '/brands/2.png' },
+    { name: 'Brand 3', logo: '/brands/3.png' },
+    { name: 'Brand 4', logo: '/brands/4.png' },
+    { name: 'Brand 5', logo: '/brands/5.png' },
+    { name: 'Brand 6', logo: '/brands/6.png' },
+    { name: 'Brand 7', logo: '/brands/7.png' },
+    { name: 'Brand 8', logo: '/brands/8.png' },
+    { name: 'Brand 9', logo: '/brands/9.png' },
+    { name: 'Brand 10', logo: '/brands/10.png' },
 ];
 
 const BrandSlider = () => {
@@ -24,7 +24,7 @@ const BrandSlider = () => {
     const settings = {
         dots: false,
         infinite: true,
-        speed: 3000,
+        speed: 2000,
         slidesToShow: 5,
         slidesToScroll: 1,
         autoplay: true,

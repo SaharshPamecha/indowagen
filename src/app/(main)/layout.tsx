@@ -48,18 +48,18 @@ export default function MainLayout({
             flexGrow: 1,
             width: '100%',
             minHeight: '100vh',
-            pt: { xs: '72px', sm: '80px' }, // Add padding-top to account for fixed navbar
+            pt: { xs: '72px', sm: '80px' },
             pb: { xs: 0, sm: 0 }
           }}
         >
           {children}
         </Box>
 
+        <BrandSlider />
         <Footer />
-
       </Box>
 
-    </CartProvider>
+    </CartProvider >
 
   );
 }
