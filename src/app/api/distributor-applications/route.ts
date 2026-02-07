@@ -55,17 +55,17 @@ import pool from '@/app/libs/mysql';
 import nodemailer from 'nodemailer';
 
 // BCC email for receiving copies of all emails
-const BCC_EMAIL = 'rajeev.k@zeniak.com';
+const BCC_EMAIL = process.env.SMTP_BCC || 'harshpython1009@gmail.com';
 
 // From email (sender) - GoDaddy Email
-const FROM_EMAIL = 'info@indowagen.com';
+const FROM_EMAIL = process.env.SMTP_FROM || 'info@indowagen.com';
 const FROM_NAME = 'Indo Wagen';
 
 // Admin email (recipient for notifications)
-const ADMIN_EMAIL = 'info@indowagen.com';
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'info@indowagen.com';
 
 // Email password (GoDaddy app password)
-const EMAIL_PASSWORD = 'S335nmnWJQij@U#';
+const EMAIL_PASSWORD = process.env.SMTP_PASS;
 
 // Nodemailer transporter configuration
 interface TransporterConfig {
@@ -79,11 +79,11 @@ interface TransporterConfig {
 }
 
 const transporter = nodemailer.createTransport({
-  host: 'smtpout.secureserver.net', // GoDaddy SMTP server
-  port: 465,
+  host: process.env.SMTP_HOST || 'smtpout.secureserver.net', // GoDaddy SMTP server
+  port: Number(process.env.SMTP_PORT) || 465,
   secure: true,
   auth: {
-    user: FROM_EMAIL,
+    user: process.env.SMTP_USER || FROM_EMAIL,
     pass: EMAIL_PASSWORD,
   },
 } as TransporterConfig);
@@ -365,7 +365,6 @@ export async function POST(request: NextRequest) {
       await transporter.sendMail({
         from: `"${FROM_NAME}" <${FROM_EMAIL}>`,
         to: email,
-        bcc: BCC_EMAIL,
         subject: 'Your Distributor Application Has Been Received',
         html: userEmailTemplate(formData),
       });
