@@ -110,7 +110,7 @@ const OurGrowingNetwork = () => {
               <strong>{states.join(", ")}, Tripura, Manipur, Maharashtra and we are
                 expanding aggressively in North India</strong>. As the fastest-growing
               e-rickshaw brand in India, we boast a robust network of over{" "}
-              <strong>350+ dealers and sub-dealers</strong>. We are ranked No. 1 Pan India as per
+              <strong>350+ dealers and sub-dealers</strong>. We are <strong>ranked No. 1 Pan India</strong> as per
               Vahan Data from Dec 2025. Our manufacturing facilities are strategically located
               in West Bengal, Bihar, Assam, and Uttar Pradesh, with new
               high-tech production units in the pipeline.
@@ -130,7 +130,7 @@ const OurGrowingNetwork = () => {
                       <CheckCircleIcon color="primary" />{" "}
                       {/* Same color as OurProducts */}
                     </ListItemIcon>
-                    <ListItemText primary="No. 1 in Bengal and Assam (Vahan Data, July 2024+)" />
+                    <ListItemText primary="We are ranked No. 1 Pan India as per Vahan Data from Dec 2025." />
                   </ListItem>
                 </motion.div>
                 <motion.div variants={itemVariants}>
