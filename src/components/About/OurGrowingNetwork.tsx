@@ -2,15 +2,15 @@
 
 import React from 'react';
 import {
-    Box,
-    Container,
-    Typography,
-    Button,
-    useTheme,
-    List,
-    ListItem,
-    ListItemIcon,
-    ListItemText,
+  Box,
+  Container,
+  Typography,
+  Button,
+  useTheme,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
@@ -108,13 +108,12 @@ const OurGrowingNetwork = () => {
               We started in Eastern India and have rapidly expanded our
               footprint to multiple states. Today, we are present in{" "}
               <strong>{states.join(", ")}, Tripura, Manipur, Maharashtra and we are
-              expanding aggressively in North India</strong>. As the fastest-growing
+                expanding aggressively in North India</strong>. As the fastest-growing
               e-rickshaw brand in India, we boast a robust network of over{" "}
-              <strong>350+ dealers and sub-dealers</strong>. We lead the market
-              in Bengal and Assam, ranking No. 1 as per Vahan Data (July 2024
-              onwards). Our manufacturing facilities are strategically located
+              <strong>350+ dealers and sub-dealers</strong>. We are ranked No. 1 Pan India as per
+              Vahan Data from Dec 2025. Our manufacturing facilities are strategically located
               in West Bengal, Bihar, Assam, and Uttar Pradesh, with new
-              high-tech production units in the pipeline. 
+              high-tech production units in the pipeline.
             </Typography>
 
             {/* Highlights List */}
@@ -162,8 +161,8 @@ const OurGrowingNetwork = () => {
                 sx={{ borderRadius: 2, px: 4 }}
                 component={Link}
                 href="/distributors"
-                //   whileHover={{ scale: 1.05 }}
-                //   whileTap={{ scale: 0.95 }}
+              //   whileHover={{ scale: 1.05 }}
+              //   whileTap={{ scale: 0.95 }}
               >
                 Join Our Network
               </Button>
