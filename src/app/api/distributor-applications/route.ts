@@ -88,6 +88,8 @@ const transporter = nodemailer.createTransport({
   },
 } as TransporterConfig);
 
+console.log("SMTP HOST", process.env.SMTP_HOST, "SMTP PORT", process.env.SMTP_PORT, "SMTP USER", process.env.SMTP_USER, "SMTP PASS", process.env.SMTP_PASS);
+
 // Verify transporter configuration
 transporter.verify((error, success) => {
   if (error) {
