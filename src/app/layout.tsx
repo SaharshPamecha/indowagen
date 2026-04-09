@@ -7,7 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import ThemeRegistry from '../components/ThemeRegistry/ThemeRegistry';
 import { CartProvider } from '../context/CartContext';
 import Providers from "./providers";
-import { GoogleTagManager } from '@next/third-parties/google'
+import { GoogleAnalytics } from '@next/third-parties/google'
 // Suppressing hydration warnings in production but showing them in development
 if (typeof window !== 'undefined' && process.env.NODE_ENV === 'production') {
   const originalConsoleError = console.error;
@@ -40,6 +40,9 @@ export const metadata: Metadata = {
   icons: {
     icon: '/IW Logo V-1.png',
   },
+  verification: {
+    google: 'PAC0eH51jPEzvJad3xPXdDcC5EjG09Oc5VemZ4K4zqU',
+  },
 };
 
 export default function RootLayout({
@@ -49,7 +52,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-     <GoogleTagManager gtmId="AW-17042797828" />
+     <GoogleAnalytics gaId="AW-17042797828" />
       <body suppressHydrationWarning className={roboto.className} style={{ overflowX: 'hidden' }}>
       <Providers>
         {/* Apply suppressHydrationWarning to the main content wrapper */}
