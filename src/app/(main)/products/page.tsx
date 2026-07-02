@@ -31,6 +31,37 @@ interface Product {
 
 type Category = 'all' | 'e-rickshaw' | 'e-cart' | 'e-loader' | 'electric-vehicle' | string;
 
+// --- Category normalization -------------------------------------------------
+// The admin panel stores `vehicles.category` as free text, so the DB holds many
+// inconsistent variants ("Passenger Car", "Passenger Car cum Cargo",
+// "Passenger Car Cum Cargo", "Passenger", "Passenger " with a trailing space,
+// "Loader", "Cargo/E Cart"). Per the client's category sheet (July 2026) the
+// products page must surface only THREE buckets:
+//
+//   • All Products
+//   • Passenger Cum Cargo   <- every passenger-type variant above
+//   • Cargo/E Cart          <- the loaders / cargo carts (C1 Loader, C8 Loader, C8 Hevy)
+//
+// Rule: any category text that begins with "passenger" -> Passenger Cum Cargo;
+// everything else -> Cargo/E Cart. PRODUCT_CATEGORY_OVERRIDES lets us pin a
+// specific vehicle by its url slug if a future model ever needs to break the
+// rule — update that map (not the string logic) for one-off reassignments.
+const CATEGORY_PASSENGER = 'Passenger Cum Cargo';
+const CATEGORY_CARGO = 'Cargo/E Cart';
+const PRODUCT_CATEGORIES = ['all', CATEGORY_PASSENGER, CATEGORY_CARGO] as const;
+
+const PRODUCT_CATEGORY_OVERRIDES: Record<string, string> = {
+  // 'some-model-slug': CATEGORY_CARGO,
+};
+
+function normalizeCategory(product: { url?: string | null; category?: string | null }): string {
+  if (product.url && PRODUCT_CATEGORY_OVERRIDES[product.url]) {
+    return PRODUCT_CATEGORY_OVERRIDES[product.url];
+  }
+  const raw = (product.category || '').trim().toLowerCase();
+  return raw.startsWith('passenger') ? CATEGORY_PASSENGER : CATEGORY_CARGO;
+}
+
 export default function Products() {
   const [category, setCategory] = useState<Category>('all');
   const [products, setProducts] = useState<Product[]>([]);
@@ -51,7 +82,8 @@ export default function Products() {
           model_name: row.model_name,
           tagline: row.tagline || 'Premium Electric Vehicle',
           price: row.price ? `₹${row.price}` : 'Contact',
-          category: row.category || 'electric-vehicle',
+          // Collapse the free-text DB category into one of our two display buckets.
+          category: normalizeCategory({ url: row.url, category: row.category }),
           img_link: row.img_link || null,
           url: row.url || null
         }));
@@ -115,26 +147,21 @@ export default function Products() {
           </Typography>
         </motion.div>
         <Box sx={{ borderBottom: 1, borderColor: 'divider', mb: 4 }}>
-          {(() => {
-            const categories = ['all', ...new Set(products.map(p => p.category || 'electric-vehicle'))];
-            
-            return (
-              <Tabs
-                value={category}
-                onChange={handleCategoryChange}
-                variant={isMobile ? "scrollable" : "standard"}
-                scrollButtons={isMobile ? "auto" : false}
-                centered={!isMobile}
-              >
-                {categories.map(cat => {
-                  const displayName = cat === 'all' ? 'All Products' : 
-                    cat.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-                  
-                  return <Tab key={cat} label={displayName} value={cat} />;
-                })}
-              </Tabs>
-            );
-          })()}
+          <Tabs
+            value={category}
+            onChange={handleCategoryChange}
+            variant={isMobile ? "scrollable" : "standard"}
+            scrollButtons={isMobile ? "auto" : false}
+            centered={!isMobile}
+          >
+            {PRODUCT_CATEGORIES.map(cat => (
+              <Tab
+                key={cat}
+                label={cat === 'all' ? 'All Products' : cat}
+                value={cat}
+              />
+            ))}
+          </Tabs>
         </Box>
 
         <Grid container spacing={4}>
