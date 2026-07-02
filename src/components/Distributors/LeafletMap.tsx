@@ -58,7 +58,9 @@ const LeafletMap: React.FC<LeafletMapProps> = ({ locations, center, zoom, onMark
             <div>
               <h3>{location.name}</h3>
               <p>{location.address}</p>
-              {/* <p>Phone: {location.phone}</p> */}
+              {location.phone && (
+                <p>Phone: <a href={`tel:${location.phone}`}>{location.phone}</a></p>
+              )}
             </div>
           </Popup>
         </Marker>

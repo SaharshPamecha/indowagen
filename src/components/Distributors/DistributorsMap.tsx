@@ -6,7 +6,6 @@ import dynamic from 'next/dynamic';
 import { Box, Container, Typography, Paper, Grid, Button } from '@mui/material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
-import EmailIcon from '@mui/icons-material/Email';
 import RefreshIcon from '@mui/icons-material/Refresh';
 
 const LeafletMap = dynamic(() => import('./LeafletMap'), {
@@ -36,7 +35,6 @@ interface Distributor {
   state: string;
   city: string;
   phone: string;
-  email: string;
   coordinates: [number, number] | null;
 }
 
@@ -65,7 +63,6 @@ const DistributorsMap: React.FC<DistributorsMapProps> = ({ selectedState, select
           state: dealer.state,
           city: dealer.city,
           phone: dealer.phone,
-          email: 'N/A',
           coordinates: dealer.latitude !== null && dealer.longitude !== null 
             ? [dealer.latitude, dealer.longitude] as [number, number] 
             : null,
@@ -156,14 +153,14 @@ const DistributorsMap: React.FC<DistributorsMapProps> = ({ selectedState, select
                           {distributor.city}, {distributor.state}
                         </Typography>
                       </Box>
-                      {/* <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
-                        <PhoneIcon sx={{ mr: 1 }} color="primary" />
-                        <Typography>{distributor.phone}</Typography>
-                      </Box> */}
-                      <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                        <EmailIcon sx={{ mr: 1 }} color="primary" />
-                        <Typography>{distributor.email}</Typography>
-                      </Box>
+                      {distributor.phone && (
+                        <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+                          <PhoneIcon sx={{ mr: 1 }} color="primary" />
+                          <Typography component="a" href={`tel:${distributor.phone}`} sx={{ color: 'inherit', textDecoration: 'none' }}>
+                            {distributor.phone}
+                          </Typography>
+                        </Box>
+                      )}
                     </Paper>
                   </Grid>
                 ))}
