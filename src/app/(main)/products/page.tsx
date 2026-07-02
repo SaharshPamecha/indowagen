@@ -175,16 +175,25 @@ export default function Products() {
                     flexDirection: 'column',
                     transition: 'transform 0.2s',
                     '&:hover': {
-                      transform: 'translateY(-4px)'
-                    }
+                      transform: 'translateY(-4px)',
+                    },
+                    // Product image zooms in when the card is hovered.
+                    '&:hover .product-card-image img': {
+                      transform: 'scale(1.08)',
+                    },
                   }}
                 >
                   <CardMedia
                     component="div"
+                    className="product-card-image"
                     sx={{
                       position: 'relative',
                       height: 240,
-                      backgroundColor: '#f5f5f5'
+                      backgroundColor: '#f5f5f5',
+                      overflow: 'hidden',
+                      '& img': {
+                        transition: 'transform 0.5s ease',
+                      },
                     }}
                   >
                     {product.img_link ? (

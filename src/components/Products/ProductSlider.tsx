@@ -43,13 +43,17 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ images, modelName }) => {
           >
             {images.map((image, index) => (
               <SwiperSlide key={index}>
-                <Box 
-                  sx={{ 
+                <Box
+                  sx={{
                     height: '100%',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    padding: '0.5rem'
+                    padding: '0.5rem',
+                    overflow: 'hidden',
+                    '&:hover img': {
+                      transform: 'scale(1.08)',
+                    },
                   }}
                 >
                   <img
@@ -59,6 +63,7 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ images, modelName }) => {
                       width: '100%',
                       height: '100%',
                       objectFit: 'contain',
+                      transition: 'transform 0.5s ease',
                     }}
                   />
                 </Box>
