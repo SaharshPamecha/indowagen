@@ -89,8 +89,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               src={`https://forestgreen-capybara-315761.hostingersite.com/assets/products/${product.img_link}`}
               alt={product.model_name}
               fill
+              // Uniform padded canvas so every vehicle reads at a consistent
+              // size despite source images varying in aspect ratio/whitespace.
               style={{
                 objectFit: "contain",
+                padding: "20px",
                 transition: "transform 0.5s ease-in-out",
               }}
               className="product-image"
@@ -104,6 +107,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               fill
               style={{
                 objectFit: "contain",
+                padding: "20px",
                 transition: "transform 0.5s ease-in-out",
               }}
               className="product-image"
