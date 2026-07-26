@@ -57,7 +57,8 @@ const DealerLoungeSnaps: React.FC = () => {
         { src: '/dealer-lounge-snaps/Happy-customers/Happy-1.webp', alt: 'Happy Customers Snap 1' },
         { src: '/dealer-lounge-snaps/Happy-customers/Happy-2.webp', alt: 'Happy Customers Snap 2' },
         { src: '/dealer-lounge-snaps/Happy-customers/Happy-3.webp', alt: 'Happy Customers Snap 3' },
-       
+        { src: '/dealer-lounge-snaps/Happy-customers/Happy-4.webp', alt: 'Happy Customers Snap 4' },
+        { src: '/dealer-lounge-snaps/Happy-customers/Happy-5.webp', alt: 'Happy Customers Snap 5' },
       ],
     },
     {
