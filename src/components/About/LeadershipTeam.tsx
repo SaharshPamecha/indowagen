@@ -162,19 +162,23 @@ const LeadershipTeam = () => {
                     >
                       {member.image ? (
                         <Avatar
+                          variant="rounded"
                           src={member.image}
                           alt={member.name}
                           sx={{
-                            width: 165,
-                            height: 170,
+                            width: 220,
+                            height: 220,
+                            borderRadius: 3,
                             border: `4px solid ${theme.palette.primary.main}`,
                           }}
                         />
                       ) : (
                         <Avatar
+                          variant="rounded"
                           sx={{
-                            width: 165,
-                            height: 170,
+                            width: 220,
+                            height: 220,
+                            borderRadius: 3,
                             bgcolor: stringToColor(member.name),
                             border: `4px solid ${theme.palette.primary.main}`,
                             fontSize: "2.5rem",

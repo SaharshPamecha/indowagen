@@ -201,7 +201,10 @@ export default function Products() {
                         src={`https://forestgreen-capybara-315761.hostingersite.com/assets/products/${product.img_link}`}
                         alt={product.model_name}
                         fill
-                        style={{ objectFit: 'contain' }}
+                        // Uniform padded canvas so every vehicle (source images
+                        // vary widely in aspect ratio and whitespace) is scaled
+                        // into the same box and reads at a consistent size.
+                        style={{ objectFit: 'contain', padding: '20px' }}
                         unoptimized={true}
                       />
                     ) : (

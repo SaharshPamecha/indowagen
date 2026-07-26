@@ -17,9 +17,24 @@ import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import Link from 'next/link';
 import Image from 'next/image';
 
+// Product shots that cross-fade in the hero image slot.
+const heroImages = [
+  { src: '/hero-ev-1.png', alt: 'Indo Wagen Electric Passenger Rickshaw' },
+  { src: '/hero-ev-2.png', alt: 'Indo Wagen Electric Cargo Loader' },
+];
+
 const Hero = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const [activeImage, setActiveImage] = React.useState(0);
+
+  // Auto cross-fade between the hero product images every 5s.
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveImage((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   const containerVariants = {
     hidden: {},
@@ -177,13 +192,25 @@ const Hero = () => {
                   height: isMobile ? '300px' : '500px',
                 }}
               >
-                <Image
-                  src="/Easy-Lite-1.webp"
-                  alt="Indo Wagen Electric Vehicle"
-                  fill
-                  style={{ objectFit: 'contain' }}
-                  priority
-                />
+                {heroImages.map((img, index) => (
+                  <Box
+                    key={img.src}
+                    sx={{
+                      position: 'absolute',
+                      inset: 0,
+                      opacity: activeImage === index ? 1 : 0,
+                      transition: 'opacity 1s ease-in-out',
+                    }}
+                  >
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      style={{ objectFit: 'contain' }}
+                      priority={index === 0}
+                    />
+                  </Box>
+                ))}
               </motion.div>
             </Grid>
           </Grid>

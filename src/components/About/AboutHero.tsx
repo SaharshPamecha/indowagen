@@ -137,8 +137,8 @@ const AboutHero = () => {
                 }}
               >
                 <Image
-                  src="/products/Easy-Lite-4.webp"
-                  alt="Indo Wagen Factory"
+                  src="/about-hero-ev.jpg"
+                  alt="Indo Wagen Electric Rickshaw"
                   fill
                   style={{ objectFit: "contain", borderRadius: "16px" }}
                   sizes="(max-width: 768px), 50vw"

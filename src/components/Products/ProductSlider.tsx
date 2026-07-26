@@ -19,7 +19,7 @@ interface ProductSliderProps {
 
 const ProductSlider: React.FC<ProductSliderProps> = ({ images, modelName }) => {
   return (
-    <Box sx={{ position: 'relative', width: '100%', maxWidth: '800px', margin: '0 auto' }}>
+    <Box sx={{ position: 'relative', width: '100%', maxWidth: '960px', margin: '0 auto' }}>
       {images && images.length > 0 ? (
         <>
           {/* Main Slider */}
@@ -51,8 +51,10 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ images, modelName }) => {
                     justifyContent: 'center',
                     padding: '0.5rem',
                     overflow: 'hidden',
+                    // Stronger zoom-in on the detail page so hovering clearly
+                    // enlarges the product for inspecting details (client request).
                     '&:hover img': {
-                      transform: 'scale(1.08)',
+                      transform: 'scale(1.4)',
                     },
                   }}
                 >
