@@ -19,7 +19,7 @@ interface ProductSliderProps {
 
 const ProductSlider: React.FC<ProductSliderProps> = ({ images, modelName }) => {
   return (
-    <Box sx={{ position: 'relative', width: '100%', maxWidth: '800px', margin: '0 auto' }}>
+    <Box sx={{ position: 'relative', width: '100%', maxWidth: '960px', margin: '0 auto' }}>
       {images && images.length > 0 ? (
         <>
           {/* Main Slider */}
