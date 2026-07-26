@@ -252,7 +252,9 @@ const ProductDetail: React.FC<ProductDetailProps> = async ({ params }) => {
                 <Box
                   sx={{
                     width: '100%',
-                    height: { xs: 300, sm: 400, md: 500 },
+                    // Enlarged ~20% from the previous 300/400/500 so the product
+                    // image reads bigger on the detail page (client request).
+                    height: { xs: 360, sm: 480, md: 600 },
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
