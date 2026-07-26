@@ -51,8 +51,10 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ images, modelName }) => {
                     justifyContent: 'center',
                     padding: '0.5rem',
                     overflow: 'hidden',
+                    // Stronger zoom-in on the detail page so hovering clearly
+                    // enlarges the product for inspecting details (client request).
                     '&:hover img': {
-                      transform: 'scale(1.08)',
+                      transform: 'scale(1.4)',
                     },
                   }}
                 >
