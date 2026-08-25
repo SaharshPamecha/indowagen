@@ -35,7 +35,7 @@ const certifications = [
     image: '/certificates/certificate 3.webp',
     alt: 'Indo Wagen Certification',
     title: 'ISO 9001:2015 Certification',
-    description: 'Renewed ISO 9001:2015 certification (valid through August 2028) recognizing our quality management system for the manufacture and supply of e-rickshaws.',
+    description: 'ISO 9001:2015 certification demonstrating our commitment to quality management, consistent processes, and high product standards.',
   },
 ];
 
