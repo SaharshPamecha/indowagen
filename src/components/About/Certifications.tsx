@@ -30,6 +30,13 @@ const certifications = [
     title: 'ICAT Certificate',
     description: 'ICAT certification for our eco-friendly manufacturing and sustainable automotive standards.'
   },
+  {
+    id: 3,
+    image: '/certificates/certificate 3.webp',
+    alt: 'Indo Wagen Certification',
+    title: 'ISO 9001:2015 Certification',
+    description: 'ISO 9001:2015 certification demonstrating our commitment to quality management, consistent processes, and high product standards.',
+  },
 ];
 
 const Certifications = () => {
@@ -70,7 +77,7 @@ const Certifications = () => {
 
         <Grid container spacing={6} justifyContent="center">
           {certifications.map((cert) => (
-            <Grid item xs={12} md={6} key={cert.id}>
+            <Grid item xs={12} md={4} key={cert.id}>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
