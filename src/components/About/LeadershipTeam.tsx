@@ -22,6 +22,7 @@ import { motion } from 'framer-motion';
 // import TwitterIcon from '@mui/icons-material/Twitter';
 
 import { LinkedIn, Email, Twitter } from '@mui/icons-material';
+import imageVersions from '@/data/image-versions.json';
 
 interface TeamMember {
   id: number;
@@ -47,7 +48,7 @@ const LeadershipTeam = () => {
       name: "Mr. Moinuddin Golam",
       position: "Founder Promoter",
       bio: "having more than 25 years of experience in retail trade, manufacturing, shipping",
-      image: "/team/Moinuddin.jpeg",
+      image: `/team/Moinuddin.jpeg?v=${imageVersions.moinuddin}`,
       social: {
         //linkedin: "https://www.linkedin.com/company/indowagen/",
       },
@@ -57,7 +58,7 @@ const LeadershipTeam = () => {
       name: "Mr. Dilwar Hussain",
       position: "Founder Promoter",
       bio: "having more than 25 years of experience in retail trade, manufacturing, shipping.",
-      image: "/team/Dilwar.jpeg",
+      image: `/team/Dilwar.jpeg?v=${imageVersions.dilwar}`,
       social: {
         //linkedin: "https://www.linkedin.com/company/indowagen/",
       },
@@ -67,7 +68,7 @@ const LeadershipTeam = () => {
       name: "Mr. Rajeev Kumar Srivastava",
       position: "Director and business head",
       bio: "having more than 25 years of experience in leadership role across sales and marketing in reputed organizations.",
-      image: "/team/Rajeev.jpeg",
+      image: `/team/Rajeev.jpeg?v=${imageVersions.rajeev}`,
       social: {
         linkedin: "https://www.linkedin.com/in/srivastavarajeev/",
       },
