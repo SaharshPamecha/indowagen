@@ -28,10 +28,16 @@ const containerSx = {
   borderRadius: 2,
   overflow: 'auto',
   boxShadow: '0 20px 45px rgba(0,0,0,0.35)',
-  width: { xs: '82vw', sm: 'auto' },
-  maxWidth: { xs: '82vw', sm: 1200, md: 1600 },
-  maxHeight: { xs: '75vh', sm: '92vh' },
-  minWidth: { sm: 650 },
+  // Width is an explicit value (not 'auto') at every breakpoint so the box
+  // size doesn't depend on whether the banner image has finished loading —
+  // 'auto' would shrink-to-fit around the image's intrinsic size and could
+  // render smaller than intended before/while it's still loading.
+  // Capped with CSS min() rather than a fixed px value so it fills most of
+  // the screen on laptops/desktops without upscaling the 1366px-wide source
+  // banner enough to look soft on larger monitors.
+  width: { xs: '92vw', sm: 'min(85vw, 1450px)' },
+  maxWidth: { xs: '92vw', sm: 'min(85vw, 1450px)' },
+  maxHeight: { xs: '85vh', sm: '92vh' },
   minHeight: { sm: 320 },
   bgcolor: 'background.paper',
 };
