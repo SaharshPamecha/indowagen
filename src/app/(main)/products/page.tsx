@@ -88,7 +88,7 @@ export default function Products() {
           url: row.url || null
         }));
         
-        setProducts(fetchedProducts);
+        setProducts([...fetchedProducts].sort((a: Product, b: Product) => Number(b.url === 'q8-super') - Number(a.url === 'q8-super')));
       } catch (error) {
         console.error('Error fetching products:', error);
       } finally {

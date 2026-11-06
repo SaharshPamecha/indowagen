@@ -19,7 +19,7 @@ import Image from 'next/image';
 
 // Product shots that cross-fade in the hero image slot.
 const heroImages = [
-  { src: '/hero-ev-1.png', alt: 'Indo Wagen Electric Passenger Rickshaw' },
+  { src: '/hero-q8-super-new.png', alt: 'Indo Wagen Q8 Super 6+1 Seater E-Rickshaw' },
   { src: '/hero-ev-2.png', alt: 'Indo Wagen Electric Cargo Loader' },
 ];
 
