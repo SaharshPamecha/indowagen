@@ -137,7 +137,7 @@ const AboutHero = () => {
                 }}
               >
                 <Image
-                  src="/about-hero-ev.jpg"
+                  src="/about-hero-q8-super-new.jpg"
                   alt="Indo Wagen Electric Rickshaw"
                   fill
                   style={{ objectFit: "contain", borderRadius: "16px" }}
