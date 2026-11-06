@@ -26,8 +26,8 @@ LEFT JOIN (
 ) pi ON p.id = pi.prod_id
 -- Homepage "Featured Products" panel. IDs 1 and 12 were deleted from the
 -- vehicles table (leaving only C8 Loader/17 visible), so the panel is refreshed
--- to three current models: C8 Hevy (40), Q8 Flexi Pro (45), Q8 Zap SS/MS (44).
-WHERE p.id IN (40, 45, 44);
+-- to three current models: C8 Hevy (40), Q8 Flexi Pro (45), Q8 Super (47).
+WHERE p.id IN (40, 45, 47);
     `);
     connection.release();
 
