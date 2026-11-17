@@ -2,6 +2,9 @@ import { NextResponse } from 'next/server';
 import { blogPosts } from '@/data/blogs';
 import { newsItems } from '@/data/news';
 
+// Force this route to be static for compatibility with static export
+export const dynamic = "force-static";
+
 export async function GET() {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://indowagen.com';
   

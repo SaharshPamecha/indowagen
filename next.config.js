@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Configure output for AWS Amplify SSR
-  output: 'standalone',
-  // Configure image optimization for AWS Amplify
+  // Configure output for static deployment to S3/CloudFront
+  output: 'export',
+  // Configure image optimization for S3/CloudFront
   images: {
-    domains: ['localhost', 'indowagen-website-nextjs.d18s43ml1gjftw.amplifyapp.com'],
+    domains: ['localhost'],
     remotePatterns: [
       {
         protocol: 'https',
@@ -19,8 +19,8 @@ const nextConfig = {
         pathname: '/**',
       },
     ],
-    // Set unoptimized based on environment
-    unoptimized: process.env.NODE_ENV !== 'production',
+    // For S3/CloudFront static deployment, images must be unoptimized
+    unoptimized: true,
   },
   
   // React strict mode is beneficial for development but can cause double-mounting
@@ -38,22 +38,15 @@ const nextConfig = {
   // Specify the output directory for Next.js
   distDir: '.next',
   
-  // Configure environment variables for AWS Amplify
-  // env: {
-  //   NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL || 'https://indowagen-website-nextjs.d18s43ml1gjftw.amplifyapp.com',
-  // },
-
+  // Configure environment variables for S3/CloudFront
   env: {
     NEXT_PUBLIC_SITE_URL: process.env.NODE_ENV === 'production' 
-      ? 'https://indowagen-website-nextjs.d18s43ml1gjftw.amplifyapp.com' 
+      ? process.env.NEXT_PUBLIC_SITE_URL || 'https://your-cloudfront-domain.com' 
       : 'http://localhost:3000',
   },
   
-  // Set a higher timeout value for SSR rendering
-  serverRuntimeConfig: {
-    // Will only be available on the server side
-    timeoutMs: 60000,
-  },
+  // Disable server-side features for static export
+  trailingSlash: true,
 };
 
 module.exports = nextConfig;
