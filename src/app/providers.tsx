@@ -1,13 +1,7 @@
 'use client';
 
-import dynamic from 'next/dynamic';
+import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
 import { ReactNode } from "react";
-
-// Dynamically import the progress bar to avoid SSR issues
-const ProgressBar = dynamic(
-  () => import("next-nprogress-bar").then((mod) => mod.AppProgressBar),
-  { ssr: false }
-);
 
 // Define props interface
 interface ProvidersProps {
